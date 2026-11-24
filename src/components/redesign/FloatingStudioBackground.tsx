@@ -24,14 +24,14 @@ export const FloatingStudioBackground: React.FC = () => {
           <line x1="165" y1="48" x2="165" y2="102" strokeWidth="1.2" />
           {/* Lens Glass Elements */}
           <circle cx="175" cy="75" r="22" strokeWidth="1.2" className="stroke-[#0d0e12]/30" />
-          <circle cx="175" cy="75" r="14" strokeWidth="1" strokeDasharray="3 3" className="stroke-accent-red/60" />
+          <circle cx="175" cy="75" r="14" strokeWidth="1" strokeDasharray="3 3" className="stroke-[#0d0e12]/40" />
           {/* Side Ventilation / Audio Jack */}
           <line x1="62" y1="55" x2="80" y2="55" strokeWidth="1.2" />
           <line x1="62" y1="62" x2="80" y2="62" strokeWidth="1.2" />
           <line x1="62" y1="69" x2="80" y2="69" strokeWidth="1.2" />
           <circle cx="115" cy="85" r="8" strokeWidth="1.2" />
-          {/* Blinking REC LED Tally */}
-          <circle cx="120" cy="52" r="3" fill="#e0373a" className="animate-pulse" />
+          {/* Blinking Tally Indicator */}
+          <circle cx="120" cy="52" r="3" fill="#0d0e12" className="animate-pulse" />
           {/* HUD Label */}
           <text x="60" y="100" fill="#0d0e12" fillOpacity="0.5" fontSize="7" fontFamily="monospace" letterSpacing="1">
             4K • 24FPS
@@ -46,13 +46,13 @@ export const FloatingStudioBackground: React.FC = () => {
           <circle cx="90" cy="90" r="72" strokeWidth="1.2" strokeDasharray="2 6" className="stroke-[#0d0e12]/20" />
           <circle cx="90" cy="90" r="62" strokeWidth="1.5" />
           {/* Inner Tint Rings */}
-          <circle cx="90" cy="90" r="40" strokeWidth="1" strokeDasharray="3 3" className="stroke-accent-red/40" />
+          <circle cx="90" cy="90" r="40" strokeWidth="1" strokeDasharray="3 3" className="stroke-[#0d0e12]/30" />
           <circle cx="90" cy="90" r="18" strokeWidth="1" />
           {/* Balance Reticle Crosshair */}
           <line x1="90" y1="20" x2="90" y2="160" strokeWidth="0.8" strokeDasharray="3 4" className="stroke-[#0d0e12]/20" />
           <line x1="20" y1="90" x2="160" y2="90" strokeWidth="0.8" strokeDasharray="3 4" className="stroke-[#0d0e12]/20" />
           {/* Color Balance Puck (Moved off-center like active grade) */}
-          <circle cx="98" cy="82" r="4.5" fill="#e0373a" fillOpacity="0.8" stroke="#ffffff" strokeWidth="1.2" />
+          <circle cx="98" cy="82" r="4.5" fill="#0d0e12" fillOpacity="0.8" stroke="#ffffff" strokeWidth="1.2" />
           {/* Angle Degrees */}
           <text x="90" y="16" fill="#0d0e12" fillOpacity="0.5" fontSize="7" textAnchor="middle" fontFamily="monospace">0°</text>
           <text x="172" y="93" fill="#0d0e12" fillOpacity="0.5" fontSize="7" textAnchor="middle" fontFamily="monospace">90°</text>
@@ -71,10 +71,10 @@ export const FloatingStudioBackground: React.FC = () => {
           {/* Smooth Cubic Bezier Curve */}
           <path d="M 30 140 C 45 30, 140 40, 160 140" strokeWidth="1.8" className="stroke-[#0d0e12]/40" />
           {/* Tangent Control Lines */}
-          <line x1="30" y1="140" x2="45" y2="30" strokeWidth="1" strokeDasharray="3 3" className="stroke-accent-red/60" />
-          <circle cx="45" cy="30" r="4" fill="#e0373a" fillOpacity="0.5" stroke="#e0373a" strokeWidth="1.2" />
-          <line x1="160" y1="140" x2="140" y2="40" strokeWidth="1" strokeDasharray="3 3" className="stroke-accent-red/60" />
-          <circle cx="140" cy="40" r="4" fill="#e0373a" fillOpacity="0.5" stroke="#e0373a" strokeWidth="1.2" />
+          <line x1="30" y1="140" x2="45" y2="30" strokeWidth="1" strokeDasharray="3 3" className="stroke-[#0d0e12]/40" />
+          <circle cx="45" cy="30" r="4" fill="#0d0e12" fillOpacity="0.3" stroke="#0d0e12" strokeWidth="1.2" />
+          <line x1="160" y1="140" x2="140" y2="40" strokeWidth="1" strokeDasharray="3 3" className="stroke-[#0d0e12]/40" />
+          <circle cx="140" cy="40" r="4" fill="#0d0e12" fillOpacity="0.3" stroke="#0d0e12" strokeWidth="1.2" />
           {/* Anchor Points */}
           <rect x="26" y="136" width="8" height="8" fill="#ffffff" stroke="#0d0e12" strokeWidth="1.5" />
           <rect x="156" y="136" width="8" height="8" fill="#ffffff" stroke="#0d0e12" strokeWidth="1.5" />
@@ -82,7 +82,7 @@ export const FloatingStudioBackground: React.FC = () => {
           <g transform="translate(75, 48) rotate(-35)">
             <path d="M 0 0 L 14 18 L 8 28 L -8 28 L -14 18 Z" strokeWidth="1.3" fill="#ffffff" fillOpacity="0.9" />
             <line x1="0" y1="0" x2="0" y2="18" strokeWidth="1" />
-            <circle cx="0" cy="18" r="2" fill="#e0373a" />
+            <circle cx="0" cy="18" r="2" fill="#0d0e12" />
           </g>
           <text x="30" y="165" fill="#0d0e12" fillOpacity="0.5" fontSize="7" fontFamily="monospace">
             P // BEZIER ANCHOR
@@ -100,22 +100,22 @@ export const FloatingStudioBackground: React.FC = () => {
           {/* Node 01 Box (Primary Color) */}
           <rect x="65" y="25" width="46" height="40" rx="3" strokeWidth="1.4" fill="#ffffff" fillOpacity="0.8" />
           <line x1="65" y1="37" x2="111" y2="37" strokeWidth="0.8" className="stroke-[#0d0e12]/15" />
-          <text x="70" y="34" fill="#e0373a" fontSize="6.5" fontFamily="monospace" fontWeight="bold">01 PRIMARY</text>
+          <text x="70" y="34" fill="#0d0e12" fontSize="6.5" fontFamily="monospace" fontWeight="bold">01 PRIMARY</text>
           {/* Mini curve inside node 01 */}
           <path d="M 72 58 Q 88 50, 104 42" strokeWidth="1" className="stroke-[#0d0e12]/40" />
 
           {/* Wire 2 from Node 01 to Node 02 */}
           <path d="M 111 45 C 125 45, 130 75, 145 75" strokeWidth="1.2" className="stroke-[#0d0e12]/30" />
           {/* Node 02 Box (LUT / Grade) */}
-          <rect x="145" y="55" width="46" height="40" rx="3" strokeWidth="1.4" fill="#ffffff" fillOpacity="0.8" className="stroke-accent-red/70" />
+          <rect x="145" y="55" width="46" height="40" rx="3" strokeWidth="1.4" fill="#ffffff" fillOpacity="0.8" className="stroke-[#0d0e12]/50" />
           <line x1="145" y1="67" x2="191" y2="67" strokeWidth="0.8" className="stroke-[#0d0e12]/15" />
           <text x="150" y="64" fill="#0d0e12" fontSize="6.5" fontFamily="monospace" fontWeight="bold">02 GRADE</text>
           {/* Mini waveform inside node 02 */}
-          <path d="M 152 86 L 157 78 L 163 88 L 170 76 L 178 84 L 184 75" strokeWidth="0.9" className="stroke-accent-red/60" />
+          <path d="M 152 86 L 157 78 L 163 88 L 170 76 L 178 84 L 184 75" strokeWidth="0.9" className="stroke-[#0d0e12]/40" />
 
           {/* Wire to Output */}
           <path d="M 191 75 L 206 75" strokeWidth="1.2" />
-          <circle cx="210" cy="75" r="4" fill="#e0373a" strokeWidth="1.2" />
+          <circle cx="210" cy="75" r="4" fill="#0d0e12" strokeWidth="1.2" />
           <text x="65" y="115" fill="#0d0e12" fillOpacity="0.5" fontSize="7" fontFamily="monospace">
             RESOLVE // SERIAL NODE PIPELINE
           </text>
@@ -137,11 +137,11 @@ export const FloatingStudioBackground: React.FC = () => {
           <rect x="135" y="59" width="12" height="14" strokeWidth="0.8" strokeDasharray="2 2" />
 
           {/* Layer 1 (Clipping Mask with arrow down) */}
-          <rect x="42" y="16" width="113" height="30" rx="4" strokeWidth="1.4" fill="#ffffff" fillOpacity="0.9" className="stroke-accent-red/60" />
+          <rect x="42" y="16" width="113" height="30" rx="4" strokeWidth="1.4" fill="#ffffff" fillOpacity="0.9" className="stroke-[#0d0e12]/40" />
           {/* Clipping mask elbow arrow ↳ */}
-          <path d="M 32 30 L 32 38 L 40 38" strokeWidth="1.5" className="stroke-accent-red" />
-          <path d="M 37 35 L 40 38 L 37 41" strokeWidth="1.2" className="stroke-accent-red" />
-          <text x="54" y="34" fill="#e0373a" fontSize="7.5" fontFamily="monospace" fontWeight="bold">CURVES ADJUSTMENT</text>
+          <path d="M 32 30 L 32 38 L 40 38" strokeWidth="1.5" className="stroke-[#0d0e12]" />
+          <path d="M 37 35 L 40 38 L 37 41" strokeWidth="1.2" className="stroke-[#0d0e12]" />
+          <text x="54" y="34" fill="#0d0e12" fontSize="7.5" fontFamily="monospace" fontWeight="bold">CURVES ADJUSTMENT</text>
           
           <text x="25" y="142" fill="#0d0e12" fillOpacity="0.5" fontSize="7" fontFamily="monospace">
             PS // LAYER_STACK [CLIPPING]
@@ -176,9 +176,9 @@ export const FloatingStudioBackground: React.FC = () => {
           <line x1="25" y1="105" x2="145" y2="105" strokeWidth="0.8" strokeDasharray="2 3" className="stroke-[#0d0e12]/15" />
 
           {/* Center Target Crosshair */}
-          <circle cx="85" cy="85" r="4" strokeWidth="1" className="stroke-accent-red" />
-          <line x1="85" y1="78" x2="85" y2="92" strokeWidth="1" className="stroke-accent-red" />
-          <line x1="78" y1="85" x2="92" y2="85" strokeWidth="1" className="stroke-accent-red" />
+          <circle cx="85" cy="85" r="4" strokeWidth="1" className="stroke-[#0d0e12]" />
+          <line x1="85" y1="78" x2="85" y2="92" strokeWidth="1" className="stroke-[#0d0e12]" />
+          <line x1="78" y1="85" x2="92" y2="85" strokeWidth="1" className="stroke-[#0d0e12]" />
 
           <text x="25" y="162" fill="#0d0e12" fillOpacity="0.5" fontSize="7" fontFamily="monospace">
             SELECT // 16:9 ASPECT LOCK

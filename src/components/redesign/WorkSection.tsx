@@ -149,7 +149,7 @@ export const WorkSection: React.FC = () => {
                         style={{ transition: 'ry 0.1s ease-in-out' }}
                       />
                       {!blinking && (
-                        <circle ref={eyePupilLeftRef} cx="28" cy="40" r="5" fill="#e0373a" />
+                        <circle ref={eyePupilLeftRef} cx="28" cy="40" r="5" fill="#0d0e12" />
                       )}
                       <ellipse
                         cx="52" cy="40" rx="12" ry={blinking ? 1 : 14}
@@ -157,7 +157,7 @@ export const WorkSection: React.FC = () => {
                         style={{ transition: 'ry 0.1s ease-in-out' }}
                       />
                       {!blinking && (
-                        <circle ref={eyePupilRightRef} cx="52" cy="40" r="5" fill="#e0373a" />
+                        <circle ref={eyePupilRightRef} cx="52" cy="40" r="5" fill="#0d0e12" />
                       )}
                     </svg>
                   </div>

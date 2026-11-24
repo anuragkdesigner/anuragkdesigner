@@ -5,7 +5,7 @@
 :root {
   --bg-color: #f9f9f8;
   --text-color: #0d0e12;
-  --accent-red: #e0373a;
+  --accent-red: #0d0e12;
   --font-display: "Bowlby One", "Anton", sans-serif;
   --font-sans: "Inter", sans-serif;
 }
@@ -37,7 +37,7 @@ body {
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #e0373a;
+  background: #0d0e12;
 }
 
 /* Custom cursor */
@@ -47,7 +47,7 @@ body {
   left: 0;
   width: 10px;
   height: 10px;
-  background-color: #f3efe4;
+  background-color: #0d0e12;
   border-radius: 50%;
   pointer-events: none;
   z-index: 9999;
@@ -63,8 +63,8 @@ body {
 .custom-cursor-dot.hovered {
   width: 64px;
   height: 64px;
-  background-color: #f3efe4;
-  border: 1px solid #f3efe4;
+  background-color: #ffffff;
+  border: 1px solid #0d0e12;
 }
 
 @media (hover: none) and (pointer: coarse) {
@@ -85,7 +85,7 @@ body {
   left: 0;
   width: 0;
   height: 2px;
-  background-color: #e0373a;
+  background-color: #0d0e12;
   transition: width 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .nav-link-hover:hover::after {

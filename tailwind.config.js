@@ -20,8 +20,8 @@ export default {
           faint: '#858c9b',
         },
         accent: {
-          red: '#e0373a',
-          'red-hover': '#c92a2d',
+          red: '#0d0e12',
+          'red-hover': '#242833',
         }
       },
       fontFamily: {

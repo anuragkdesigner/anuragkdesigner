@@ -43,9 +43,9 @@ export const HeroSection: React.FC = () => {
       ref={heroRef}
       className="relative min-h-screen pt-28 sm:pt-36 pb-16 flex flex-col justify-between max-w-site mx-auto px-6 sm:px-10 overflow-hidden"
     >
-      {/* Ambient Red Lighting Halo Behind Portrait */}
+      {/* Ambient Lighting Halo Behind Portrait */}
       <div 
-        className="absolute top-1/4 right-0 lg:right-12 w-80 sm:w-96 h-80 sm:h-96 rounded-full bg-accent-red/15 blur-[100px] pointer-events-none -z-10"
+        className="absolute top-1/4 right-0 lg:right-12 w-80 sm:w-96 h-80 sm:h-96 rounded-full bg-[#0d0e12]/[0.03] blur-[100px] pointer-events-none -z-10"
         aria-hidden="true"
       />
 
@@ -139,7 +139,7 @@ export const HeroSection: React.FC = () => {
             
             {/* Ambient Radial Backlight behind silhouette */}
             <div 
-              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 sm:w-80 h-64 sm:h-80 rounded-full bg-accent-red/15 blur-3xl pointer-events-none -z-10"
+              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 sm:w-80 h-64 sm:h-80 rounded-full bg-[#0d0e12]/[0.04] blur-3xl pointer-events-none -z-10"
               aria-hidden="true"
             />
 
@@ -152,9 +152,9 @@ export const HeroSection: React.FC = () => {
             </div>
 
             {/* Graphic Registration Crosshairs (Photoshop composition markers) */}
-            <span className="absolute -top-3 -left-3 text-accent-red font-mono text-xs select-none pointer-events-none">+</span>
-            <span className="absolute -top-3 -right-3 text-accent-red font-mono text-xs select-none pointer-events-none">+</span>
-            <span className="absolute -bottom-3 -right-3 text-accent-red font-mono text-xs select-none pointer-events-none">+</span>
+            <span className="absolute -top-3 -left-3 text-[#0d0e12] font-mono text-xs select-none pointer-events-none">+</span>
+            <span className="absolute -top-3 -right-3 text-[#0d0e12] font-mono text-xs select-none pointer-events-none">+</span>
+            <span className="absolute -bottom-3 -right-3 text-[#0d0e12] font-mono text-xs select-none pointer-events-none">+</span>
 
             {/* Cut-out Transparent Portrait Image */}
             <div className="relative z-10">
@@ -172,7 +172,7 @@ export const HeroSection: React.FC = () => {
 
             {/* Floating Editorial Badge (Photoshop Composited HUD) */}
             <div className="absolute bottom-2 -left-2 sm:left-2 z-30 bg-white/95 backdrop-blur-md p-3 sm:p-3.5 rounded-lg border border-[#e2dfd7] shadow-xl space-y-1 max-w-[260px]">
-              <div className="flex items-center gap-1.5 text-[10px] font-mono uppercase tracking-wider text-accent-red font-bold">
+              <div className="flex items-center gap-1.5 text-[10px] font-mono uppercase tracking-wider text-[#0d0e12] font-bold">
                 <Sparkles className="w-3 h-3 shrink-0" />
                 <span className="truncate">Visual & Motion Lead</span>
               </div>
@@ -185,7 +185,7 @@ export const HeroSection: React.FC = () => {
             </div>
 
             {/* Top-Right Badge: Open for Work / Location */}
-            <div className="absolute top-2 right-2 sm:right-4 z-30 bg-accent-red text-white font-mono text-[10px] font-bold uppercase tracking-widest px-2.5 py-1 rounded shadow-md whitespace-nowrap">
+            <div className="absolute top-2 right-2 sm:right-4 z-30 bg-[#0d0e12] text-white font-mono text-[10px] font-bold uppercase tracking-widest px-2.5 py-1 rounded shadow-md whitespace-nowrap">
               Kozhikode, India
             </div>
 
