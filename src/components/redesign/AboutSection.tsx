@@ -9,23 +9,33 @@ export const AboutSection: React.FC = () => {
         
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
           
-          {/* Left Column: Large Display Headline */}
+          {/* Left Column: Large Display Headline with Interactive Minimal Hover Animation */}
           <div className="lg:col-span-5 space-y-6">
             <span className="text-xs font-mono uppercase tracking-[0.15em] text-[#0d0e12] font-bold block">
               About Anurag
             </span>
-            <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl text-[#0d0e12] tracking-tight leading-[1.05] uppercase">
-              {content.about.headline}
+            <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl text-[#0d0e12] tracking-tight leading-[1.05] uppercase cursor-default select-none">
+              {content.about.headline.split(" ").map((word, i) => (
+                <span
+                  key={i}
+                  className="inline-block mr-2.5 sm:mr-3 transition-all duration-300 ease-out hover:-translate-y-1.5 hover:text-[#525866]"
+                >
+                  {word}
+                </span>
+              ))}
             </h2>
-            <div className="pt-4">
+            <div className="pt-2">
               <a
                 href={content.contact.linkedin}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center gap-1.5 font-mono text-xs uppercase tracking-wider text-[#0d0e12] hover:text-[#525866] transition-colors underline underline-offset-4"
+                className="group inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider text-[#0d0e12] hover:text-[#0d0e12] px-3.5 py-2 -ml-3.5 rounded-lg hover:bg-black/[0.04] border border-transparent hover:border-[#e2dfd7] transition-all duration-300"
               >
-                <span>View LinkedIn Profile</span>
-                <ArrowUpRight className="w-3.5 h-3.5" />
+                <span className="relative">
+                  View LinkedIn Profile
+                  <span className="absolute left-0 -bottom-0.5 w-0 h-[1.5px] bg-[#0d0e12] transition-all duration-300 group-hover:w-full" />
+                </span>
+                <ArrowUpRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" />
               </a>
             </div>
           </div>
