@@ -1,6 +1,6 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { content } from '../../data/redesignContent';
-import { ArrowUpRight, ArrowRight } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -10,45 +10,8 @@ export const WorkSection: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
   const progressBarRef = useRef<HTMLDivElement>(null);
-  const eyePupilLeftRef = useRef<SVGCircleElement>(null);
-  const eyePupilRightRef = useRef<SVGCircleElement>(null);
-  const [blinking, setBlinking] = useState(false);
 
   const projects = content.projects;
-
-  // Cartoon eye cursor tracking
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      const pupils = [eyePupilLeftRef.current, eyePupilRightRef.current];
-      pupils.forEach((pupil) => {
-        if (!pupil) return;
-        const rect = pupil.getBoundingClientRect();
-        const centerX = rect.left + rect.width / 2;
-        const centerY = rect.top + rect.height / 2;
-        const deltaX = e.clientX - centerX;
-        const deltaY = e.clientY - centerY;
-        const angle = Math.atan2(deltaY, deltaX);
-        const distance = Math.min(5, Math.hypot(deltaX, deltaY) / 20);
-        const moveX = Math.cos(angle) * distance;
-        const moveY = Math.sin(angle) * distance;
-
-        pupil.style.transform = `translate(${moveX}px, ${moveY}px)`;
-      });
-    };
-
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, []);
-
-  // Eye blinking interval every 4.5 seconds
-  useEffect(() => {
-    const blinkInterval = setInterval(() => {
-      setBlinking(true);
-      setTimeout(() => setBlinking(false), 200);
-    }, 4500);
-
-    return () => clearInterval(blinkInterval);
-  }, []);
 
   // GSAP Horizontal Scroll Pinning
   useEffect(() => {
@@ -112,105 +75,7 @@ export const WorkSection: React.FC = () => {
           ref={trackRef}
           className="flex items-center gap-6 sm:gap-10 pl-6 sm:pl-10 pr-16 sm:pr-24 will-change-transform my-auto py-2"
         >
-          {/* Track Item 0: Editorial Intro Card */}
-          <div className="w-[300px] xs:w-[360px] sm:w-[440px] lg:w-[480px] shrink-0 bg-white border border-[#e2dfd7] rounded-xl p-6 sm:p-8 shadow-xl flex flex-col justify-between">
-            <div className="space-y-4">
-              {/* Badge + Cartoon Eye */}
-              <div className="flex items-center gap-4">
-                <div className="relative w-20 h-20 sm:w-24 sm:h-24 shrink-0 flex items-center justify-center">
-                  <svg
-                    viewBox="0 0 200 200"
-                    className="w-full h-full animate-spin-badge select-none"
-                  >
-                    <path
-                      id="textCirclePathH"
-                      d="M 100, 100 m -75, 0 a 75,75 0 1,1 150,0 a 75,75 0 1,1 -150,0"
-                      fill="none"
-                    />
-                    <text
-                      fill="#0d0e12"
-                      fontSize="11.5"
-                      fontFamily="monospace"
-                      fontWeight="bold"
-                      letterSpacing="2.8px"
-                    >
-                      <textPath href="#textCirclePathH" startOffset="0%">
-                        {content.badgeText}
-                      </textPath>
-                    </text>
-                  </svg>
-
-                  {/* Blinking cartoon eyes */}
-                  <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                    <svg viewBox="0 0 80 80" className="w-10 h-10 sm:w-12 sm:h-12">
-                      <ellipse
-                        cx="28" cy="40" rx="12" ry={blinking ? 1 : 14}
-                        fill="#ffffff" stroke="#0d0e12" strokeWidth="2"
-                        style={{ transition: 'ry 0.1s ease-in-out' }}
-                      />
-                      {!blinking && (
-                        <circle ref={eyePupilLeftRef} cx="28" cy="40" r="5" fill="#0d0e12" />
-                      )}
-                      <ellipse
-                        cx="52" cy="40" rx="12" ry={blinking ? 1 : 14}
-                        fill="#ffffff" stroke="#0d0e12" strokeWidth="2"
-                        style={{ transition: 'ry 0.1s ease-in-out' }}
-                      />
-                      {!blinking && (
-                        <circle ref={eyePupilRightRef} cx="52" cy="40" r="5" fill="#0d0e12" />
-                      )}
-                    </svg>
-                  </div>
-                </div>
-
-                <div>
-                  <span className="text-[10px] font-mono uppercase tracking-[0.15em] text-[#0d0e12] font-bold block">
-                    Featured Work
-                  </span>
-                  <h3 className="font-display text-xl sm:text-2xl text-[#0d0e12] tracking-tight uppercase leading-tight">
-                    CLIENT HIGHLIGHTS
-                  </h3>
-                </div>
-              </div>
-
-              {/* Word-level styled narrative */}
-              <p className="text-xs sm:text-sm text-[#0d0e12] leading-relaxed font-sans pt-2 border-t border-[#e2dfd7]">
-                {content.introParagraph.map((part, idx) => {
-                  if (part.style === 'bold') {
-                    return (
-                      <span key={idx} className="font-display font-bold text-[#0d0e12] underline decoration-[#0d0e12] decoration-2 underline-offset-4">
-                        {part.text}
-                      </span>
-                    );
-                  }
-                  if (part.style === 'italic') {
-                    return (
-                      <span key={idx} className="font-script text-base sm:text-lg italic text-[#0d0e12]">
-                        {part.text}
-                      </span>
-                    );
-                  }
-                  if (part.style === 'red') {
-                    return (
-                      <span key={idx} className="font-display text-[#0d0e12] uppercase tracking-tight">
-                        {part.text}
-                      </span>
-                    );
-                  }
-                  return <span key={idx}>{part.text}</span>;
-                })}
-              </p>
-            </div>
-
-            <div className="pt-4 mt-4 border-t border-[#e2dfd7] flex items-center justify-between text-xs font-mono text-[#525866]">
-              <span>0{projects.length} FEATURED WORKS</span>
-              <span className="text-[#0d0e12] flex items-center gap-1 font-bold">
-                SCROLL <ArrowRight className="w-3.5 h-3.5" />
-              </span>
-            </div>
-          </div>
-
-          {/* Track Items 1—N: Individual Project Cards */}
+          {/* Track Items: Individual Project Cards */}
           {projects.map((proj) => (
             <div
               key={proj.id}
