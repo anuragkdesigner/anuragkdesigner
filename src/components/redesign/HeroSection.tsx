@@ -1,7 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { content } from '../../data/redesignContent';
 import gsap from 'gsap';
-import { ArrowDown } from 'lucide-react';
 
 export const HeroSection: React.FC = () => {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -95,14 +94,14 @@ export const HeroSection: React.FC = () => {
 
       </div>
 
-      {/* Bottom Scroll Indicator */}
+      {/* Bottom Tool Bar */}
       <div className="pt-8 flex items-center justify-between text-xs font-mono text-cream-muted border-t border-charcoal-border">
-        <a href="#work" className="flex items-center gap-2 hover:text-accent-red transition-colors">
-          <ArrowDown className="w-4 h-4 animate-bounce text-accent-red" />
-          <span>SCROLL FOR SELECTED WORK</span>
-        </a>
+        <div className="flex items-center gap-2">
+          <span className="w-2 h-2 rounded-full bg-accent-red" />
+          <span className="uppercase tracking-widest text-[11px]">Selected Capabilities</span>
+        </div>
 
-        <div className="hidden sm:flex items-center gap-6">
+        <div className="flex items-center gap-3 sm:gap-6 flex-wrap">
           <span>AFTER EFFECTS</span>
           <span>•</span>
           <span>PHOTOSHOP</span>
