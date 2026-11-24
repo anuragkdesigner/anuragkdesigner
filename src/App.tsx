@@ -1,7 +1,6 @@
 import React from 'react';
 import { CustomCursor } from './components/redesign/CustomCursor';
 import { NoiseOverlay } from './components/redesign/NoiseOverlay';
-import { FloatingStudioBackground } from './components/redesign/FloatingStudioBackground';
 import { IntroSequence } from './components/redesign/IntroSequence';
 import { Navigation } from './components/redesign/Navigation';
 import { HeroSection } from './components/redesign/HeroSection';
@@ -18,10 +17,7 @@ export const App: React.FC = () => {
       {/* 1. Subtle 1px Grain / Noise Overlay (4% opacity) */}
       <NoiseOverlay />
 
-      {/* 2. Floating Studio Production Background (Camera, DaVinci & Photoshop vectors) */}
-      <FloatingStudioBackground />
-
-      {/* 3. Interactive Smooth Custom Cursor */}
+      {/* 2. Interactive Smooth Custom Cursor */}
       <CustomCursor />
 
       {/* 3. Opening Intro Sequence */}
