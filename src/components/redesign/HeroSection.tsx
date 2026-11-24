@@ -65,21 +65,21 @@ export const HeroSection: React.FC = () => {
           {/* 3-Line Headline Stack */}
           <div className="space-y-1 sm:space-y-2">
             
-            {/* Line 1: Cream Medium Display */}
+            {/* Line 1: Cream Display */}
             <div className="mask-line">
               <div
                 ref={line1Ref}
-                className="font-display text-3xl sm:text-5xl md:text-6xl lg:text-7xl tracking-tight text-cream uppercase leading-none"
+                className="font-display text-2xl xs:text-3xl sm:text-5xl md:text-5xl lg:text-6xl tracking-tight text-cream uppercase leading-none whitespace-nowrap"
               >
                 {content.tagline[0]}
               </div>
             </div>
 
-            {/* Line 2: Red Very Large Display */}
+            {/* Line 2: Red Large Display - Strictly single line */}
             <div className="mask-line">
               <div
                 ref={line2Ref}
-                className="font-display text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl tracking-tight text-accent-red uppercase leading-none select-none"
+                className="font-display text-3xl xs:text-4xl sm:text-6xl md:text-6xl lg:text-7xl xl:text-8xl tracking-tight text-accent-red uppercase leading-none select-none whitespace-nowrap"
               >
                 {content.tagline[1]}
               </div>
@@ -89,7 +89,7 @@ export const HeroSection: React.FC = () => {
             <div className="mask-line">
               <div
                 ref={line3Ref}
-                className="font-sans font-semibold text-sm sm:text-lg md:text-xl text-cream-muted tracking-wide uppercase pt-1"
+                className="font-sans font-semibold text-xs sm:text-base md:text-lg lg:text-xl text-cream-muted tracking-wide uppercase pt-1"
               >
                 {content.tagline[2]}
               </div>
@@ -103,10 +103,10 @@ export const HeroSection: React.FC = () => {
               ref={nameRowRef}
               className="flex items-baseline gap-2 sm:gap-4 font-display select-none leading-none"
             >
-              <span className="text-6xl sm:text-8xl md:text-9xl lg:text-[130px] text-cream tracking-tight uppercase">
+              <span className="text-6xl sm:text-8xl md:text-9xl lg:text-[120px] text-cream tracking-tight uppercase">
                 ANURAG
               </span>
-              <span className="w-3 h-3 sm:w-4 sm:h-4 md:w-6 md:h-6 rounded-full bg-accent-red inline-block mb-1 sm:mb-2" />
+              <span className="w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5 rounded-full bg-accent-red inline-block mb-1 sm:mb-2" />
             </div>
           </div>
 
@@ -130,76 +130,68 @@ export const HeroSection: React.FC = () => {
 
         </div>
 
-        {/* RIGHT COLUMN: Cut-out Transparent Portrait Composite (5 Cols) */}
+        {/* RIGHT COLUMN: Cut-out Transparent Portrait Composite (Photoshop style) */}
         <div
           ref={imageColumnRef}
           className="lg:col-span-5 relative flex items-center justify-center lg:justify-end"
         >
-          <div className="relative w-full max-w-[340px] sm:max-w-[420px] lg:max-w-[460px]">
+          <div className="relative w-full max-w-[320px] sm:max-w-[400px] lg:max-w-[440px]">
             
-            {/* Background Editorial Graphic Frame */}
-            <div className="absolute inset-x-4 top-8 bottom-0 rounded-2xl border border-charcoal-border bg-[#181c26]/60 backdrop-blur-xs -z-10" />
+            {/* Ambient Radial Backlight behind silhouette */}
+            <div 
+              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 sm:w-80 h-64 sm:h-80 rounded-full bg-accent-red/25 blur-3xl pointer-events-none -z-10"
+              aria-hidden="true"
+            />
 
-            {/* Red Accent Decorative Geometry (Photoshop aesthetic) */}
-            <div className="absolute top-4 -left-4 w-12 h-12 border-t-2 border-l-2 border-accent-red pointer-events-none" />
-            <div className="absolute bottom-12 -right-3 w-12 h-12 border-b-2 border-r-2 border-accent-red pointer-events-none" />
+            {/* Giant Background Typography Watermark behind portrait (Photoshop Layered Depth) */}
+            <div 
+              className="absolute -top-10 sm:-top-16 -left-6 sm:-left-12 font-display text-8xl sm:text-[130px] lg:text-[150px] uppercase tracking-tighter text-cream/[0.05] select-none pointer-events-none leading-none z-0"
+              aria-hidden="true"
+            >
+              ANURAG
+            </div>
+
+            {/* Graphic Registration Crosshairs (Photoshop composition markers) */}
+            <span className="absolute -top-3 -left-3 text-accent-red font-mono text-xs select-none pointer-events-none">+</span>
+            <span className="absolute -top-3 -right-3 text-accent-red font-mono text-xs select-none pointer-events-none">+</span>
+            <span className="absolute -bottom-3 -right-3 text-accent-red font-mono text-xs select-none pointer-events-none">+</span>
 
             {/* Cut-out Transparent Portrait Image */}
-            <div className="relative overflow-hidden rounded-b-2xl">
+            <div className="relative z-10">
               <img
                 src="./anurag-portrait.png"
                 alt="Anurag K — Graphic Designer & Video Editor"
-                className="w-full h-auto object-cover relative z-10 drop-shadow-[0_20px_35px_rgba(0,0,0,0.6)]"
+                className="w-full h-auto object-cover relative z-10 drop-shadow-[0_25px_40px_rgba(0,0,0,0.75)]"
               />
 
-              {/* Bottom Gradient Fade to seamlessly blend into charcoal page background */}
+              {/* Bottom Gradient Fade to seamlessly melt into dark page background */}
               <div 
-                className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[#1f2430] via-[#1f2430]/70 to-transparent z-20 pointer-events-none"
+                className="absolute inset-x-0 bottom-0 h-36 bg-gradient-to-t from-[#1f2430] via-[#1f2430]/80 to-transparent z-20 pointer-events-none"
               />
             </div>
 
-            {/* Floating Editorial Badge (Photoshop Composited Feel) */}
-            <div className="absolute -bottom-2 -left-2 sm:left-4 z-30 bg-[#161922]/95 backdrop-blur-md p-3.5 sm:p-4 rounded-lg border border-charcoal-border shadow-2xl space-y-1">
+            {/* Floating Editorial Badge (Photoshop Composited HUD) */}
+            <div className="absolute bottom-2 -left-2 sm:left-2 z-30 bg-[#161922]/95 backdrop-blur-md p-3 sm:p-3.5 rounded-lg border border-charcoal-border shadow-2xl space-y-1 max-w-[260px]">
               <div className="flex items-center gap-1.5 text-[10px] font-mono uppercase tracking-wider text-accent-red font-bold">
-                <Sparkles className="w-3 h-3" />
-                <span>Visual & Motion Lead</span>
+                <Sparkles className="w-3 h-3 shrink-0" />
+                <span className="truncate">Visual & Motion Lead</span>
               </div>
               <div className="font-display text-sm sm:text-base text-cream uppercase tracking-tight">
                 ANURAG K
               </div>
-              <div className="text-[11px] font-mono text-cream-muted">
+              <div className="text-[11px] font-mono text-cream-muted truncate">
                 BufferBytes Tech • Haris&Co.
               </div>
             </div>
 
-            {/* Top-Right Badge: Open for Work */}
-            <div className="absolute top-2 right-2 sm:right-6 z-30 bg-accent-red text-cream font-mono text-[10px] font-bold uppercase tracking-widest px-2.5 py-1 rounded shadow-md">
+            {/* Top-Right Badge: Open for Work / Location */}
+            <div className="absolute top-2 right-2 sm:right-4 z-30 bg-accent-red text-cream font-mono text-[10px] font-bold uppercase tracking-widest px-2.5 py-1 rounded shadow-md whitespace-nowrap">
               Kozhikode, India
             </div>
 
           </div>
         </div>
 
-      </div>
-
-      {/* Bottom Tool Bar */}
-      <div className="pt-8 flex items-center justify-between text-xs font-mono text-cream-muted border-t border-charcoal-border">
-        <div className="flex items-center gap-2">
-          <span className="w-2 h-2 rounded-full bg-accent-red" />
-          <span className="uppercase tracking-widest text-[11px]">Core Production Stack</span>
-        </div>
-
-        <div className="flex items-center gap-3 sm:gap-6 flex-wrap">
-          <span>AFTER EFFECTS</span>
-          <span>•</span>
-          <span>PHOTOSHOP</span>
-          <span>•</span>
-          <span>PREMIERE PRO</span>
-          <span>•</span>
-          <span>ILLUSTRATOR</span>
-          <span>•</span>
-          <span>FIGMA</span>
-        </div>
       </div>
     </section>
   );
