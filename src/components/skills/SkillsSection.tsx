@@ -208,6 +208,36 @@ export const SkillsSection: React.FC = () => {
           </div>
         );
 
+      case 'premiere-pro':
+        return (
+          <div className="relative w-full h-32 bg-[#1A0022] border-b border-stroke flex items-center justify-center overflow-hidden">
+            <svg viewBox="0 0 240 120" className="w-full h-full">
+              {/* Pr Badge */}
+              <rect x="25" y="20" width="36" height="36" rx="6" fill="#330033" stroke="#EA77FF" strokeWidth="1" />
+              <text x="33" y="44" fontFamily="sans-serif" fontSize="18" fontWeight="bold" fill="#EA77FF">Pr</text>
+
+              {/* Multi-Track NLE Video Timeline */}
+              <rect x="75" y="22" width="140" height="20" rx="3" fill="#5C2D91" />
+              <text x="85" y="35" fontFamily="monospace" fontSize="7" fill="#FFFFFF">V1: MAIN_SEQUENCE_4K</text>
+
+              <rect x="75" y="46" width="60" height="18" rx="2" fill="#8944AB" />
+              <text x="82" y="58" fontFamily="monospace" fontSize="7" fill="#FFFFFF">V2: B-ROLL</text>
+
+              <rect x="140" y="46" width="75" height="18" rx="2" fill="#D9534F" />
+              <text x="146" y="58" fontFamily="monospace" fontSize="7" fill="#FFFFFF">TITLES_OVERLAY</text>
+
+              <rect x="75" y="68" width="140" height="16" rx="2" fill="#17191C" />
+              <path d="M 80 76 Q 90 70 100 76 T 120 76 T 140 76 T 160 76 T 180 76 T 200 76" fill="none" stroke="#EA77FF" strokeWidth="1.5" />
+
+              {/* Playhead */}
+              <line x1="135" y1="18" x2="135" y2="92" stroke="#FFDB58" strokeWidth="1.5" />
+              <polygon points="132,18 138,18 135,24" fill="#FFDB58" />
+
+              <text x="75" y="105" fontFamily="monospace" fontSize="8" fill="#EA77FF">Lumetri Color & Multi-Track</text>
+            </svg>
+          </div>
+        );
+
       default:
         return null;
     }

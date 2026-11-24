@@ -77,5 +77,16 @@ export const SKILLS: SkillItem[] = [
     description: 'Mathematical bezier pen precision, geometric vector marks, scalable SVG assets, and print prep.',
     accentColor: '#FF9A00',
     visualType: 'illustrator'
+  },
+  {
+    id: 'premiere-pro',
+    name: 'Adobe Premiere Pro',
+    category: 'Tools & Technologies',
+    associatedRole: 'Graphic Designer & Video Editor',
+    proficiencyLevel: 'Expert',
+    initialEndorsements: 14,
+    description: 'Non-linear multi-camera editing, Lumetri color grading, dynamic audio mixing, and high-retention social exports.',
+    accentColor: '#EA77FF',
+    visualType: 'premiere-pro'
   }
 ];

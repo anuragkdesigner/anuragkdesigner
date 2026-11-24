@@ -9,6 +9,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onContactClick }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const navLinks = [
+    { label: 'About', href: '#about' },
     { label: 'Work', href: '#projects' },
     { label: 'Skills', href: '#skills' },
     { label: 'Systems Lab', href: '#sandbox' },
@@ -28,7 +29,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onContactClick }) => {
               Anurag K
             </span>
             <span className="hidden sm:inline text-xs font-mono text-ink-tertiary border-l border-stroke pl-2.5">
-              Graphic & UI/UX Designer
+              Graphic Designer & Video Editor
             </span>
           </a>
           <a

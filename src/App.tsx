@@ -1,6 +1,7 @@
 import React from 'react';
 import { Navbar } from './components/common/Navbar';
 import { HeroSection } from './components/hero/HeroSection';
+import { AboutSection } from './components/about/AboutSection';
 import { ProjectsGrid } from './components/projects/ProjectsGrid';
 import { SkillsSection } from './components/skills/SkillsSection';
 import { DesignTokenSandbox } from './components/interactive/DesignTokenSandbox';
@@ -26,6 +27,7 @@ export const App: React.FC = () => {
       {/* Main Content Layout */}
       <main className="flex-1">
         <HeroSection />
+        <AboutSection />
         <ProjectsGrid projects={PROJECTS} />
         <SkillsSection />
         <DesignTokenSandbox />

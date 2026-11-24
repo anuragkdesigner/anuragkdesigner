@@ -75,7 +75,7 @@ export interface SkillItem {
   initialEndorsements: number;
   description: string;
   accentColor: string;
-  visualType: 'graphic' | 'motion' | 'video' | 'after-effects' | 'photoshop' | 'illustrator' | 'video-editing';
+  visualType: 'graphic' | 'motion' | 'video' | 'after-effects' | 'photoshop' | 'illustrator' | 'video-editing' | 'premiere-pro';
 }
 
 export interface DesignPrinciple {
