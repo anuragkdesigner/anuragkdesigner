@@ -27,11 +27,6 @@ export const content = {
     "VIDEO EDITOR",
     "TURNING IDEAS INTO IMPACTFUL VISUALS"
   ],
-  mascotWords: {
-    first: "ANU",
-    second: "RAG",
-    mascotLabel: "Craft"
-  },
   introParagraph: [
     { text: "For years, I've been ", style: "normal" },
     { text: "designing", style: "bold" },
