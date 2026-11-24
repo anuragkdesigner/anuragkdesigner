@@ -38,22 +38,27 @@ export const AboutSection: React.FC = () => {
               </p>
             ))}
 
-            {/* Quick Experience Pills */}
-            <div className="pt-6 grid grid-cols-1 sm:grid-cols-3 gap-4 font-mono text-xs text-cream">
-              <div className="p-4 rounded bg-[#181c26] border border-charcoal-border">
-                <span className="block text-accent-red font-bold mb-1">CURRENT</span>
-                <span className="font-semibold block">BufferBytes Tech</span>
-                <span className="text-cream-muted text-[11px]">Graphic Designer (On-site)</span>
+            {/* Quick Experience & Education Grid */}
+            <div className="pt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5 font-mono text-xs text-cream">
+              <div className="p-4 rounded-lg bg-[#181c26] border border-charcoal-border hover:border-accent-red transition-colors">
+                <span className="block text-accent-red font-bold text-[10px] uppercase mb-1">ON-SITE ROLE</span>
+                <span className="font-semibold block text-sm">BufferBytes Tech</span>
+                <span className="text-cream-muted text-[11px] block mt-0.5">Graphic Designer</span>
               </div>
-              <div className="p-4 rounded bg-[#181c26] border border-charcoal-border">
-                <span className="block text-accent-red font-bold mb-1">PREVIOUS</span>
-                <span className="font-semibold block">Haris&Co.</span>
-                <span className="text-cream-muted text-[11px]">Graphic Designer (8 mos)</span>
+              <div className="p-4 rounded-lg bg-[#181c26] border border-charcoal-border hover:border-accent-red transition-colors">
+                <span className="block text-accent-red font-bold text-[10px] uppercase mb-1">AGENCY</span>
+                <span className="font-semibold block text-sm">Haris&Co.</span>
+                <span className="text-cream-muted text-[11px] block mt-0.5">Motion & Creatives</span>
               </div>
-              <div className="p-4 rounded bg-[#181c26] border border-charcoal-border">
-                <span className="block text-accent-red font-bold mb-1">EDUCATION</span>
-                <span className="font-semibold block">Calicut University</span>
-                <span className="text-cream-muted text-[11px]">Computer Science</span>
+              <div className="p-4 rounded-lg bg-[#181c26] border border-charcoal-border hover:border-accent-red transition-colors">
+                <span className="block text-accent-red font-bold text-[10px] uppercase mb-1">DESIGN SCHOOL</span>
+                <span className="font-semibold block text-sm">HACA.Design</span>
+                <span className="text-cream-muted text-[11px] block mt-0.5">Creative Design (2024–25)</span>
+              </div>
+              <div className="p-4 rounded-lg bg-[#181c26] border border-charcoal-border hover:border-accent-red transition-colors">
+                <span className="block text-accent-red font-bold text-[10px] uppercase mb-1">DEGREE</span>
+                <span className="font-semibold block text-sm">Sree Narayana College</span>
+                <span className="text-cream-muted text-[11px] block mt-0.5">BSc Computer Science</span>
               </div>
             </div>
           </div>

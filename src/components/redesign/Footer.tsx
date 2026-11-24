@@ -23,8 +23,24 @@ export const Footer: React.FC = () => {
           <span>KOZHIKODE, KERALA, INDIA</span>
         </div>
 
-        {/* Right: Back to top button */}
-        <div className="flex items-center gap-6">
+        {/* Right: Social & Back to top button */}
+        <div className="flex items-center gap-4 sm:gap-6 flex-wrap justify-center sm:justify-end">
+          <a
+            href={content.contact.behance}
+            target="_blank"
+            rel="noreferrer"
+            className="hover:text-accent-red transition-colors uppercase text-cream font-bold"
+          >
+            Behance
+          </a>
+          <a
+            href={content.contact.instagram}
+            target="_blank"
+            rel="noreferrer"
+            className="hover:text-accent-red transition-colors uppercase"
+          >
+            Instagram
+          </a>
           <a
             href={content.contact.linkedin}
             target="_blank"

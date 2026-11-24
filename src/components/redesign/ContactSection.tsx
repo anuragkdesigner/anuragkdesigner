@@ -77,8 +77,38 @@ export const ContactSection: React.FC = () => {
               </div>
             </div>
 
-            {/* Social Footprint */}
-            <div className="pt-6 border-t border-charcoal-border flex flex-wrap gap-6 font-mono text-xs uppercase tracking-wider text-cream-muted">
+            {/* Social & Contact Channels from 2025 Portfolio */}
+            <div className="pt-6 border-t border-charcoal-border flex flex-wrap gap-4 sm:gap-6 font-mono text-xs uppercase tracking-wider text-cream-muted">
+              <a
+                href={content.contact.behance}
+                target="_blank"
+                rel="noreferrer"
+                className="hover:text-accent-red flex items-center gap-1 transition-colors text-cream"
+              >
+                <span className="font-bold text-accent-red">Behance</span>
+                <ArrowUpRight className="w-3.5 h-3.5" />
+              </a>
+
+              <a
+                href={content.contact.instagram}
+                target="_blank"
+                rel="noreferrer"
+                className="hover:text-accent-red flex items-center gap-1 transition-colors text-cream"
+              >
+                <span>Instagram ({content.contact.instagramHandle})</span>
+                <ArrowUpRight className="w-3.5 h-3.5" />
+              </a>
+
+              <a
+                href={content.contact.whatsapp}
+                target="_blank"
+                rel="noreferrer"
+                className="hover:text-accent-red flex items-center gap-1 transition-colors text-cream"
+              >
+                <span>WhatsApp (+91 {content.contact.phone})</span>
+                <ArrowUpRight className="w-3.5 h-3.5" />
+              </a>
+
               <a
                 href={content.contact.linkedin}
                 target="_blank"
@@ -96,16 +126,6 @@ export const ContactSection: React.FC = () => {
                 className="hover:text-accent-red flex items-center gap-1 transition-colors"
               >
                 <span>BufferBytes Tech</span>
-                <ArrowUpRight className="w-3.5 h-3.5" />
-              </a>
-
-              <a
-                href={content.contact.harisCompany}
-                target="_blank"
-                rel="noreferrer"
-                className="hover:text-accent-red flex items-center gap-1 transition-colors"
-              >
-                <span>Haris&Co.</span>
                 <ArrowUpRight className="w-3.5 h-3.5" />
               </a>
             </div>

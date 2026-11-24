@@ -97,7 +97,7 @@ export const WorkSection: React.FC = () => {
           <div className="flex items-center gap-3">
             <span className="w-2.5 h-2.5 rounded-full bg-accent-red animate-pulse" />
             <span className="font-mono text-xs uppercase tracking-widest text-cream font-bold">
-              Selected Client Highlights (01—05)
+              Selected Client Highlights (01—0{projects.length})
             </span>
           </div>
 
@@ -203,14 +203,14 @@ export const WorkSection: React.FC = () => {
             </div>
 
             <div className="pt-4 mt-4 border-t border-charcoal-border flex items-center justify-between text-xs font-mono text-cream-muted">
-              <span>05 PRODUCTION REELS</span>
+              <span>0{projects.length} FEATURED WORKS</span>
               <span className="text-accent-red flex items-center gap-1 font-bold">
                 SCROLL <ArrowRight className="w-3.5 h-3.5" />
               </span>
             </div>
           </div>
 
-          {/* Track Items 1—5: Individual Project Cards */}
+          {/* Track Items 1—N: Individual Project Cards */}
           {projects.map((proj) => (
             <div
               key={proj.id}
@@ -231,7 +231,7 @@ export const WorkSection: React.FC = () => {
                 </div>
 
                 <div className="absolute top-3 right-3 bg-accent-red text-cream font-mono text-[10px] font-bold px-2 py-0.5 rounded shadow">
-                  {proj.index} / 05
+                  {proj.index} / 0{projects.length}
                 </div>
               </div>
 
@@ -280,7 +280,7 @@ export const WorkSection: React.FC = () => {
         <div className="max-w-site mx-auto w-full px-6 sm:px-10 shrink-0">
           <div className="flex items-center justify-between text-[11px] font-mono text-cream-muted mb-2">
             <span>TRACK PROGRESS</span>
-            <span>01 — 05 FINISH → VERTICAL RESUME</span>
+            <span>01 — 0{projects.length} FINISH → VERTICAL RESUME</span>
           </div>
           <div className="h-1 bg-charcoal-border rounded-full overflow-hidden w-full">
             <div
