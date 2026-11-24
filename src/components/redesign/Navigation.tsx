@@ -32,10 +32,10 @@ export const Navigation: React.FC = () => {
         
         {/* Left: Script Logo */}
         <a href="#" className="group flex items-center gap-2">
-          <span className="font-script text-3xl sm:text-4xl text-[#0d0e12] italic hover:text-accent-red transition-colors">
+          <span className="font-script text-3xl sm:text-4xl text-[#0d0e12] italic hover:text-[#525866] transition-colors">
             Anurag
           </span>
-          <span className="w-2 h-2 rounded-full bg-accent-red" />
+          <span className="w-2 h-2 rounded-full bg-[#0d0e12]" />
         </a>
 
         {/* Right: Desktop Links */}
@@ -44,14 +44,14 @@ export const Navigation: React.FC = () => {
             <a
               key={link.label}
               href={link.href}
-              className="text-xs font-mono font-medium tracking-[0.08em] uppercase text-[#0d0e12] hover:text-accent-red nav-link-hover transition-colors"
+              className="text-xs font-mono font-medium tracking-[0.08em] uppercase text-[#0d0e12] hover:text-[#525866] nav-link-hover transition-colors"
             >
               {link.label}
             </a>
           ))}
           <a
             href="#contact"
-            className="inline-flex items-center gap-1.5 px-4 py-2 rounded bg-accent-red text-white font-mono text-xs font-bold uppercase tracking-wider hover:bg-accent-red-hover transition-colors shadow-sm"
+            className="inline-flex items-center gap-1.5 px-4 py-2 rounded bg-[#0d0e12] text-white font-mono text-xs font-bold uppercase tracking-wider hover:bg-[#242833] transition-colors shadow-sm"
           >
             <span>Let's Talk</span>
             <ArrowUpRight className="w-3.5 h-3.5" />
@@ -62,7 +62,7 @@ export const Navigation: React.FC = () => {
         <div className="flex md:hidden items-center gap-3">
           <button
             onClick={() => setMobileMenuOpen(true)}
-            className="p-2 text-[#0d0e12] hover:text-accent-red"
+            className="p-2 text-[#0d0e12] hover:text-[#525866]"
             aria-label="Open mobile menu"
           >
             <Menu className="w-6 h-6" />
@@ -78,7 +78,7 @@ export const Navigation: React.FC = () => {
             <span className="font-script text-4xl text-[#0d0e12] italic">Anurag</span>
             <button
               onClick={() => setMobileMenuOpen(false)}
-              className="p-2 text-[#0d0e12] hover:text-accent-red"
+              className="p-2 text-[#0d0e12] hover:text-[#525866]"
               aria-label="Close menu"
             >
               <X className="w-7 h-7" />
@@ -91,7 +91,7 @@ export const Navigation: React.FC = () => {
                 key={link.label}
                 href={link.href}
                 onClick={() => setMobileMenuOpen(false)}
-                className="font-display text-4xl sm:text-6xl text-[#0d0e12] hover:text-accent-red transition-colors tracking-tight uppercase"
+                className="font-display text-4xl sm:text-6xl text-[#0d0e12] hover:text-[#525866] transition-colors tracking-tight uppercase"
               >
                 {link.label}
               </a>
@@ -102,7 +102,7 @@ export const Navigation: React.FC = () => {
             <span>KOZHIKODE, KERALA</span>
             <a 
               href="mailto:anuragkthusharam123@gmail.com"
-              className="text-accent-red underline underline-offset-4"
+              className="text-[#0d0e12] font-bold underline underline-offset-4"
             >
               Email Direct
             </a>

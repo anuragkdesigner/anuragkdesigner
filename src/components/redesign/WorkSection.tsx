@@ -95,7 +95,7 @@ export const WorkSection: React.FC = () => {
         {/* Top Section Header Strip */}
         <div className="max-w-site mx-auto w-full px-6 sm:px-10 flex items-center justify-between shrink-0">
           <div className="flex items-center gap-3">
-            <span className="w-2.5 h-2.5 rounded-full bg-accent-red animate-pulse" />
+            <span className="w-2.5 h-2.5 rounded-full bg-[#0d0e12] animate-pulse" />
             <span className="font-mono text-xs uppercase tracking-widest text-[#0d0e12] font-bold">
               Selected Client Highlights (01—0{projects.length})
             </span>
@@ -103,7 +103,7 @@ export const WorkSection: React.FC = () => {
 
           <div className="flex items-center gap-2 text-xs font-mono text-[#525866]">
             <span className="hidden sm:inline">HORIZONTAL SCROLL</span>
-            <span className="text-accent-red font-bold animate-pulse">SCROLL TO EXPLORE →</span>
+            <span className="text-[#0d0e12] font-bold animate-pulse">SCROLL TO EXPLORE →</span>
           </div>
         </div>
 
@@ -164,7 +164,7 @@ export const WorkSection: React.FC = () => {
                 </div>
 
                 <div>
-                  <span className="text-[10px] font-mono uppercase tracking-[0.15em] text-accent-red font-bold block">
+                  <span className="text-[10px] font-mono uppercase tracking-[0.15em] text-[#0d0e12] font-bold block">
                     Featured Work
                   </span>
                   <h3 className="font-display text-xl sm:text-2xl text-[#0d0e12] tracking-tight uppercase leading-tight">
@@ -178,7 +178,7 @@ export const WorkSection: React.FC = () => {
                 {content.introParagraph.map((part, idx) => {
                   if (part.style === 'bold') {
                     return (
-                      <span key={idx} className="font-display font-bold text-[#0d0e12] underline decoration-accent-red decoration-2 underline-offset-4">
+                      <span key={idx} className="font-display font-bold text-[#0d0e12] underline decoration-[#0d0e12] decoration-2 underline-offset-4">
                         {part.text}
                       </span>
                     );
@@ -192,7 +192,7 @@ export const WorkSection: React.FC = () => {
                   }
                   if (part.style === 'red') {
                     return (
-                      <span key={idx} className="font-display text-accent-red uppercase tracking-tight">
+                      <span key={idx} className="font-display text-[#0d0e12] uppercase tracking-tight">
                         {part.text}
                       </span>
                     );
@@ -204,7 +204,7 @@ export const WorkSection: React.FC = () => {
 
             <div className="pt-4 mt-4 border-t border-[#e2dfd7] flex items-center justify-between text-xs font-mono text-[#525866]">
               <span>0{projects.length} FEATURED WORKS</span>
-              <span className="text-accent-red flex items-center gap-1 font-bold">
+              <span className="text-[#0d0e12] flex items-center gap-1 font-bold">
                 SCROLL <ArrowRight className="w-3.5 h-3.5" />
               </span>
             </div>
@@ -214,7 +214,7 @@ export const WorkSection: React.FC = () => {
           {projects.map((proj) => (
             <div
               key={proj.id}
-              className="w-[320px] xs:w-[380px] sm:w-[480px] lg:w-[540px] shrink-0 bg-white border border-[#e2dfd7] rounded-xl p-5 sm:p-6 shadow-xl flex flex-col justify-between group hover:border-accent-red/60 hover:shadow-2xl transition-all"
+              className="w-[320px] xs:w-[380px] sm:w-[480px] lg:w-[540px] shrink-0 bg-white border border-[#e2dfd7] rounded-xl p-5 sm:p-6 shadow-xl flex flex-col justify-between group hover:border-[#0d0e12]/60 hover:shadow-2xl transition-all"
             >
               {/* Thumbnail 16:10 */}
               <div className="relative aspect-[16/10] w-full rounded-lg overflow-hidden bg-[#f2f1ed] mb-4">
@@ -230,7 +230,7 @@ export const WorkSection: React.FC = () => {
                   {proj.category}
                 </div>
 
-                <div className="absolute top-3 right-3 bg-accent-red text-white font-mono text-[10px] font-bold px-2 py-0.5 rounded shadow">
+                <div className="absolute top-3 right-3 bg-[#0d0e12] text-white font-mono text-[10px] font-bold px-2 py-0.5 rounded shadow">
                   {proj.index} / 0{projects.length}
                 </div>
               </div>
@@ -241,7 +241,7 @@ export const WorkSection: React.FC = () => {
                   {proj.client}
                 </div>
                 <div>
-                  <div className="inline-block bg-accent-red text-white font-display text-lg sm:text-xl px-3 py-1 rounded tracking-tight uppercase shadow-xs">
+                  <div className="inline-block bg-[#0d0e12] text-white font-display text-lg sm:text-xl px-3 py-1 rounded tracking-tight uppercase shadow-xs">
                     {proj.title}
                   </div>
                 </div>
@@ -265,10 +265,10 @@ export const WorkSection: React.FC = () => {
 
                 <a
                   href="#contact"
-                  className="text-xs font-mono font-bold uppercase tracking-wider text-[#0d0e12] hover:text-accent-red flex items-center gap-1 transition-colors"
+                  className="text-xs font-mono font-bold uppercase tracking-wider text-[#0d0e12] hover:text-[#525866] flex items-center gap-1 transition-colors"
                 >
                   <span>Discuss</span>
-                  <ArrowUpRight className="w-3.5 h-3.5 text-accent-red" />
+                  <ArrowUpRight className="w-3.5 h-3.5 text-[#0d0e12]" />
                 </a>
               </div>
             </div>
@@ -285,7 +285,7 @@ export const WorkSection: React.FC = () => {
           <div className="h-1 bg-[#e2dfd7] rounded-full overflow-hidden w-full">
             <div
               ref={progressBarRef}
-              className="h-full bg-accent-red w-0 origin-left transition-all duration-75"
+              className="h-full bg-[#0d0e12] w-0 origin-left transition-all duration-75"
             />
           </div>
         </div>

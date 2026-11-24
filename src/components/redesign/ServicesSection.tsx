@@ -10,7 +10,7 @@ export const ServicesSection: React.FC = () => {
         {/* Section Header */}
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-16">
           <div>
-            <span className="text-xs font-mono uppercase tracking-[0.15em] text-accent-red font-bold block mb-2">
+            <span className="text-xs font-mono uppercase tracking-[0.15em] text-[#0d0e12] font-bold block mb-2">
               Capabilities & Offerings
             </span>
             <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl text-[#0d0e12] tracking-tight uppercase">
@@ -22,18 +22,18 @@ export const ServicesSection: React.FC = () => {
           </p>
         </div>
 
-        {/* 4 Services Rows with Red Hover Transition */}
+        {/* 4 Services Rows with Dark Hover Transition */}
         <div className="divide-y divide-[#e2dfd7] border-y border-[#e2dfd7]">
           {content.services.map((service) => (
             <div
               key={service.number}
-              className="group py-8 sm:py-10 px-4 sm:px-8 transition-colors duration-200 cursor-pointer hover:bg-accent-red"
+              className="group py-8 sm:py-10 px-4 sm:px-8 transition-colors duration-200 cursor-pointer hover:bg-[#0d0e12]"
             >
               <div className="grid grid-cols-1 md:grid-cols-12 gap-4 items-center">
                 
                 {/* Number */}
                 <div className="md:col-span-2">
-                  <span className="font-mono text-xl sm:text-2xl font-bold text-accent-red group-hover:text-white transition-colors">
+                  <span className="font-mono text-xl sm:text-2xl font-bold text-[#0d0e12] group-hover:text-white transition-colors">
                     /{service.number}
                   </span>
                 </div>

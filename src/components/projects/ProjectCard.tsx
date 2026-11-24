@@ -26,10 +26,10 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project, onOpenDetails
               <rect width="400" height="180" fill="url(#brandGrid)" />
               
               {/* Geometric Brand Logo Construction */}
-              <circle cx="120" cy="90" r="45" fill="none" stroke="#C0532E" strokeWidth="1.5" strokeDasharray="3 3" />
+              <circle cx="120" cy="90" r="45" fill="none" stroke="#0d0e12" strokeWidth="1.5" strokeDasharray="3 3" />
               <rect x="95" y="65" width="50" height="50" rx="6" fill="#17191C" />
               <path d="M107 77 L133 77 L120 103 Z" fill="#FBFBF9" />
-              <circle cx="120" cy="95" r="3" fill="#C0532E" />
+              <circle cx="120" cy="95" r="3" fill="#0d0e12" />
               
               {/* Dimension lines */}
               <line x1="75" y1="65" x2="75" y2="115" stroke="#767E87" strokeWidth="1" />
@@ -44,7 +44,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project, onOpenDetails
               
               {/* Color swatches */}
               <circle cx="212" cy="110" r="8" fill="#17191C" />
-              <circle cx="235" cy="110" r="8" fill="#C0532E" />
+              <circle cx="235" cy="110" r="8" fill="#0d0e12" />
               <circle cx="258" cy="110" r="8" fill="#1E4750" />
               <circle cx="281" cy="110" r="8" fill="#F3F2ED" stroke="#DDDBD2" />
               <text x="300" y="114" fontFamily="monospace" fontSize="8" fill="#767E87">Hex Swatches</text>
@@ -62,7 +62,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project, onOpenDetails
               {/* Timeline Header */}
               <rect x="15" y="15" width="370" height="24" fill="#17191C" />
               <text x="28" y="31" fontFamily="monospace" fontSize="9" fill="#9EA7B4">HARIS&CO. // AE_COMP_KINETIC_01</text>
-              <text x="320" y="31" fontFamily="monospace" fontSize="9" fill="#C0532E">00:01:14:08</text>
+              <text x="320" y="31" fontFamily="monospace" fontSize="9" fill="#0d0e12">00:01:14:08</text>
 
               {/* Track 1: Kinetic Type Layer */}
               <rect x="25" y="48" width="110" height="20" rx="2" fill="#2E343E" />
@@ -71,7 +71,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project, onOpenDetails
               {/* Keyframe bezier interpolation */}
               <line x1="145" y1="58" x2="365" y2="58" stroke="#383F47" strokeWidth="1" />
               <polygon points="170,58 175,53 180,58 175,63" fill="#FFDB58" />
-              <path d="M 175 58 Q 210 40 245 58" fill="none" stroke="#C0532E" strokeWidth="1.5" />
+              <path d="M 175 58 Q 210 40 245 58" fill="none" stroke="#0d0e12" strokeWidth="1.5" />
               <polygon points="245,58 250,53 255,58 250,63" fill="#FFDB58" />
               <text x="180" y="48" fontFamily="monospace" fontSize="7" fill="#FFDB58">EASE-OUT (0.85)</text>
 
@@ -86,8 +86,8 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project, onOpenDetails
               <path d="M 145 114 Q 155 106 165 114 T 185 114 T 205 114 T 225 114 T 245 114 T 265 114 T 285 114 T 305 114 T 325 114 T 345 114" fill="none" stroke="#767E87" strokeWidth="1" />
 
               {/* Playhead */}
-              <line x1="210" y1="15" x2="210" y2="165" stroke="#C0532E" strokeWidth="1.5" />
-              <polygon points="205,15 215,15 210,24" fill="#C0532E" />
+              <line x1="210" y1="15" x2="210" y2="165" stroke="#0d0e12" strokeWidth="1.5" />
+              <polygon points="205,15 215,15 210,24" fill="#0d0e12" />
             </svg>
           </div>
         );
@@ -102,7 +102,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project, onOpenDetails
               {/* Sidebar navigation */}
               <rect x="20" y="15" width="90" height="150" fill="#F3F2ED" />
               <text x="32" y="35" fontFamily="monospace" fontSize="8" fontWeight="bold" fill="#17191C">COREFLOW</text>
-              <text x="32" y="55" fontFamily="monospace" fontSize="8" fill="#C0532E">● Nodes</text>
+              <text x="32" y="55" fontFamily="monospace" fontSize="8" fill="#0d0e12">● Nodes</text>
               <text x="32" y="72" fontFamily="monospace" fontSize="8" fill="#767E87">  Logs</text>
               <text x="32" y="89" fontFamily="monospace" fontSize="8" fill="#767E87">  Telemetry</text>
 
@@ -136,9 +136,9 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project, onOpenDetails
               <text x="310" y="165" fontFamily="monospace" fontSize="8" fill="#9EA7B4">TIME (ms)</text>
 
               {/* Snappy Curve (150ms) */}
-              <path d="M 40 150 C 70 80, 80 50, 140 50" fill="none" stroke="#C0532E" strokeWidth="2" />
-              <circle cx="140" cy="50" r="3" fill="#C0532E" />
-              <text x="145" y="48" fontFamily="monospace" fontSize="8" fill="#C0532E">Snappy (150ms)</text>
+              <path d="M 40 150 C 70 80, 80 50, 140 50" fill="none" stroke="#0d0e12" strokeWidth="2" />
+              <circle cx="140" cy="50" r="3" fill="#0d0e12" />
+              <text x="145" y="48" fontFamily="monospace" fontSize="8" fill="#0d0e12">Snappy (150ms)</text>
 
               {/* Smooth Curve (300ms) */}
               <path d="M 40 150 C 100 130, 160 50, 240 50" fill="none" stroke="#48E592" strokeWidth="2" strokeDasharray="3 3" />

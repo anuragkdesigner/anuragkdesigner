@@ -31,7 +31,7 @@ export const content = {
     { text: "I'm Anurag, a ", style: "normal" },
     { text: "passionate graphic designer", style: "bold" },
     { text: ", creating ", style: "normal" },
-    { text: "distinctive brand identities", style: "red" },
+    { text: "distinctive brand identities", style: "bold" },
     { text: ", ", style: "normal" },
     { text: "social media campaigns", style: "italic" },
     { text: ", and ", style: "normal" },

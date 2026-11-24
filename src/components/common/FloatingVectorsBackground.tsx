@@ -11,11 +11,11 @@ export const FloatingVectorsBackground: React.FC = () => {
         <svg viewBox="0 0 160 160" fill="none" className="w-full h-full stroke-studio-rust/20">
           <path d="M 30 130 C 45 40, 115 40, 130 130" strokeWidth="1.5" />
           <line x1="30" y1="130" x2="45" y2="40" strokeWidth="1" strokeDasharray="3 3" />
-          <circle cx="45" cy="40" r="3.5" fill="#C0532E" fillOpacity="0.25" stroke="#C0532E" strokeWidth="1" />
+          <circle cx="45" cy="40" r="3.5" fill="#0d0e12" fillOpacity="0.25" stroke="#0d0e12" strokeWidth="1" />
           <rect x="27" y="127" width="6" height="6" fill="#17191C" fillOpacity="0.2" />
           
           <line x1="130" y1="130" x2="115" y2="40" strokeWidth="1" strokeDasharray="3 3" />
-          <circle cx="115" cy="40" r="3.5" fill="#C0532E" fillOpacity="0.25" stroke="#C0532E" strokeWidth="1" />
+          <circle cx="115" cy="40" r="3.5" fill="#0d0e12" fillOpacity="0.25" stroke="#0d0e12" strokeWidth="1" />
           <rect x="127" y="127" width="6" height="6" fill="#17191C" fillOpacity="0.2" />
         </svg>
       </div>
@@ -63,7 +63,7 @@ export const FloatingVectorsBackground: React.FC = () => {
           <line x1="120" y1="80" x2="135" y2="80" strokeWidth="1.2" />
           
           {/* Subtle audio blip */}
-          <circle cx="80" cy="80" r="3" fill="#C0532E" fillOpacity="0.25" />
+          <circle cx="80" cy="80" r="3" fill="#0d0e12" fillOpacity="0.25" />
         </svg>
       </div>
 

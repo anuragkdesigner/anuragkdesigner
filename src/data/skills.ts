@@ -9,7 +9,7 @@ export const SKILLS: SkillItem[] = [
     proficiencyLevel: 'Core Discipline',
     initialEndorsements: 14,
     description: 'Compositional hierarchy, spatial grid systems, typographic tension, and high-impact brand collateral.',
-    accentColor: '#C0532E',
+    accentColor: '#0d0e12',
     visualType: 'graphic'
   },
   {

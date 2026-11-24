@@ -75,7 +75,7 @@ export const IntroSequence: React.FC<IntroSequenceProps> = ({ onComplete }) => {
       {/* Skip Button */}
       <button
         onClick={handleSkip}
-        className="absolute top-6 right-8 text-xs font-mono tracking-widest uppercase text-[#525866] hover:text-[#0d0e12] px-3 py-1.5 rounded border border-[#e2dfd7] hover:border-accent-red transition-colors"
+        className="absolute top-6 right-8 text-xs font-mono tracking-widest uppercase text-[#525866] hover:text-[#0d0e12] px-3 py-1.5 rounded border border-[#e2dfd7] hover:border-[#0d0e12] transition-colors"
       >
         Skip Intro ✕
       </button>
@@ -87,13 +87,13 @@ export const IntroSequence: React.FC<IntroSequenceProps> = ({ onComplete }) => {
           className="flex items-baseline justify-center gap-2 font-display text-7xl sm:text-9xl md:text-[130px] lg:text-[150px] text-[#0d0e12] tracking-tight leading-none uppercase opacity-0"
         >
           <span>ANURAG</span>
-          <span className="w-3.5 h-3.5 sm:w-5 sm:h-5 md:w-6 md:h-6 rounded-full bg-accent-red inline-block mb-1 sm:mb-2" />
+          <span className="w-3.5 h-3.5 sm:w-5 sm:h-5 md:w-6 md:h-6 rounded-full bg-[#0d0e12] inline-block mb-1 sm:mb-2" />
         </div>
 
         {/* Subtitle tag */}
         <div
           ref={subtitleRef}
-          className="font-mono text-xs sm:text-sm uppercase tracking-[0.25em] text-accent-red font-semibold opacity-0"
+          className="font-mono text-xs sm:text-sm uppercase tracking-[0.25em] text-[#0d0e12] font-semibold opacity-0"
         >
           Graphic Designer & Video Editor
         </div>

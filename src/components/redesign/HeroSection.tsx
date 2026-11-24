@@ -57,7 +57,7 @@ export const HeroSection: React.FC = () => {
           {/* Eyebrow Status */}
           <div className="overflow-hidden">
             <div className="flex items-center gap-2.5 text-xs font-mono uppercase tracking-[0.1em] text-cream-muted">
-              <span className="w-2.5 h-2.5 rounded-full bg-accent-red animate-pulse" />
+              <span className="w-2.5 h-2.5 rounded-full bg-[#0d0e12] animate-pulse" />
               <span>BufferBytes Tech • Haris&Co. Alum • Kozhikode</span>
             </div>
           </div>
@@ -69,17 +69,17 @@ export const HeroSection: React.FC = () => {
             <div className="mask-line">
               <div
                 ref={line1Ref}
-                className="font-display text-2xl xs:text-3xl sm:text-5xl md:text-5xl lg:text-6xl tracking-tight text-cream uppercase leading-none whitespace-nowrap"
+                className="font-display text-2xl xs:text-3xl sm:text-5xl md:text-5xl lg:text-6xl tracking-tight text-[#0d0e12] uppercase leading-none whitespace-nowrap"
               >
                 {content.tagline[0]}
               </div>
             </div>
 
-            {/* Line 2: Red Large Display - Strictly single line */}
+            {/* Line 2: Black Large Display - Strictly single line */}
             <div className="mask-line">
               <div
                 ref={line2Ref}
-                className="font-display text-3xl xs:text-4xl sm:text-6xl md:text-6xl lg:text-7xl xl:text-8xl tracking-tight text-accent-red uppercase leading-none select-none whitespace-nowrap"
+                className="font-display text-3xl xs:text-4xl sm:text-6xl md:text-6xl lg:text-7xl xl:text-8xl tracking-tight text-[#0d0e12] uppercase leading-none select-none whitespace-nowrap"
               >
                 {content.tagline[1]}
               </div>
@@ -89,7 +89,7 @@ export const HeroSection: React.FC = () => {
             <div className="mask-line">
               <div
                 ref={line3Ref}
-                className="font-sans font-semibold text-xs sm:text-base md:text-lg lg:text-xl text-cream-muted tracking-wide uppercase pt-1"
+                className="font-sans font-semibold text-xs sm:text-base md:text-lg lg:text-xl text-[#525866] tracking-wide uppercase pt-1"
               >
                 {content.tagline[2]}
               </div>
@@ -103,10 +103,10 @@ export const HeroSection: React.FC = () => {
               ref={nameRowRef}
               className="flex items-baseline gap-2 sm:gap-4 font-display select-none leading-none"
             >
-              <span className="text-6xl sm:text-8xl md:text-9xl lg:text-[120px] text-cream tracking-tight uppercase">
+              <span className="text-6xl sm:text-8xl md:text-9xl lg:text-[120px] text-[#0d0e12] tracking-tight uppercase">
                 ANURAG
               </span>
-              <span className="w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5 rounded-full bg-accent-red inline-block mb-1 sm:mb-2" />
+              <span className="w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5 rounded-full bg-[#0d0e12] inline-block mb-1 sm:mb-2" />
             </div>
           </div>
 
@@ -114,7 +114,7 @@ export const HeroSection: React.FC = () => {
           <div className="pt-2 flex flex-wrap items-center gap-4">
             <a
               href="#work"
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded bg-accent-red text-white font-mono text-xs font-bold uppercase tracking-wider hover:bg-accent-red-hover transition-colors shadow-md"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded bg-[#0d0e12] text-white font-mono text-xs font-bold uppercase tracking-wider hover:bg-[#242833] transition-colors shadow-md"
             >
               <span>Explore Selected Work</span>
               <ArrowUpRight className="w-3.5 h-3.5" />
@@ -122,7 +122,7 @@ export const HeroSection: React.FC = () => {
 
             <a
               href="#about"
-              className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded bg-white border border-[#e2dfd7] hover:border-accent-red text-[#0d0e12] font-mono text-xs uppercase tracking-wider transition-colors shadow-xs"
+              className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded bg-white border border-[#e2dfd7] hover:border-[#0d0e12] text-[#0d0e12] font-mono text-xs uppercase tracking-wider transition-colors shadow-xs"
             >
               <span>About & Credentials</span>
             </a>

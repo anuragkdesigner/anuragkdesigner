@@ -29,7 +29,7 @@ export const Footer: React.FC = () => {
             href={content.contact.behance}
             target="_blank"
             rel="noreferrer"
-            className="hover:text-accent-red transition-colors uppercase text-white font-bold"
+            className="hover:text-white/70 transition-colors uppercase text-white font-bold"
           >
             Behance
           </a>
@@ -37,7 +37,7 @@ export const Footer: React.FC = () => {
             href={content.contact.instagram}
             target="_blank"
             rel="noreferrer"
-            className="hover:text-accent-red transition-colors uppercase text-white/80"
+            className="hover:text-white/70 transition-colors uppercase text-white/80"
           >
             Instagram
           </a>
@@ -45,13 +45,13 @@ export const Footer: React.FC = () => {
             href={content.contact.linkedin}
             target="_blank"
             rel="noreferrer"
-            className="hover:text-accent-red transition-colors uppercase text-white/80"
+            className="hover:text-white/70 transition-colors uppercase text-white/80"
           >
             LinkedIn
           </a>
           <button
             onClick={scrollToTop}
-            className="flex items-center gap-1.5 hover:text-white text-accent-red transition-colors uppercase font-bold"
+            className="flex items-center gap-1.5 hover:text-white/70 text-white transition-colors uppercase font-bold"
           >
             <span>Back to Top</span>
             <ArrowUp className="w-3.5 h-3.5" />

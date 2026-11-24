@@ -54,14 +54,14 @@ export const SkillsSection: React.FC = () => {
               {/* Typographic bounding boxes with animation */}
               <rect x="35" y="30" width="70" height="60" rx="3" fill="#FFFFFF" stroke="#17191C" strokeWidth="1.5" className="animate-pulse" />
               <text x="45" y="55" fontFamily="sans-serif" fontSize="16" fontWeight="bold" fill="#17191C">Aa</text>
-              <line x1="45" y1="68" x2="90" y2="68" stroke="#C0532E" strokeWidth="2" />
+              <line x1="45" y1="68" x2="90" y2="68" stroke="#0d0e12" strokeWidth="2" />
               <line x1="45" y1="76" x2="80" y2="76" stroke="#DDDBD2" strokeWidth="1.5" />
 
               {/* Composition block */}
               <rect x="120" y="30" width="85" height="28" rx="2" fill="#17191C" />
               <text x="130" y="48" fontFamily="monospace" fontSize="8" fill="#FBFBF9">HERO HEADING</text>
-              <rect x="120" y="66" width="85" height="24" rx="2" fill="#FFFFFF" stroke="#C0532E" strokeWidth="1" />
-              <text x="130" y="81" fontFamily="monospace" fontSize="7" fill="#C0532E">GOLDEN RATIO</text>
+              <rect x="120" y="66" width="85" height="24" rx="2" fill="#FFFFFF" stroke="#0d0e12" strokeWidth="1" />
+              <text x="130" y="81" fontFamily="monospace" fontSize="7" fill="#0d0e12">GOLDEN RATIO</text>
             </svg>
           </div>
         );
@@ -71,7 +71,7 @@ export const SkillsSection: React.FC = () => {
           <div className="relative w-full h-32 bg-[#17191C] border-b border-stroke flex items-center justify-center overflow-hidden">
             <svg viewBox="0 0 240 120" className="w-full h-full">
               {/* Dynamic kinetic motion path */}
-              <path d="M 20 80 Q 70 10, 120 70 T 220 30" fill="none" stroke="#C0532E" strokeWidth="2.5" />
+              <path d="M 20 80 Q 70 10, 120 70 T 220 30" fill="none" stroke="#0d0e12" strokeWidth="2.5" />
               <circle cx="120" cy="70" r="5" fill="#FFDB58" className="animate-ping" style={{ animationDuration: '2s' }} />
               <circle cx="120" cy="70" r="4" fill="#FFDB58" />
               
@@ -79,7 +79,7 @@ export const SkillsSection: React.FC = () => {
               <rect x="30" y="25" width="45" height="18" rx="2" fill="#1F2328" stroke="#383F47" />
               <text x="36" y="37" fontFamily="monospace" fontSize="7" fill="#FFFFFF">KINETIC</text>
 
-              <rect x="145" y="75" width="55" height="18" rx="2" fill="#1F2328" stroke="#C0532E" />
+              <rect x="145" y="75" width="55" height="18" rx="2" fill="#1F2328" stroke="#0d0e12" />
               <text x="152" y="87" fontFamily="monospace" fontSize="7" fill="#FFDB58">60 FPS</text>
             </svg>
           </div>
@@ -93,18 +93,18 @@ export const SkillsSection: React.FC = () => {
               <rect x="25" y="15" width="190" height="90" rx="4" fill="#FFFFFF" stroke="#17191C" strokeWidth="1.5" />
               
               {/* Viewfinder corner brackets */}
-              <path d="M 35 25 L 45 25 M 35 25 L 35 35" fill="none" stroke="#C0532E" strokeWidth="1.5" />
-              <path d="M 205 25 L 195 25 M 205 25 L 205 35" fill="none" stroke="#C0532E" strokeWidth="1.5" />
-              <path d="M 35 95 L 45 95 M 35 95 L 35 85" fill="none" stroke="#C0532E" strokeWidth="1.5" />
-              <path d="M 205 95 L 195 95 M 205 95 L 205 85" fill="none" stroke="#C0532E" strokeWidth="1.5" />
+              <path d="M 35 25 L 45 25 M 35 25 L 35 35" fill="none" stroke="#0d0e12" strokeWidth="1.5" />
+              <path d="M 205 25 L 195 25 M 205 25 L 205 35" fill="none" stroke="#0d0e12" strokeWidth="1.5" />
+              <path d="M 35 95 L 45 95 M 35 95 L 35 85" fill="none" stroke="#0d0e12" strokeWidth="1.5" />
+              <path d="M 205 95 L 195 95 M 205 95 L 205 85" fill="none" stroke="#0d0e12" strokeWidth="1.5" />
 
               {/* Center focus reticle */}
               <circle cx="120" cy="60" r="16" fill="none" stroke="#B46C1E" strokeWidth="1" strokeDasharray="3 3" />
               <circle cx="120" cy="60" r="3" fill="#B46C1E" />
 
               {/* Rec indicator */}
-              <circle cx="48" cy="35" r="3" fill="#C0532E" className="animate-pulse" />
-              <text x="56" y="38" fontFamily="monospace" fontSize="8" fontWeight="bold" fill="#C0532E">REC [4K 24P]</text>
+              <circle cx="48" cy="35" r="3" fill="#0d0e12" className="animate-pulse" />
+              <text x="56" y="38" fontFamily="monospace" fontSize="8" fontWeight="bold" fill="#0d0e12">REC [4K 24P]</text>
               <text x="155" y="38" fontFamily="monospace" fontSize="8" fill="#767E87">ISO 400</text>
             </svg>
           </div>
@@ -126,7 +126,7 @@ export const SkillsSection: React.FC = () => {
 
               {/* Audio Wave Track */}
               <rect x="28" y="60" width="181" height="20" rx="2" fill="#17191C" />
-              <path d="M 32 70 Q 40 64 48 70 T 64 70 T 80 70 T 96 70 T 112 70 T 128 70 T 144 70 T 160 70 T 176 70 T 192 70 T 205 70" fill="none" stroke="#C0532E" strokeWidth="1.5" />
+              <path d="M 32 70 Q 40 64 48 70 T 64 70 T 80 70 T 96 70 T 112 70 T 128 70 T 144 70 T 160 70 T 176 70 T 192 70 T 205 70" fill="none" stroke="#0d0e12" strokeWidth="1.5" />
 
               {/* Playhead cut line */}
               <line x1="101" y1="20" x2="101" y2="100" stroke="#FFDB58" strokeWidth="1.5" />
@@ -250,8 +250,8 @@ export const SkillsSection: React.FC = () => {
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
           <div>
             <div className="flex items-center gap-2 mb-2">
-              <span className="w-2.5 h-2.5 rounded-full bg-accent-red animate-pulse" />
-              <span className="text-xs font-mono uppercase tracking-[0.15em] text-accent-red font-bold">
+              <span className="w-2.5 h-2.5 rounded-full bg-[#0d0e12] animate-pulse" />
+              <span className="text-xs font-mono uppercase tracking-[0.15em] text-[#0d0e12] font-bold">
                 Skills & Endorsements
               </span>
             </div>
@@ -279,13 +279,13 @@ export const SkillsSection: React.FC = () => {
                 onClick={() => setSelectedCategory(cat)}
                 className={`py-2 px-4 rounded text-xs font-mono transition-all flex items-center gap-2 ${
                   isSelected
-                    ? 'bg-accent-red text-white font-bold shadow-md'
+                    ? 'bg-[#0d0e12] text-white font-bold shadow-md'
                     : 'bg-white text-[#525866] hover:text-[#0d0e12] border border-[#e2dfd7] shadow-xs'
                 }`}
               >
                 <span>{cat}</span>
                 <span className={`text-[10px] px-1.5 py-0.2 rounded-full ${
-                  isSelected ? 'bg-black/20 text-white' : 'bg-[#f1f0ec] text-[#525866]'
+                  isSelected ? 'bg-white/20 text-white' : 'bg-[#f1f0ec] text-[#525866]'
                 }`}>
                   {count}
                 </span>
@@ -302,7 +302,7 @@ export const SkillsSection: React.FC = () => {
             return (
               <div
                 key={skill.id}
-                className="group bg-white border border-[#e2dfd7] rounded-lg overflow-hidden hover:border-accent-red transition-all flex flex-col justify-between shadow-md hover:shadow-xl"
+                className="group bg-white border border-[#e2dfd7] rounded-lg overflow-hidden hover:border-[#0d0e12] transition-all flex flex-col justify-between shadow-md hover:shadow-xl"
               >
                 <div>
                   {/* Animated Visual Canvas */}
@@ -315,7 +315,7 @@ export const SkillsSection: React.FC = () => {
                         <span className="text-[10px] font-mono uppercase tracking-wider text-[#858c9b] block mb-1">
                           {skill.category}
                         </span>
-                        <h3 className="font-display text-xl text-[#0d0e12] group-hover:text-accent-red transition-colors uppercase tracking-tight">
+                        <h3 className="font-display text-xl text-[#0d0e12] group-hover:text-[#525866] transition-colors uppercase tracking-tight">
                           {skill.name}
                         </h3>
                       </div>
@@ -328,7 +328,7 @@ export const SkillsSection: React.FC = () => {
                     {/* Associated Role Tag */}
                     {skill.associatedRole && (
                       <div className="p-2.5 rounded bg-[#f9f9f8] border border-[#e2dfd7] text-xs text-[#525866] flex items-center gap-2">
-                        <span className="w-1.5 h-1.5 rounded-full bg-accent-red flex-shrink-0" />
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#0d0e12] flex-shrink-0" />
                         <span className="truncate font-mono text-[11px]">{skill.associatedRole}</span>
                       </div>
                     )}
@@ -352,7 +352,7 @@ export const SkillsSection: React.FC = () => {
                     className={`flex items-center gap-1.5 px-3 py-1.5 rounded text-xs font-mono uppercase tracking-wider transition-all ${
                       currentEndorsement.endorsed
                         ? 'bg-emerald-600 text-white font-semibold'
-                        : 'border border-[#e2dfd7] hover:border-accent-red bg-[#f9f9f8] text-[#0d0e12] hover:bg-accent-red hover:text-white'
+                        : 'border border-[#e2dfd7] hover:border-[#0d0e12] bg-[#f9f9f8] text-[#0d0e12] hover:bg-[#0d0e12] hover:text-white'
                     }`}
                     aria-label={`Endorse ${skill.name}`}
                   >

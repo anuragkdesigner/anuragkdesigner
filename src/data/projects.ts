@@ -37,7 +37,7 @@ export const PROJECTS: Project[] = [
         tradeoff: 'Avoided subtle gradients that print poorly or wash out on mobile screens.'
       }
     ],
-    accentColor: '#C0532E',
+    accentColor: '#0d0e12',
     featured: true,
     wireframeHighlight: {
       label: 'Modular Brand Grid System',
