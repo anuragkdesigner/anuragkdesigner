@@ -154,7 +154,7 @@ export const SkillsSection: React.FC = () => {
               <span className="font-sans font-light text-sm sm:text-base text-[#525866] lowercase tracking-widest block mb-0.5">
                 tools &
               </span>
-              <h2 className="font-display text-2xl sm:text-3xl lg:text-4xl text-[#0d0e12] uppercase tracking-tight">
+              <h2 className="font-display font-bold text-2xl sm:text-3xl lg:text-4xl text-[#0d0e12] uppercase tracking-tight">
                 INDUSTRY CRAFT.
               </h2>
             </div>
@@ -211,7 +211,7 @@ export const SkillsSection: React.FC = () => {
                     <span className="font-sans font-light text-[10px] text-[#525866] lowercase tracking-widest block">
                       {tool.prefix}
                     </span>
-                    <h3 className="font-display text-sm sm:text-base text-[#0d0e12] uppercase tracking-tight truncate">
+                    <h3 className="font-display font-bold text-sm sm:text-base text-[#0d0e12] uppercase tracking-tight truncate">
                       {tool.title}
                     </h3>
                   </div>

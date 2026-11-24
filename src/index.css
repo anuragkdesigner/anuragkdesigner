@@ -6,11 +6,12 @@
   --bg-color: #f9f9f8;
   --text-color: #0d0e12;
   --accent-red: #0d0e12;
-  --font-display: "Bowlby One", "Anton", sans-serif;
-  --font-sans: "Inter", sans-serif;
+  --font-display: "Poppins", sans-serif;
+  --font-sans: "Poppins", sans-serif;
 }
 
 html {
+  font-size: 14px; /* Makes text across all rem-based typography ~12.5% smaller and refined without shrinking layout containers */
   scroll-behavior: smooth;
   background-color: var(--bg-color);
   color: var(--text-color);

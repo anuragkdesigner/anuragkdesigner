@@ -35,7 +35,7 @@ export const ContactSection: React.FC = () => {
               Start a Conversation
             </span>
 
-            <h2 className="font-display text-5xl sm:text-7xl lg:text-8xl text-[#0d0e12] tracking-tight uppercase leading-[0.95]">
+            <h2 className="font-display font-bold text-4xl sm:text-5xl lg:text-6xl text-[#0d0e12] tracking-tight uppercase leading-[1.02]">
               LET'S WORK <br />
               <span className="text-[#0d0e12]">TOGETHER</span>
             </h2>

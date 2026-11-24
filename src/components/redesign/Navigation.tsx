@@ -91,7 +91,7 @@ export const Navigation: React.FC = () => {
                 key={link.label}
                 href={link.href}
                 onClick={() => setMobileMenuOpen(false)}
-                className="font-display text-4xl sm:text-6xl text-[#0d0e12] hover:text-[#525866] transition-colors tracking-tight uppercase"
+                className="font-display font-bold text-3xl sm:text-5xl text-[#0d0e12] hover:text-[#525866] transition-colors tracking-tight uppercase"
               >
                 {link.label}
               </a>

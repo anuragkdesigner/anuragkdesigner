@@ -25,9 +25,9 @@ export default {
         }
       },
       fontFamily: {
-        display: ['"Bowlby One"', 'Anton', 'sans-serif'],
-        headline: ['Anton', '"Bowlby One"', 'sans-serif'],
-        sans: ['Inter', 'sans-serif'],
+        display: ['Poppins', 'sans-serif'],
+        headline: ['Poppins', 'sans-serif'],
+        sans: ['Poppins', 'sans-serif'],
         script: ['Caveat', 'cursive'],
         mono: ['monospace'],
       },

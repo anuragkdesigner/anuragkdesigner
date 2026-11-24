@@ -235,7 +235,7 @@ export const ServicesSection: React.FC = () => {
                     <div className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#858c9b]">
                       {spread.category}
                     </div>
-                    <h3 className="font-display text-xl sm:text-2xl lg:text-3xl text-[#0d0e12] tracking-tight uppercase leading-tight">
+                    <h3 className="font-display font-bold text-lg sm:text-xl lg:text-2xl text-[#0d0e12] tracking-tight uppercase leading-tight">
                       {spread.title}
                     </h3>
                     <p className="font-mono text-[11px] text-[#0d0e12] font-semibold tracking-wide">

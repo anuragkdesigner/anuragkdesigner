@@ -14,7 +14,7 @@ export const AboutSection: React.FC = () => {
             <span className="text-xs font-mono uppercase tracking-[0.15em] text-[#0d0e12] font-bold block">
               About Anurag
             </span>
-            <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl text-[#0d0e12] tracking-tight leading-[1.05] uppercase cursor-default select-none">
+            <h2 className="font-display font-bold text-3xl sm:text-4xl lg:text-5xl text-[#0d0e12] tracking-tight leading-[1.08] uppercase cursor-default select-none">
               {content.about.headline.split(" ").map((word, i) => (
                 <span
                   key={i}

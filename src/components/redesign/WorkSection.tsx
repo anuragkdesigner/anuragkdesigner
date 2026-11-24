@@ -106,7 +106,7 @@ export const WorkSection: React.FC = () => {
                   {proj.client}
                 </div>
                 <div>
-                  <div className="inline-block bg-[#0d0e12] text-white font-display text-lg sm:text-xl px-3 py-1 rounded tracking-tight uppercase shadow-xs">
+                  <div className="inline-block bg-[#0d0e12] text-white font-display font-bold text-base sm:text-lg px-2.5 py-1 rounded tracking-tight uppercase shadow-xs">
                     {proj.title}
                   </div>
                 </div>

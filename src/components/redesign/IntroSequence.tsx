@@ -63,7 +63,7 @@ export const IntroSequence: React.FC<IntroSequenceProps> = ({ onComplete }) => {
       <div className="flex flex-col items-center gap-3 sm:gap-4 px-6 text-center">
         <div
           ref={nameTextRef}
-          className="flex items-baseline justify-center gap-2 font-display text-7xl sm:text-9xl md:text-[130px] lg:text-[150px] text-[#0d0e12] tracking-tight leading-none uppercase opacity-0"
+          className="flex items-baseline justify-center gap-2 font-display font-extrabold text-5xl sm:text-7xl md:text-8xl lg:text-[100px] text-[#0d0e12] tracking-tight leading-none uppercase opacity-0"
         >
           <span>ANURAG</span>
           <span className="w-3.5 h-3.5 sm:w-5 sm:h-5 md:w-6 md:h-6 rounded-full bg-[#0d0e12] inline-block mb-1 sm:mb-2" />
