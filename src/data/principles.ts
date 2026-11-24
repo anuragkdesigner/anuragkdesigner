@@ -3,32 +3,32 @@ import { DesignPrinciple } from '../types/portfolio';
 export const PRINCIPLES: DesignPrinciple[] = [
   {
     number: '01',
-    title: 'Friction Is an Intentional Safety Mechanism',
-    thesis: 'In consumer software, designers obsess over "zero-click" and frictionless flows. In high-stakes environments—ICUs, electrical switchyards, financial clearing—friction is a deliberate safety guard. Destructive actions must demand physical, conscious confirmation.',
-    antiPattern: 'Disguising destructive confirmations as routine single-tap popups that users click through on reflex.'
+    title: 'Visual Hierarchy Directs Cognitive Attention',
+    thesis: 'Good visual design is not decoration; it is information routing. In both graphic collaterals and software UI, deliberate scale contrast, optical weight, and spatial grouping tell the viewer what matters before they read a single line.',
+    antiPattern: 'Cluttered layouts with competing visual weights, uncalibrated gradients, and decorative noise that distracts from the core message.'
   },
   {
     number: '02',
-    title: 'Ergonomics Before Aesthetics',
-    thesis: 'Real people use interfaces with cold hands, sweaty fingertips, nitrile gloves, cracked screens, and glare from midday sun or fluorescent bulbs. If a button cannot be reliably struck by a thumb during motion, its visual styling is irrelevant.',
-    antiPattern: 'Low-contrast 12px gray text, 28px tap targets, and floating buttons placed outside the natural thumb arc.'
+    title: 'Motion Must Clarify Spatial Relationships',
+    thesis: 'Kinetic design in After Effects and interface micro-interactions should communicate state changes and physics, not just show off animation skills. Ease curves and timing must feel physical, intentional, and effortless.',
+    antiPattern: 'Gratuitous spinning transitions and bouncy animations that delay user interaction and disorient viewers.'
   },
   {
     number: '03',
-    title: 'Typography Is the Primary User Interface',
-    thesis: '90% of complex software is reading numbers, labels, states, and system feedback. Tabular numerals, proportional spacing, strict hierarchy, and deliberate optical sizes do more heavy lifting than decorative illustrations or background gradients.',
-    antiPattern: 'Decorative serif headlines paired with unreadable cramped sans body text and non-tabular numerical data.'
+    title: 'Graphic Precision Grounded in Computer Science',
+    thesis: 'Having a computer science foundation transforms how a designer builds. Assets are prepared with exact raster densities, vector mathematical cleanliness, token reuse, and rendering performance in mind.',
+    antiPattern: 'Exporting unoptimized 20MB uncompressed assets with no regard for frontend rendering or layout shifts.'
   },
   {
     number: '04',
-    title: 'Tokens Are the Contract Between Design & Code',
-    thesis: 'A design system is not a static Figma file of rectangles. It is a living taxonomy of mathematical tokens—spacing scales, color roles, and state matrices—shared identically by design and production code without manual translation.',
-    antiPattern: 'Exporting flat PNG redlines and hardcoding arbitrary pixel values in CSS files.'
+    title: 'Brand Cohesion Across Every Touchpoint',
+    thesis: 'A brand lives simultaneously across social carousels, campaign video motion, marketing landing pages, and production product interfaces. Design systems must unify typography, color contrast, and tone across all mediums.',
+    antiPattern: 'Fragmented brand assets where marketing graphics look completely disconnected from the actual software product.'
   }
 ];
 
 export const TOOLKIT = {
-  interaction: ['Figma Variables', 'Protopie Hardware Rig', 'Touch Arc Ergonomics', 'State Machine Diagrams', 'Paper Wireframing'],
-  systems: ['W3C Design Tokens', 'Style Dictionary', 'Storybook', 'WCAG 2.2 AAA Auditing', 'Tailwind CSS / CSS Variables'],
-  research: ['In-situ Field Observation', 'Cognitive Workload Index (NASA-TLX)', 'Usability Task Benchmarking', 'Friction Mapping']
+  motion: ['Adobe After Effects', 'Motion Graphics', 'Kinetic Typography', 'Lottie / Micro-interactions', 'Storyboarding'],
+  visual: ['Adobe Photoshop', 'Adobe Illustrator', 'Brand Identity Systems', 'Typography Hierarchies', 'Social Campaign Design'],
+  uiAndTech: ['Figma UI/UX', 'Design Tokens', 'Computer Science Principles', 'Responsive Grids', 'WCAG Contrast Standards']
 };

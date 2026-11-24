@@ -13,120 +13,142 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project, onOpenDetails
   // Custom bespoke SVG schematic illustration based on project id
   const renderSchematic = () => {
     switch (project.id) {
-      case 'kite-health':
+      case 'bufferbytes-brand-system':
         return (
           <div className="relative w-full h-48 bg-canvas-subtle border-b border-stroke flex items-center justify-center p-4 overflow-hidden">
             <svg viewBox="0 0 400 180" className="w-full h-full text-ink">
-              {/* Tablet Outline */}
-              <rect x="20" y="10" width="360" height="160" rx="8" fill="#FFFFFF" stroke="#DDDBD2" strokeWidth="1.5" />
-              {/* Upper display (non-touch) */}
-              <rect x="36" y="24" width="328" height="32" rx="4" fill="#F3F2ED" stroke="#E8E7E0" />
-              <text x="48" y="44" fontFamily="monospace" fontSize="10" fill="#767E87">PATIENT: 14.2kg | DOPAMINE HCL</text>
-              <circle cx="344" cy="40" r="4" fill="#C0532E" />
+              {/* Construction grid background */}
+              <defs>
+                <pattern id="brandGrid" width="20" height="20" patternUnits="userSpaceOnUse">
+                  <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#E8E7E0" strokeWidth="0.5" />
+                </pattern>
+              </defs>
+              <rect width="400" height="180" fill="url(#brandGrid)" />
               
-              {/* Ergonomic thumb reach arc */}
-              <path d="M 280 170 A 110 110 0 0 0 100 170" fill="none" stroke="#C0532E" strokeWidth="1.5" strokeDasharray="3 3" />
-              <text x="135" y="115" fontFamily="monospace" fontSize="9" fill="#C0532E">95% THUMB REACH ARC</text>
+              {/* Geometric Brand Logo Construction */}
+              <circle cx="120" cy="90" r="45" fill="none" stroke="#C0532E" strokeWidth="1.5" strokeDasharray="3 3" />
+              <rect x="95" y="65" width="50" height="50" rx="6" fill="#17191C" />
+              <path d="M107 77 L133 77 L120 103 Z" fill="#FBFBF9" />
+              <circle cx="120" cy="95" r="3" fill="#C0532E" />
+              
+              {/* Dimension lines */}
+              <line x1="75" y1="65" x2="75" y2="115" stroke="#767E87" strokeWidth="1" />
+              <line x1="70" y1="65" x2="80" y2="65" stroke="#767E87" strokeWidth="1" />
+              <line x1="70" y1="115" x2="80" y2="115" stroke="#767E87" strokeWidth="1" />
+              <text x="50" y="93" fontFamily="monospace" fontSize="8" fill="#767E87">50px</text>
 
-              {/* Stepped dial targets */}
-              <circle cx="160" cy="140" r="16" fill="#FBFBF9" stroke="#17191C" strokeWidth="1.5" />
-              <text x="156" y="144" fontFamily="monospace" fontSize="12" fontWeight="bold" fill="#17191C">-</text>
-
-              <circle cx="210" cy="135" r="22" fill="#17191C" />
-              <text x="201" y="139" fontFamily="monospace" fontSize="11" fill="#FBFBF9" fontWeight="bold">4.2</text>
-
-              <circle cx="260" cy="140" r="16" fill="#FBFBF9" stroke="#17191C" strokeWidth="1.5" />
-              <text x="256" y="144" fontFamily="monospace" fontSize="12" fontWeight="bold" fill="#17191C">+</text>
+              {/* Brand Typography & Color Spec */}
+              <rect x="190" y="45" width="180" height="90" rx="4" fill="#FFFFFF" stroke="#DDDBD2" />
+              <text x="205" y="68" fontFamily="monospace" fontSize="11" fontWeight="bold" fill="#17191C">BUFFERBYTES TECH</text>
+              <text x="205" y="82" fontFamily="monospace" fontSize="8" fill="#767E87">Visual Identity & Design System</text>
+              
+              {/* Color swatches */}
+              <circle cx="212" cy="110" r="8" fill="#17191C" />
+              <circle cx="235" cy="110" r="8" fill="#C0532E" />
+              <circle cx="258" cy="110" r="8" fill="#1E4750" />
+              <circle cx="281" cy="110" r="8" fill="#F3F2ED" stroke="#DDDBD2" />
+              <text x="300" y="114" fontFamily="monospace" fontSize="8" fill="#767E87">Hex Swatches</text>
             </svg>
           </div>
         );
 
-      case 'chronos-field-os':
+      case 'haris-motion-campaigns':
         return (
           <div className="relative w-full h-48 bg-[#17191C] border-b border-stroke flex items-center justify-center p-4 overflow-hidden">
             <svg viewBox="0 0 400 180" className="w-full h-full">
-              {/* High contrast sunlight grid */}
-              <rect x="20" y="10" width="360" height="160" fill="#17191C" stroke="#FFFFFF" strokeWidth="2" />
+              {/* After Effects Timeline UI */}
+              <rect x="15" y="15" width="370" height="150" rx="4" fill="#1F2328" stroke="#383F47" strokeWidth="1" />
               
-              {/* 64px physical tap grid lines */}
-              <line x1="20" y1="50" x2="380" y2="50" stroke="#FFFFFF" strokeWidth="1" />
-              <line x1="20" y1="120" x2="380" y2="120" stroke="#FFFFFF" strokeWidth="1" />
-              <line x1="200" y1="50" x2="200" y2="170" stroke="#FFFFFF" strokeWidth="1" />
+              {/* Timeline Header */}
+              <rect x="15" y="15" width="370" height="24" fill="#17191C" />
+              <text x="28" y="31" fontFamily="monospace" fontSize="9" fill="#9EA7B4">HARIS&CO. // AE_COMP_KINETIC_01</text>
+              <text x="320" y="31" fontFamily="monospace" fontSize="9" fill="#C0532E">00:01:14:08</text>
 
-              {/* High contrast ISO warning */}
-              <polygon points="40,25 50,42 30,42" fill="#FFDB58" />
-              <text x="60" y="38" fontFamily="monospace" fontSize="11" fontWeight="bold" fill="#FFFFFF">HIGH-VOLTAGE SUBSTATION 44kV</text>
+              {/* Track 1: Kinetic Type Layer */}
+              <rect x="25" y="48" width="110" height="20" rx="2" fill="#2E343E" />
+              <text x="32" y="62" fontFamily="monospace" fontSize="8" fill="#FFFFFF">T [TYPOGRAPHY_HERO]</text>
+              
+              {/* Keyframe bezier interpolation */}
+              <line x1="145" y1="58" x2="365" y2="58" stroke="#383F47" strokeWidth="1" />
+              <polygon points="170,58 175,53 180,58 175,63" fill="#FFDB58" />
+              <path d="M 175 58 Q 210 40 245 58" fill="none" stroke="#C0532E" strokeWidth="1.5" />
+              <polygon points="245,58 250,53 255,58 250,63" fill="#FFDB58" />
+              <text x="180" y="48" fontFamily="monospace" fontSize="7" fill="#FFDB58">EASE-OUT (0.85)</text>
 
-              {/* Glove Target A */}
-              <rect x="36" y="62" width="148" height="46" fill="#FFFFFF" rx="2" />
-              <text x="50" y="88" fontFamily="monospace" fontSize="11" fontWeight="bold" fill="#17191C">PASS INSPECTION</text>
-              <text x="50" y="101" fontFamily="monospace" fontSize="8" fill="#4D535A">MIN 64px GLOVE TARGET</text>
+              {/* Track 2: Video Asset & Cut */}
+              <rect x="25" y="76" width="110" height="20" rx="2" fill="#2E343E" />
+              <text x="32" y="90" fontFamily="monospace" fontSize="8" fill="#48E592">V [VIDEO_LAYER_01]</text>
+              <rect x="145" y="78" width="160" height="16" rx="2" fill="#3B6B55" opacity="0.6" />
 
-              {/* Glove Target B */}
-              <rect x="216" y="62" width="148" height="46" fill="none" stroke="#FFDB58" strokeWidth="2" rx="2" />
-              <text x="230" y="88" fontFamily="monospace" fontSize="11" fontWeight="bold" fill="#FFDB58">LOG FAULT (BLE)</text>
-              <text x="230" y="101" fontFamily="monospace" fontSize="8" fill="#FFFFFF">OFFLINE BUFFERED</text>
+              {/* Track 3: Audio Waveform track */}
+              <rect x="25" y="104" width="110" height="20" rx="2" fill="#2E343E" />
+              <text x="32" y="118" fontFamily="monospace" fontSize="8" fill="#9EA7B4">A [AUDIO_SYNC_WAV]</text>
+              <path d="M 145 114 Q 155 106 165 114 T 185 114 T 205 114 T 225 114 T 245 114 T 265 114 T 285 114 T 305 114 T 325 114 T 345 114" fill="none" stroke="#767E87" strokeWidth="1" />
+
+              {/* Playhead */}
+              <line x1="210" y1="15" x2="210" y2="165" stroke="#C0532E" strokeWidth="1.5" />
+              <polygon points="205,15 215,15 210,24" fill="#C0532E" />
             </svg>
           </div>
         );
 
-      case 'relay-design-system':
+      case 'cs-digital-product-ui':
         return (
           <div className="relative w-full h-48 bg-canvas-subtle border-b border-stroke flex items-center justify-center p-4 overflow-hidden">
             <svg viewBox="0 0 400 180" className="w-full h-full">
-              {/* Token architecture tree */}
-              {/* Tier 1: Global */}
-              <rect x="30" y="25" width="90" height="34" rx="3" fill="#FFFFFF" stroke="#DDDBD2" strokeWidth="1" />
-              <text x="40" y="42" fontFamily="monospace" fontSize="9" fontWeight="bold" fill="#17191C">global.blue.600</text>
-              <text x="40" y="52" fontFamily="monospace" fontSize="8" fill="#767E87">#1D4ED8</text>
+              {/* Developer Console layout */}
+              <rect x="20" y="15" width="360" height="150" rx="4" fill="#FFFFFF" stroke="#DDDBD2" strokeWidth="1" />
+              
+              {/* Sidebar navigation */}
+              <rect x="20" y="15" width="90" height="150" fill="#F3F2ED" />
+              <text x="32" y="35" fontFamily="monospace" fontSize="8" fontWeight="bold" fill="#17191C">COREFLOW</text>
+              <text x="32" y="55" fontFamily="monospace" fontSize="8" fill="#C0532E">● Nodes</text>
+              <text x="32" y="72" fontFamily="monospace" fontSize="8" fill="#767E87">  Logs</text>
+              <text x="32" y="89" fontFamily="monospace" fontSize="8" fill="#767E87">  Telemetry</text>
 
-              {/* Tier 2: Semantic */}
-              <line x1="120" y1="42" x2="160" y2="42" stroke="#B46C1E" strokeWidth="1.5" />
-              <rect x="160" y="25" width="105" height="34" rx="3" fill="#FDF8F0" stroke="#B46C1E" strokeWidth="1" />
-              <text x="170" y="42" fontFamily="monospace" fontSize="9" fontWeight="bold" fill="#B46C1E">color.action.primary</text>
-              <text x="170" y="52" fontFamily="monospace" fontSize="8" fill="#767E87">Alias of global</text>
+              {/* Monospaced Data Grid */}
+              <text x="125" y="38" fontFamily="monospace" fontSize="9" fontWeight="bold" fill="#17191C">CLUSTER HEALTH // ASIA-SOUTH-1</text>
+              <line x1="120" y1="46" x2="370" y2="46" stroke="#E8E7E0" />
+              
+              <rect x="125" y="56" width="235" height="24" rx="2" fill="#FBFBF9" stroke="#E8E7E0" />
+              <text x="135" y="71" fontFamily="monospace" fontSize="8" fill="#17191C">node-01: 99.98% OK [32ms latency]</text>
+              
+              <rect x="125" y="86" width="235" height="24" rx="2" fill="#FBFBF9" stroke="#E8E7E0" />
+              <text x="135" y="101" fontFamily="monospace" fontSize="8" fill="#17191C">node-02: 99.94% OK [41ms latency]</text>
 
-              {/* Tier 3: Component */}
-              <line x1="265" y1="42" x2="295" y2="42" stroke="#B46C1E" strokeWidth="1.5" />
-              <rect x="295" y="20" width="85" height="44" rx="4" fill="#17191C" />
-              <text x="305" y="40" fontFamily="monospace" fontSize="9" fontWeight="bold" fill="#FBFBF9">Button.solid</text>
-              <text x="305" y="54" fontFamily="monospace" fontSize="8" fill="#DDDBD2">WCAG 2.2 AAA</text>
-
-              {/* Code token snippet */}
-              <rect x="30" y="80" width="345" height="75" rx="4" fill="#FFFFFF" stroke="#E8E7E0" />
-              <text x="42" y="100" fontFamily="monospace" fontSize="9" fill="#17191C">export const tokens = &#123;</text>
-              <text x="56" y="116" fontFamily="monospace" fontSize="9" fill="#B46C1E">  density: &#123; compact: '32px', balanced: '44px' &#125;,</text>
-              <text x="56" y="132" fontFamily="monospace" fontSize="9" fill="#4D535A">  surface: &#123; base: 'var(--canvas)', border: 'var(--stroke)' &#125;</text>
-              <text x="42" y="146" fontFamily="monospace" fontSize="9" fill="#17191C">&#125; as const;</text>
+              {/* Status footer */}
+              <rect x="125" y="122" width="70" height="18" rx="2" fill="#1E4750" />
+              <text x="135" y="134" fontFamily="monospace" fontSize="7" fill="#FFFFFF">REST API 200</text>
+              <rect x="205" y="122" width="80" height="18" rx="2" fill="#3B6B55" />
+              <text x="215" y="134" fontFamily="monospace" fontSize="7" fill="#FFFFFF">WS CONNECTED</text>
             </svg>
           </div>
         );
 
-      case 'aura-sound-studio':
+      case 'kinetic-typography-lab':
         return (
           <div className="relative w-full h-48 bg-[#14181B] border-b border-stroke flex items-center justify-center p-4 overflow-hidden">
             <svg viewBox="0 0 400 180" className="w-full h-full">
-              {/* Polar coordinate grid */}
-              <circle cx="200" cy="90" r="75" fill="none" stroke="#252F38" strokeWidth="1" />
-              <circle cx="200" cy="90" r="50" fill="none" stroke="#252F38" strokeWidth="1" />
-              <circle cx="200" cy="90" r="25" fill="none" stroke="#252F38" strokeWidth="1" />
-              <line x1="200" y1="15" x2="200" y2="165" stroke="#252F38" strokeWidth="1" />
-              <line x1="125" y1="90" x2="275" y2="90" stroke="#252F38" strokeWidth="1" />
+              {/* Motion curve coordinate graph */}
+              <line x1="40" y1="150" x2="360" y2="150" stroke="#383F47" strokeWidth="1" />
+              <line x1="40" y1="30" x2="40" y2="150" stroke="#383F47" strokeWidth="1" />
+              <text x="40" y="22" fontFamily="monospace" fontSize="8" fill="#9EA7B4">VALUE (PROGRESS 1.0)</text>
+              <text x="310" y="165" fontFamily="monospace" fontSize="8" fill="#9EA7B4">TIME (ms)</text>
 
-              {/* Center Listener */}
-              <circle cx="200" cy="90" r="5" fill="#FFFFFF" />
-              <text x="208" y="88" fontFamily="monospace" fontSize="8" fill="#767E87">SWEET SPOT</text>
+              {/* Snappy Curve (150ms) */}
+              <path d="M 40 150 C 70 80, 80 50, 140 50" fill="none" stroke="#C0532E" strokeWidth="2" />
+              <circle cx="140" cy="50" r="3" fill="#C0532E" />
+              <text x="145" y="48" fontFamily="monospace" fontSize="8" fill="#C0532E">Snappy (150ms)</text>
 
-              {/* Audio Node 1 */}
-              <circle cx="240" cy="60" r="8" fill="#3B6B55" />
-              <text x="252" y="64" fontFamily="monospace" fontSize="9" fill="#48E592" fontWeight="bold">VOX-LEAD (CH 01)</text>
+              {/* Smooth Curve (300ms) */}
+              <path d="M 40 150 C 100 130, 160 50, 240 50" fill="none" stroke="#48E592" strokeWidth="2" strokeDasharray="3 3" />
+              <circle cx="240" cy="50" r="3" fill="#48E592" />
+              <text x="245" y="65" fontFamily="monospace" fontSize="8" fill="#48E592">Smooth (300ms)</text>
 
-              {/* Bezier wave propagation */}
-              <path d="M 240 60 Q 210 75 200 90" fill="none" stroke="#3B6B55" strokeWidth="1.5" strokeDasharray="2 2" />
-
-              {/* Node 2 */}
-              <circle cx="150" cy="120" r="6" fill="#1E4750" stroke="#48E592" strokeWidth="1" />
-              <text x="75" y="125" fontFamily="monospace" fontSize="9" fill="#9EA7B4">STRINGS L/R</text>
+              {/* Expressive Curve (500ms) */}
+              <path d="M 40 150 C 140 150, 220 50, 340 50" fill="none" stroke="#FFDB58" strokeWidth="1.5" />
+              <circle cx="340" cy="50" r="3" fill="#FFDB58" />
+              <text x="280" y="100" fontFamily="monospace" fontSize="8" fill="#FFDB58">Hero (500ms)</text>
             </svg>
           </div>
         );

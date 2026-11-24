@@ -1,8 +1,8 @@
 export type ProjectCategory = 
-  | 'Critical Systems' 
-  | 'Field & Hardware' 
-  | 'Design Systems' 
-  | 'Creative Interfaces';
+  | 'Brand & Visual Systems' 
+  | 'UI & Interaction Design' 
+  | 'Motion & After Effects' 
+  | 'Design Systems';
 
 export interface ProjectOutcome {
   metric: string;
@@ -49,8 +49,19 @@ export interface WorkExperience {
   role: string;
   company: string;
   location: string;
+  type: string;
   focus: string;
+  tools: string[];
   achievements: string[];
+  companyUrl?: string;
+}
+
+export interface Education {
+  institution: string;
+  degree: string;
+  field: string;
+  location: string;
+  details: string;
 }
 
 export interface DesignPrinciple {

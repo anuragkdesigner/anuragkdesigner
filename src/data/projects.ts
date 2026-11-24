@@ -2,175 +2,175 @@ import { Project } from '../types/portfolio';
 
 export const PROJECTS: Project[] = [
   {
-    id: 'kite-health',
-    slug: 'kite-health-icu-dosage',
-    title: 'Kite ICU Dosage Engine',
-    client: 'Kite Health Systems',
+    id: 'bufferbytes-brand-system',
+    slug: 'bufferbytes-brand-system',
+    title: 'BufferBytes Brand & Visual Identity',
+    client: 'BufferBytes Technologies',
     year: '2025',
-    role: 'Lead Interaction & Systems Designer',
-    category: 'Critical Systems',
-    tagline: 'Fail-safe medication calculator for pediatric intensive care nurses under cognitive fatigue.',
-    problemStatement: 'Pediatric dosing calculations in pediatric ICUs require 3-point mathematical cross-checks between patient weight, infusion rate, and diluent concentration. During 12-hour shifts, numerical entry slips accounted for 18% of near-miss safety logs.',
-    ergonomicConstraint: 'Nurses wear nitrile gloves, operate tablets with single hand under fluorescent hospital lighting, and cannot afford multi-level nested modal dialogs.',
-    solutionNarrative: 'Engineered a progressive single-screen flow with tactile thumb-arc dial inputs, real-time dosage boundary visualizers, and a dual-nurse verification signature protocol that reduces input confirmation cycle time while eliminating rounding ambiguity.',
+    role: 'Graphic Designer',
+    category: 'Brand & Visual Systems',
+    tagline: 'Tech-focused visual identity system and marketing collateral built for software products.',
+    problemStatement: 'Technology solutions often struggle to communicate complex engineering value propositions through visual mediums, leading to disengaged prospects and generic corporate presentation.',
+    ergonomicConstraint: 'Visual assets needed to scale seamlessly across physical tech conference banners, digital social channels, and high-density software dashboards without visual degradation.',
+    solutionNarrative: 'Engineered a cohesive brand language combining geometric vector marks, high-contrast typographic scales in Photoshop and Illustrator, and modular social marketing templates that maintain consistency across all tech product releases.',
     outcomes: [
-      { metric: '0 calculation slips', context: 'Simulated trial across 42 acute care registered nurses' },
-      { metric: '2.4s to verify', context: 'Down from 8.7s across legacy multi-page EMR dialogs' },
-      { metric: '100% WCAG AAA', context: 'Contrast verified for washed-out low-spec ward tablets' }
+      { metric: '100% Brand Consistency', context: 'Unified marketing and product collaterals across all company touchpoints' },
+      { metric: '40+ Visual Assets', context: 'Delivered for tech product announcements, banners, and digital collateral' },
+      { metric: 'On-Site Collaboration', context: 'Real-time feedback cycles with engineering and leadership teams' }
     ],
     deliverables: [
-      'Single-screen Dosage Flow Architecture',
-      'Tactile Thumb Dial Interaction Component',
-      'High-Contrast Emergency Warning Token Spec',
-      'Figma Variable Math Prototype with live bounds checking'
+      'Comprehensive Brand Identity Guidelines',
+      'Tech Product Presentation Decks & Banners',
+      'Social Media Campaign Visual Architecture',
+      'Vector Asset Library in Illustrator & Figma'
     ],
-    toolsUsed: ['Figma', 'Protopie (Hardware Dial Testing)', 'React Native Token Map', 'Stark Accessibility Suite'],
+    toolsUsed: ['Adobe Photoshop', 'Adobe Illustrator', 'Figma', 'Visual Identity Architecture'],
     keyDecisions: [
       {
-        decision: 'Replaced freeform numerical keyboards with constrained stepped digit wheels',
-        rationale: 'Freeform text inputs allow inadvertent decimal point misses (e.g. 1.0 vs 10). Stepped bounds physically prevent entering off-label orders.',
-        tradeoff: 'Slightly slower for veteran nurses on familiar round numbers; vastly safer against catastrophic outlier entries.'
+        decision: 'Built modular 12-column grid templates for all digital collateral',
+        rationale: 'Allowed marketing team to adapt layouts quickly while preserving strict typographic alignments.',
+        tradeoff: 'Enforces strict margin boundaries, limiting arbitrary decorative placement.'
       },
       {
-        decision: 'Persistent peripheral ambient status border instead of popup alerts',
-        rationale: 'Alert modals cause habituation ("modal blindness"). A chromatic peripheral frame warns of near-maximum thresholds without interrupting thumb focus.',
-        tradeoff: 'Requires strict tablet orientation locking in bedside dock.'
+        decision: 'Selected high-contrast dual-tone palettes paired with crisp grotesque typography',
+        rationale: 'Ensures graphics remain sharp on low-resolution mobile feeds and large trade show displays alike.',
+        tradeoff: 'Avoided subtle gradients that print poorly or wash out on mobile screens.'
       }
     ],
     accentColor: '#C0532E',
     featured: true,
     wireframeHighlight: {
-      label: 'Single-Hand Thumb Arc Interface',
-      description: 'Controls mapped to lower 35% of tablet viewport so clinicians never have to reach top corners while holding intravenous tubing.'
+      label: 'Modular Brand Grid System',
+      description: 'Parametric 8pt spatial grid governing typography scale, icon bounding boxes, and asset compositions.'
     }
   },
   {
-    id: 'chronos-field-os',
-    slug: 'chronos-field-os',
-    title: 'Chronos Field Inspector',
-    client: 'Chronos Energy Infrastructure',
-    year: '2024',
-    role: 'Staff Product Designer',
-    category: 'Field & Hardware',
-    tagline: 'Offline-first diagnostic interface for substation engineers in direct sunlight and sub-zero gear.',
-    problemStatement: 'High-voltage inspectors operate in rural switchyards where cell reception is nonexistent. Technicians were abandoning digital forms in favor of paper clipboards due to tiny touchscreen tap targets, unreadable contrast under direct 10,000-lux midday sun, and cold-weather capacitive glove latency.',
-    ergonomicConstraint: 'Thick insulated leather gloves, bright reflective sunlight, and damp touchscreen surfaces.',
-    solutionNarrative: 'Designed a sunlight-optimized interface with 64px physical-equivalent tap zones, monochrome high-reflection contrast mode, and an offline-first state machine that auto-caches sensor reads via Bluetooth Low Energy without modal blocking.',
+    id: 'haris-motion-campaigns',
+    slug: 'haris-motion-campaigns',
+    title: 'Haris&Co. Dynamic Motion Campaigns',
+    client: 'Haris&Co. (Kozhikode, Kerala)',
+    year: '2024 — 2025',
+    role: 'Graphic Designer (Intern)',
+    category: 'Motion & After Effects',
+    tagline: 'Kinetic typography, After Effects motion graphics, and high-retention marketing creatives.',
+    problemStatement: 'Social feeds require capturing viewer attention within the first 1.5 seconds. Static graphics were seeing declining click-through rates against competitive algorithmic video feeds.',
+    ergonomicConstraint: 'Motion graphics must deliver complete brand messages even when viewed with audio muted on high-speed mobile feeds.',
+    solutionNarrative: 'Designed rhythmically paced kinetic typography and motion storyboards in Adobe After Effects. Integrated bold typographic choreography and audio-synchronized text reveals that maximize retention across Instagram and digital campaign channels.',
     outcomes: [
-      { metric: '94% field completion', context: 'Eliminated secondary evening manual data re-entry' },
-      { metric: '64px tap grid', context: 'Full touch accuracy while wearing Class 2 rubber lineman gloves' },
-      { metric: 'Zero sync data loss', context: 'Tested over 120 switchyard sites with spotty connectivity' }
+      { metric: '8 Months of Production', context: 'High-frequency creative asset delivery in agency setting' },
+      { metric: 'Kinetic Pacing', context: 'Optimized keyframe velocity curves for maximum visual retention' },
+      { metric: 'Multi-Brand Adaptability', context: 'Executed tailored motion styles across diverse client accounts' }
     ],
     deliverables: [
-      'Direct-Sunlight Monochrome Display Token Set',
-      'Glove-Calibrated Hit Target Spec (Minimum 64x64dp)',
-      'Offline Conflict Resolution UI Flow',
-      'Physical Hardware Push-to-Talk Companion Layout'
+      'After Effects Kinetic Typography Templates',
+      'Animated Campaign Creatives & Video Graphics',
+      'Motion Storyboards & Keyframe Timing Specs',
+      'Composite Visuals in Adobe Photoshop'
     ],
-    toolsUsed: ['Figma', 'Touch-target Ergonomic Rig', 'Color Contrast Analyzer', 'Tailwind Field Tokens'],
+    toolsUsed: ['Adobe After Effects', 'Adobe Photoshop', 'Motion Design', 'Typography Choreography'],
     keyDecisions: [
       {
-        decision: 'Swapped all micro-illustrations and icons for ISO 7000 safety symbol standard',
-        rationale: 'Engineers are trained in electrical schematics, not consumer app iconography. Standardized glyphs prevented misinterpretation of phase voltage warnings.',
-        tradeoff: 'Industrial aesthetic rather than slick consumer polish.'
+        decision: 'Applied custom cubic-bezier velocity curves to all typographic entrance animations',
+        rationale: 'Linear keyframes look amateurish; custom easing gives text physical weight and snappy presence.',
+        tradeoff: 'Requires manual keyframe graphing instead of one-click preset animations.'
       },
       {
-        decision: 'Hardware volume-rocker shortcut mapping for sequential inspection check-offs',
-        rationale: 'When screen is coated with light rain droplets, capacitive touch fails. Physical volume rocker advances inspection items.',
-        tradeoff: 'Required native Android driver layer collaboration with firmware engineers.'
+        decision: 'Prioritized high-legibility bold display type over decorative scripts',
+        rationale: 'Viewers scroll past in fractions of a second; instant word recognition is paramount.',
+        tradeoff: 'Limits use of delicate serif flourishes.'
       }
     ],
     accentColor: '#1E4750',
     featured: true,
     wireframeHighlight: {
-      label: 'Reflective Inversion UI Grid',
-      description: '100% optical black on white with 2px solid structural boundaries; eliminates all subtle gray shadows that wash out under noon sky.'
+      label: 'Keyframe Velocity Easing Curve',
+      description: 'Exponential acceleration (0.85 ease-out) ensuring text snaps into legibility within the initial 400ms.'
     }
   },
   {
-    id: 'relay-design-system',
-    slug: 'relay-design-system',
-    title: 'Relay Multi-Platform Tokens',
-    client: 'Relay Cloud Platform',
+    id: 'cs-digital-product-ui',
+    slug: 'cs-digital-product-ui',
+    title: 'CoreFlow Developer Console UI',
+    client: 'Product Concept & Systems Lab',
     year: '2024',
-    role: 'Design Systems Architect',
-    category: 'Design Systems',
-    tagline: 'Cross-functional token architecture and component guidelines powering 4 enterprise products.',
-    problemStatement: 'Four separate product squads were duplicating table and data-viz components, resulting in conflicting accessibility scores, divergent keyboard navigation patterns, and fractured handoffs that slowed down release cycles.',
-    ergonomicConstraint: 'Engineers use React + TypeScript and Swift; designers use Figma; marketing uses static CMS. The source of truth had to exist independent of any single tool.',
-    solutionNarrative: 'Architected a 3-tier design token pipeline (Global, Semantic, Component) with automated Style Dictionary export into TypeScript types and CSS custom properties. Shipped 38 core accessible primitives with built-in ARIA state management.',
+    role: 'UI/UX & Visual Designer',
+    category: 'UI & Interaction Design',
+    tagline: 'High-density developer dashboard applying Computer Science logic to ergonomic UI layouts.',
+    problemStatement: 'Modern developer platforms present vast telemetry streams, log outputs, and deployment statuses, often causing visual fatigue and cluttered screen real estate.',
+    ergonomicConstraint: 'Engineers spend 8+ hours continuously viewing the interface; requires strict eye-strain reduction and intuitive visual grouping.',
+    solutionNarrative: 'Leveraged Computer Science background to design a logical information hierarchy with monospaced data grids, accessible color state indicators, and keyboard-first navigation patterns.',
     outcomes: [
-      { metric: '38 core primitives', context: 'Covering 92% of all enterprise UI patterns' },
-      { metric: 'Zero manual handoff drift', context: 'Tokens compile directly from Git into npm packages' },
-      { metric: '100% WCAG 2.2 AA', context: 'Automated CI linting on color contrast and focus rings' }
+      { metric: '100% WCAG AA', context: 'Contrast verified across dark and light console themes' },
+      { metric: 'Tabular Precision', context: 'Aligned monospaced typography for zero visual scanning drift' },
+      { metric: 'CS-Grounded IA', context: 'Structured data hierarchies matching REST and WebSocket mental models' }
     ],
     deliverables: [
-      'W3C Community Group Design Token Architecture',
-      'Accessible Data Table with Virtualized Keyboard Nav',
-      'Density Token System (Compact / Balanced / Relaxed)',
-      'Documentation Site with live code playgrounds'
+      'Interactive Figma UI Prototype & Component Library',
+      'Monospaced Data Grid & State Indicators Spec',
+      'Dark & Light Mode Contrast Tokens',
+      'Responsive Mobile & Desktop Dashboard Layouts'
     ],
-    toolsUsed: ['Style Dictionary', 'Figma Variables & Tokens Studio', 'TypeScript', 'Storybook', 'Axe Core'],
+    toolsUsed: ['Figma', 'Design Tokens', 'Computer Science Principles', 'Photoshop'],
     keyDecisions: [
       {
-        decision: 'Decoupled color role semantics from absolute hue names (e.g. `color.surface.critical` not `color.red.500`)',
-        rationale: 'Allowed dark mode and high-contrast accessibility themes to remap instantly without touching a single component file.',
-        tradeoff: 'Slightly higher initial onboarding curve for junior frontend engineers.'
+        decision: 'Utilized monospaced tabular numerals for all telemetry and resource meters',
+        rationale: 'Prevents numerical jitter during real-time value updates and simplifies horizontal eye scanning.',
+        tradeoff: 'Monospace glyphs occupy slightly more horizontal width than proportional numerals.'
       },
       {
-        decision: 'Strict limit of three border-radius tokens across all 4 products',
-        rationale: 'Prevents the visual fragmentation where buttons, modals, badges, and cards all have discordant corners.',
-        tradeoff: 'Refused bespoke radius requests from individual marketing landing pages.'
+        decision: 'Grouped server states by semantic border accents rather than filled colored cards',
+        rationale: 'Filled colored blocks create visual noise; fine structural borders preserve quiet focus.',
+        tradeoff: 'Demands calibrated monitor contrast ratios.'
       }
     ],
     accentColor: '#B46C1E',
     featured: true,
     wireframeHighlight: {
-      label: 'Token Tier Architecture',
-      description: 'Global primitives → Semantic aliases → Component bindings. Guaranteed zero hardcoded hex values in production frontend code.'
+      label: 'Tabular Information Architecture',
+      description: 'Strict column alignment and semantic status indicators allowing rapid debugging scans.'
     }
   },
   {
-    id: 'aura-sound-studio',
-    slug: 'aura-sound-studio',
-    title: 'Aura Spatial Audio Canvas',
-    client: 'Aura Labs',
-    year: '2023',
-    role: 'Principal Interaction Designer',
-    category: 'Creative Interfaces',
-    tagline: 'Infinite node-graph and 3D sound positioning editor for live theatrical sound engineers.',
-    problemStatement: 'Surround sound spatialization software historically forced audio engineers to manipulate separate X, Y, Z coordinate sliders for every speaker channel, breaking creative flow and making real-time actor tracking during live performances stressful.',
-    ergonomicConstraint: 'Fast-paced live theater control rooms where audio operators have split visual attention between the stage and the laptop.',
-    solutionNarrative: 'Created an intuitive canvas combining 2D plan-view spatial speaker grids with kinetic gesture physics, bezier audio attenuation curves, and haptic keyboard chords for blind channel routing.',
+    id: 'kinetic-typography-lab',
+    slug: 'kinetic-typography-lab',
+    title: 'Kinetic Motion Design System',
+    client: 'Creative Motion Exploration',
+    year: '2024',
+    role: 'Motion & Visual Designer',
+    category: 'Design Systems',
+    tagline: 'Parametric motion design tokens and After Effects keyframe standards for digital brands.',
+    problemStatement: 'Design teams frequently have comprehensive Figma UI libraries but zero formal motion guidelines, leading to erratic animations across video and web.',
+    ergonomicConstraint: 'Animations must respect reduced-motion user preferences and maintain 60 FPS rendering standards.',
+    solutionNarrative: 'Formulated a comprehensive motion token architecture defining standard durations (150ms micro, 300ms transition, 500ms hero), easing curves, and After Effects expression templates.',
     outcomes: [
-      { metric: '3x faster track routing', context: 'From 45s per scene change to 14s using gesture canvas' },
-      { metric: 'Zero accidental mute bugs', context: 'Redesigned critical audio safety gates with two-finger confirm' },
-      { metric: '60 FPS canvas redraw', context: 'Streamlined visual node footprint to reduce GPU overhead' }
+      { metric: '3 Standard Motion Durations', context: 'Eliminated arbitrary random animation timings' },
+      { metric: 'AE Expression Library', context: 'Reusable motion math formulas for spring physics' },
+      { metric: 'Cross-Discipline Alignment', context: 'Bridges graphic design, video editing, and UI interaction' }
     ],
     deliverables: [
-      'Spatial Node-Graph Interaction Model',
-      'Radial Audio Attenuation Visualizer',
-      'Blind Keyboard Navigation System for FOH Operators',
-      'Dark Auditorium Low-Luminance Color Theme'
+      'Motion Token Reference Matrix (Time + Easing)',
+      'After Effects Reusable Rig Presets',
+      'Kinetic Typography Video Demonstrations',
+      'Handoff Guidelines for Front-End Developers'
     ],
-    toolsUsed: ['Figma', 'Web Audio API Canvas Prototyping', 'Canvas 2D / WebGL', 'Midi Controller Rig'],
+    toolsUsed: ['Adobe After Effects', 'Motion Tokens', 'Figma', 'Photoshop'],
     keyDecisions: [
       {
-        decision: 'Luminance floor capped at 12% across entire interface',
-        rationale: 'FOH control booths in live theater sit in pitch darkness behind the audience; standard screens cast visible light into the house.',
-        tradeoff: 'Requires strict attention to perceptual contrast without bright white glare.'
+        decision: 'Standardized 3 core easing curves: Snappy, Smooth, and Mechanical',
+        rationale: 'Creates an identifiable brand rhythm across all video collaterals and web transitions.',
+        tradeoff: 'Restricts animators from inventing novel easing curves on a whim.'
       },
       {
-        decision: 'Chorded hotkeys for destructive commands (Solo / Mute all)',
-        rationale: 'A single misclick on "mute all" during a live Broadway performance is fatal. Two-key simultaneous chord prevents accidental trigger.',
-        tradeoff: 'Requires short 10-minute training session for sound interns.'
+        decision: 'Embedded exact millisecond values alongside frame numbers (at 60fps & 24fps)',
+        rationale: 'Enables web engineers to translate After Effects motion directly into CSS animation timings.',
+        tradeoff: 'Requires dual documentation for video editors and web developers.'
       }
     ],
     accentColor: '#3B6B55',
     featured: false,
     wireframeHighlight: {
-      label: 'Kinetic Speaker Grid',
-      description: 'Nodes snap to acoustic soundstage vectors with spring physics, giving tactile feedback to virtual spatial coordinates.'
+      label: 'Motion Curve Architecture',
+      description: 'Standardized bezier profiles linking video frames in After Effects to CSS timing functions.'
     }
   }
 ];

@@ -74,10 +74,10 @@ export const PhilosophySection: React.FC = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="space-y-3">
               <span className="text-xs font-mono uppercase tracking-wider text-ink font-semibold block border-b border-stroke pb-1">
-                Interaction Prototyping
+                Motion & Kinetic Design
               </span>
               <ul className="space-y-2 text-xs text-ink-secondary">
-                {TOOLKIT.interaction.map((item, idx) => (
+                {TOOLKIT.motion.map((item, idx) => (
                   <li key={idx} className="flex items-center gap-2">
                     <span className="w-1.5 h-1.5 rounded-full bg-studio-rust" />
                     <span>{item}</span>
@@ -88,10 +88,10 @@ export const PhilosophySection: React.FC = () => {
 
             <div className="space-y-3">
               <span className="text-xs font-mono uppercase tracking-wider text-ink font-semibold block border-b border-stroke pb-1">
-                Systems & Code
+                Visual & Brand Systems
               </span>
               <ul className="space-y-2 text-xs text-ink-secondary">
-                {TOOLKIT.systems.map((item, idx) => (
+                {TOOLKIT.visual.map((item, idx) => (
                   <li key={idx} className="flex items-center gap-2">
                     <span className="w-1.5 h-1.5 rounded-full bg-studio-petrol" />
                     <span>{item}</span>
@@ -102,10 +102,10 @@ export const PhilosophySection: React.FC = () => {
 
             <div className="space-y-3">
               <span className="text-xs font-mono uppercase tracking-wider text-ink font-semibold block border-b border-stroke pb-1">
-                Ergonomics & Research
+                UI/UX & Computer Science
               </span>
               <ul className="space-y-2 text-xs text-ink-secondary">
-                {TOOLKIT.research.map((item, idx) => (
+                {TOOLKIT.uiAndTech.map((item, idx) => (
                   <li key={idx} className="flex items-center gap-2">
                     <span className="w-1.5 h-1.5 rounded-full bg-studio-ochre" />
                     <span>{item}</span>

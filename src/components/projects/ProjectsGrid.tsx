@@ -13,10 +13,10 @@ export const ProjectsGrid: React.FC<ProjectsGridProps> = ({ projects }) => {
 
   const categories: string[] = [
     'All',
-    'Critical Systems',
-    'Field & Hardware',
-    'Design Systems',
-    'Creative Interfaces'
+    'Brand & Visual Systems',
+    'Motion & After Effects',
+    'UI & Interaction Design',
+    'Design Systems'
   ];
 
   const filteredProjects = selectedCategory === 'All'

@@ -24,11 +24,20 @@ export const Navbar: React.FC<NavbarProps> = ({ onContactClick }) => {
           <a href="#" className="group flex items-center gap-2.5">
             <span className="w-2.5 h-2.5 rounded-full bg-studio-rust ring-4 ring-studio-rust/20 animate-pulse" />
             <span className="font-semibold tracking-tight text-ink text-base">
-              Anurag
+              Anurag K
             </span>
             <span className="hidden sm:inline text-xs font-mono text-ink-tertiary border-l border-stroke pl-2.5">
-              UI/UX & Systems
+              Graphic & UI/UX Designer
             </span>
+          </a>
+          <a
+            href="https://www.linkedin.com/in/anurag-k-63a9b434a/"
+            target="_blank"
+            rel="noreferrer"
+            className="hidden lg:inline-flex items-center gap-1 text-xs font-mono text-ink-secondary hover:text-ink transition-colors"
+          >
+            <span>LinkedIn</span>
+            <ArrowUpRight className="w-3 h-3 text-ink-tertiary" />
           </a>
         </div>
 

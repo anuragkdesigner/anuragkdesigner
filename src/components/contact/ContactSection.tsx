@@ -21,16 +21,16 @@ export const ContactSection: React.FC = () => {
             <div className="flex items-center gap-2">
               <span className="w-2.5 h-2.5 rounded-full bg-studio-sage" />
               <span className="text-xs font-mono uppercase tracking-wider text-ink-secondary">
-                Direct Inquiries & Advisory
+                Direct Inquiries • Based in Kozhikode, Kerala, India
               </span>
             </div>
 
             <h2 className="text-3xl sm:text-5xl font-semibold tracking-tight text-ink leading-tight">
-              Looking for a staff designer who writes tokens and builds for real ergonomics?
+              Looking for a graphic designer who blends visual craft with Computer Science logic?
             </h2>
 
             <p className="text-base sm:text-lg text-ink-secondary leading-relaxed">
-              Available for full-time staff UI/UX roles, design system architecture audits, and critical software interaction consulting.
+              Available for visual brand systems, After Effects motion graphics campaigns, and UI/UX product design collaborations.
             </p>
 
             {/* Email Copy Trigger */}
@@ -78,12 +78,12 @@ export const ContactSection: React.FC = () => {
               </a>
 
               <a
-                href="https://linkedin.com"
+                href="https://www.linkedin.com/in/anurag-k-63a9b434a/"
                 target="_blank"
                 rel="noreferrer"
                 className="flex items-center justify-between p-2 rounded hover:bg-canvas-subtle hover:text-ink transition-colors border border-stroke"
               >
-                <span>LinkedIn</span>
+                <span>LinkedIn Profile</span>
                 <ArrowUpRight className="w-3.5 h-3.5 text-ink-tertiary" />
               </a>
 
