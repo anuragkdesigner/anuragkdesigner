@@ -143,14 +143,6 @@ export const HeroSection: React.FC = () => {
               aria-hidden="true"
             />
 
-            {/* Background Typography Watermark behind portrait (Photoshop Layered Depth) */}
-            <div 
-              className="absolute -top-6 sm:-top-10 -left-4 sm:-left-8 font-display font-extrabold text-6xl sm:text-7xl lg:text-[90px] uppercase tracking-tighter text-[#0d0e12]/[0.05] select-none pointer-events-none leading-none z-0"
-              aria-hidden="true"
-            >
-              ANURAG
-            </div>
-
             {/* Graphic Registration Crosshairs (Photoshop composition markers) */}
             <span className="absolute -top-3 -left-3 text-[#0d0e12] font-mono text-xs select-none pointer-events-none">+</span>
             <span className="absolute -top-3 -right-3 text-[#0d0e12] font-mono text-xs select-none pointer-events-none">+</span>
