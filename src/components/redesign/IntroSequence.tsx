@@ -7,14 +7,13 @@ interface IntroSequenceProps {
 
 export const IntroSequence: React.FC<IntroSequenceProps> = ({ onComplete }) => {
   const overlayRef = useRef<HTMLDivElement>(null);
-  const scriptTextRef = useRef<HTMLDivElement>(null);
-  const goTextRef = useRef<HTMLSpanElement>(null);
-  const odTextRef = useRef<HTMLSpanElement>(null);
+  const anuTextRef = useRef<HTMLSpanElement>(null);
+  const ragTextRef = useRef<HTMLSpanElement>(null);
   const mascotRef = useRef<HTMLDivElement>(null);
+  const subtitleRef = useRef<HTMLDivElement>(null);
   const [hidden, setHidden] = useState(false);
 
   useEffect(() => {
-    // Only play if not skipped
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({
         onComplete: () => {
@@ -23,50 +22,43 @@ export const IntroSequence: React.FC<IntroSequenceProps> = ({ onComplete }) => {
         }
       });
 
-      // Step 1: Script logo draws / fades in
+      // "ANU" [Mascot] "RAG" Entrance
       tl.fromTo(
-        scriptTextRef.current,
-        { opacity: 0, y: 15, scale: 0.95 },
-        { opacity: 1, y: 0, scale: 1, duration: 0.8, ease: "power2.out" }
-      )
-      .to(scriptTextRef.current, {
-        opacity: 0,
-        scale: 1.1,
-        duration: 0.4,
-        delay: 0.3,
-        ease: "power2.in"
-      })
-      
-      // Step 2: "GO ... OD" with Mascot builds up
-      .fromTo(
-        goTextRef.current,
-        { opacity: 0, scale: 0.5, y: 30 },
-        { opacity: 1, scale: 1, y: 0, duration: 0.45, ease: "back.out(1.7)" },
-        "-=0.1"
+        anuTextRef.current,
+        { opacity: 0, scale: 0.6, y: 35 },
+        { opacity: 1, scale: 1, y: 0, duration: 0.5, ease: "back.out(1.7)" },
+        0.15
       )
       .fromTo(
         mascotRef.current,
-        { opacity: 0, scale: 0, rotation: -20 },
-        { opacity: 1, scale: 1, rotation: 0, duration: 0.45, ease: "back.out(2)" },
-        "-=0.2"
+        { opacity: 0, scale: 0, rotation: -25 },
+        { opacity: 1, scale: 1, rotation: 0, duration: 0.55, ease: "back.out(2)" },
+        0.25
       )
       .fromTo(
-        odTextRef.current,
-        { opacity: 0, scale: 0.5, y: 30 },
-        { opacity: 1, scale: 1.15, y: 0, duration: 0.45, ease: "back.out(1.8)" },
-        "-=0.2"
+        ragTextRef.current,
+        { opacity: 0, scale: 0.6, y: 35 },
+        { opacity: 1, scale: 1, y: 0, duration: 0.5, ease: "back.out(1.7)" },
+        0.35
       )
-      .to([goTextRef.current, odTextRef.current, mascotRef.current], {
-        scale: 1,
-        duration: 0.2,
+      .fromTo(
+        subtitleRef.current,
+        { opacity: 0, y: 15 },
+        { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" },
+        "-=0.1"
+      )
+      .to([anuTextRef.current, ragTextRef.current, mascotRef.current], {
+        scale: 1.04,
+        duration: 0.25,
+        yoyo: true,
+        repeat: 1,
         ease: "power1.inOut"
       })
-
-      // Step 3: Slide overlay upward (yPercent -100)
+      // Slide overlay upward to reveal website
       .to(overlayRef.current, {
         yPercent: -100,
-        duration: 0.75,
-        delay: 0.4,
+        duration: 0.7,
+        delay: 0.5,
         ease: "power3.inOut"
       });
     }, overlayRef);
@@ -78,7 +70,7 @@ export const IntroSequence: React.FC<IntroSequenceProps> = ({ onComplete }) => {
     gsap.killTweensOf(overlayRef.current);
     gsap.to(overlayRef.current, {
       yPercent: -100,
-      duration: 0.4,
+      duration: 0.35,
       ease: "power3.inOut",
       onComplete: () => {
         setHidden(true);
@@ -102,51 +94,53 @@ export const IntroSequence: React.FC<IntroSequenceProps> = ({ onComplete }) => {
         Skip Intro ✕
       </button>
 
-      {/* 1. Script Logo */}
-      <div
-        ref={scriptTextRef}
-        className="font-script text-5xl sm:text-7xl text-cream italic tracking-wide"
-      >
-        Anurag
-      </div>
+      {/* Main Brand Splash: "ANU" [Mascot] "RAG" */}
+      <div className="flex flex-col items-center gap-4">
+        <div className="flex items-center gap-2 sm:gap-5 font-display leading-none">
+          <span
+            ref={anuTextRef}
+            className="text-6xl sm:text-8xl md:text-9xl lg:text-[140px] text-cream opacity-0 tracking-tight"
+          >
+            ANU
+          </span>
 
-      {/* 2. GO - [Mascot] - OD Build Up */}
-      <div className="flex items-center gap-2 sm:gap-4 font-display leading-none">
-        <span
-          ref={goTextRef}
-          className="text-6xl sm:text-9xl text-cream opacity-0"
-        >
-          GO
-        </span>
+          {/* Cartoon Mascot Face */}
+          <div
+            ref={mascotRef}
+            className="w-16 h-16 sm:w-24 sm:h-24 md:w-32 md:h-32 rounded-full bg-accent-red flex items-center justify-center opacity-0 shadow-2xl"
+          >
+            <svg viewBox="0 0 100 100" className="w-12 h-12 sm:w-18 sm:h-18 md:w-24 md:h-24">
+              {/* Eyes */}
+              <circle cx="36" cy="42" r="10" fill="#f3efe4" />
+              <circle cx="38" cy="42" r="4.5" fill="#1f2430" />
+              <circle cx="64" cy="42" r="10" fill="#f3efe4" />
+              <circle cx="66" cy="42" r="4.5" fill="#1f2430" />
+              {/* Smile */}
+              <path
+                d="M 32 64 Q 50 82 68 64"
+                fill="none"
+                stroke="#f3efe4"
+                strokeWidth="5"
+                strokeLinecap="round"
+              />
+            </svg>
+          </div>
 
-        {/* Mascot Face */}
-        <div
-          ref={mascotRef}
-          className="w-16 h-16 sm:w-28 sm:h-28 rounded-full bg-accent-red flex items-center justify-center opacity-0 shadow-lg"
-        >
-          <svg viewBox="0 0 100 100" className="w-12 h-12 sm:w-20 sm:h-20">
-            {/* Eyes */}
-            <circle cx="36" cy="42" r="10" fill="#f3efe4" />
-            <circle cx="38" cy="42" r="4.5" fill="#1f2430" />
-            <circle cx="64" cy="42" r="10" fill="#f3efe4" />
-            <circle cx="66" cy="42" r="4.5" fill="#1f2430" />
-            {/* Smile */}
-            <path
-              d="M 32 64 Q 50 82 68 64"
-              fill="none"
-              stroke="#f3efe4"
-              strokeWidth="5"
-              strokeLinecap="round"
-            />
-          </svg>
+          <span
+            ref={ragTextRef}
+            className="text-6xl sm:text-8xl md:text-9xl lg:text-[140px] text-cream opacity-0 tracking-tight"
+          >
+            RAG
+          </span>
         </div>
 
-        <span
-          ref={odTextRef}
-          className="text-6xl sm:text-9xl text-cream opacity-0"
+        {/* Subtitle tag */}
+        <div
+          ref={subtitleRef}
+          className="font-mono text-xs sm:text-sm uppercase tracking-[0.2em] text-accent-red font-semibold opacity-0"
         >
-          OD
-        </span>
+          Graphic Designer & Video Editor
+        </div>
       </div>
     </div>
   );

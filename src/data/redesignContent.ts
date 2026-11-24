@@ -28,8 +28,8 @@ export const content = {
     "TURNING IDEAS INTO IMPACTFUL VISUALS"
   ],
   mascotWords: {
-    first: "GO",
-    second: "OD",
+    first: "ANU",
+    second: "RAG",
     mascotLabel: "Craft"
   },
   introParagraph: [
