@@ -243,7 +243,7 @@ export const SkillsSection: React.FC = () => {
   };
 
   return (
-    <section id="skills" className="py-24 sm:py-32 bg-[#1f2430] border-t border-charcoal-border relative z-10">
+    <section id="skills" className="py-24 sm:py-32 bg-[#f9f9f8] border-t border-[#e2dfd7] relative z-10">
       <div className="max-w-site mx-auto px-6 sm:px-10">
         
         {/* Section Header */}
@@ -255,18 +255,18 @@ export const SkillsSection: React.FC = () => {
                 Skills & Endorsements
               </span>
             </div>
-            <h2 className="font-display text-4xl sm:text-5xl text-cream tracking-tight uppercase">
+            <h2 className="font-display text-4xl sm:text-5xl text-[#0d0e12] tracking-tight uppercase">
               TOOLS & INDUSTRY CRAFT
             </h2>
           </div>
 
-          <p className="text-sm font-mono text-cream-muted max-w-md">
+          <p className="text-sm font-mono text-[#525866] max-w-md">
             Click to endorse verified proficiencies across agency production at Haris&Co. and tech visual systems at BufferBytes.
           </p>
         </div>
 
         {/* Category Tabs: All, Industry Knowledge, Tools & Technologies */}
-        <div className="flex flex-wrap items-center gap-2 mb-10 pb-4 border-b border-charcoal-border">
+        <div className="flex flex-wrap items-center gap-2 mb-10 pb-4 border-b border-[#e2dfd7]">
           {categories.map((cat) => {
             const count = cat === 'All' 
               ? SKILLS.length 
@@ -279,13 +279,13 @@ export const SkillsSection: React.FC = () => {
                 onClick={() => setSelectedCategory(cat)}
                 className={`py-2 px-4 rounded text-xs font-mono transition-all flex items-center gap-2 ${
                   isSelected
-                    ? 'bg-accent-red text-cream font-bold shadow-md'
-                    : 'bg-[#181c26] text-cream-muted hover:text-cream border border-charcoal-border'
+                    ? 'bg-accent-red text-white font-bold shadow-md'
+                    : 'bg-white text-[#525866] hover:text-[#0d0e12] border border-[#e2dfd7] shadow-xs'
                 }`}
               >
                 <span>{cat}</span>
                 <span className={`text-[10px] px-1.5 py-0.2 rounded-full ${
-                  isSelected ? 'bg-black/20 text-cream' : 'bg-charcoal text-cream-muted'
+                  isSelected ? 'bg-black/20 text-white' : 'bg-[#f1f0ec] text-[#525866]'
                 }`}>
                   {count}
                 </span>
@@ -302,7 +302,7 @@ export const SkillsSection: React.FC = () => {
             return (
               <div
                 key={skill.id}
-                className="group bg-[#181c26] border border-charcoal-border rounded-lg overflow-hidden hover:border-accent-red transition-all flex flex-col justify-between shadow-xl"
+                className="group bg-white border border-[#e2dfd7] rounded-lg overflow-hidden hover:border-accent-red transition-all flex flex-col justify-between shadow-md hover:shadow-xl"
               >
                 <div>
                   {/* Animated Visual Canvas */}
@@ -312,38 +312,38 @@ export const SkillsSection: React.FC = () => {
                     {/* Header Row */}
                     <div className="flex items-start justify-between gap-2">
                       <div>
-                        <span className="text-[10px] font-mono uppercase tracking-wider text-cream-faint block mb-1">
+                        <span className="text-[10px] font-mono uppercase tracking-wider text-[#858c9b] block mb-1">
                           {skill.category}
                         </span>
-                        <h3 className="font-display text-xl text-cream group-hover:text-accent-red transition-colors uppercase tracking-tight">
+                        <h3 className="font-display text-xl text-[#0d0e12] group-hover:text-accent-red transition-colors uppercase tracking-tight">
                           {skill.name}
                         </h3>
                       </div>
 
-                      <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-charcoal border border-charcoal-border text-cream-muted">
+                      <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-[#f1f0ec] border border-[#e2dfd7] text-[#525866]">
                         {skill.proficiencyLevel}
                       </span>
                     </div>
 
                     {/* Associated Role Tag */}
                     {skill.associatedRole && (
-                      <div className="p-2.5 rounded bg-[#1f2430] border border-charcoal-border text-xs text-cream-muted flex items-center gap-2">
+                      <div className="p-2.5 rounded bg-[#f9f9f8] border border-[#e2dfd7] text-xs text-[#525866] flex items-center gap-2">
                         <span className="w-1.5 h-1.5 rounded-full bg-accent-red flex-shrink-0" />
                         <span className="truncate font-mono text-[11px]">{skill.associatedRole}</span>
                       </div>
                     )}
 
                     {/* Description */}
-                    <p className="text-xs text-cream-muted leading-relaxed font-sans">
+                    <p className="text-xs text-[#525866] leading-relaxed font-sans">
                       {skill.description}
                     </p>
                   </div>
                 </div>
 
                 {/* Card Action Footer: Interactive Endorsement */}
-                <div className="p-5 pt-0 border-t border-charcoal-border mt-3 pt-4 flex items-center justify-between">
-                  <div className="flex items-center gap-1.5 text-xs font-mono text-cream-muted">
-                    <span className="font-bold text-cream text-sm">{currentEndorsement.count}</span>
+                <div className="p-5 pt-0 border-t border-[#e2dfd7] mt-3 pt-4 flex items-center justify-between">
+                  <div className="flex items-center gap-1.5 text-xs font-mono text-[#525866]">
+                    <span className="font-bold text-[#0d0e12] text-sm">{currentEndorsement.count}</span>
                     <span>endorsements</span>
                   </div>
 
@@ -352,7 +352,7 @@ export const SkillsSection: React.FC = () => {
                     className={`flex items-center gap-1.5 px-3 py-1.5 rounded text-xs font-mono uppercase tracking-wider transition-all ${
                       currentEndorsement.endorsed
                         ? 'bg-emerald-600 text-white font-semibold'
-                        : 'border border-charcoal-border hover:border-accent-red bg-[#1f2430] text-cream hover:bg-accent-red hover:text-cream'
+                        : 'border border-[#e2dfd7] hover:border-accent-red bg-[#f9f9f8] text-[#0d0e12] hover:bg-accent-red hover:text-white'
                     }`}
                     aria-label={`Endorse ${skill.name}`}
                   >

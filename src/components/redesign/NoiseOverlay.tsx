@@ -3,7 +3,7 @@ import React from 'react';
 export const NoiseOverlay: React.FC = () => {
   return (
     <div
-      className="fixed inset-0 pointer-events-none z-[99] select-none opacity-[0.04]"
+      className="fixed inset-0 pointer-events-none z-[99] select-none opacity-[0.035] mix-blend-multiply"
       aria-hidden="true"
     >
       <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">

@@ -87,7 +87,7 @@ export const WorkSection: React.FC = () => {
     <section
       id="work"
       ref={containerRef}
-      className="relative bg-[#1f2430] border-t border-charcoal-border select-none"
+      className="relative bg-[#f9f9f8] border-t border-[#e2dfd7] select-none"
     >
       {/* Pinned 100vh Viewport */}
       <div className="h-screen w-full flex flex-col justify-between py-6 sm:py-8 overflow-hidden">
@@ -96,12 +96,12 @@ export const WorkSection: React.FC = () => {
         <div className="max-w-site mx-auto w-full px-6 sm:px-10 flex items-center justify-between shrink-0">
           <div className="flex items-center gap-3">
             <span className="w-2.5 h-2.5 rounded-full bg-accent-red animate-pulse" />
-            <span className="font-mono text-xs uppercase tracking-widest text-cream font-bold">
+            <span className="font-mono text-xs uppercase tracking-widest text-[#0d0e12] font-bold">
               Selected Client Highlights (01—0{projects.length})
             </span>
           </div>
 
-          <div className="flex items-center gap-2 text-xs font-mono text-cream-muted">
+          <div className="flex items-center gap-2 text-xs font-mono text-[#525866]">
             <span className="hidden sm:inline">HORIZONTAL SCROLL</span>
             <span className="text-accent-red font-bold animate-pulse">SCROLL TO EXPLORE →</span>
           </div>
@@ -113,7 +113,7 @@ export const WorkSection: React.FC = () => {
           className="flex items-center gap-6 sm:gap-10 pl-6 sm:pl-10 pr-16 sm:pr-24 will-change-transform my-auto py-2"
         >
           {/* Track Item 0: Editorial Intro Card */}
-          <div className="w-[300px] xs:w-[360px] sm:w-[440px] lg:w-[480px] shrink-0 bg-[#181c26] border border-charcoal-border rounded-xl p-6 sm:p-8 shadow-2xl flex flex-col justify-between">
+          <div className="w-[300px] xs:w-[360px] sm:w-[440px] lg:w-[480px] shrink-0 bg-white border border-[#e2dfd7] rounded-xl p-6 sm:p-8 shadow-xl flex flex-col justify-between">
             <div className="space-y-4">
               {/* Badge + Cartoon Eye */}
               <div className="flex items-center gap-4">
@@ -128,7 +128,7 @@ export const WorkSection: React.FC = () => {
                       fill="none"
                     />
                     <text
-                      fill="#f3efe4"
+                      fill="#0d0e12"
                       fontSize="11.5"
                       fontFamily="monospace"
                       fontWeight="bold"
@@ -145,7 +145,7 @@ export const WorkSection: React.FC = () => {
                     <svg viewBox="0 0 80 80" className="w-10 h-10 sm:w-12 sm:h-12">
                       <ellipse
                         cx="28" cy="40" rx="12" ry={blinking ? 1 : 14}
-                        fill="#f3efe4" stroke="#1f2430" strokeWidth="2"
+                        fill="#ffffff" stroke="#0d0e12" strokeWidth="2"
                         style={{ transition: 'ry 0.1s ease-in-out' }}
                       />
                       {!blinking && (
@@ -153,7 +153,7 @@ export const WorkSection: React.FC = () => {
                       )}
                       <ellipse
                         cx="52" cy="40" rx="12" ry={blinking ? 1 : 14}
-                        fill="#f3efe4" stroke="#1f2430" strokeWidth="2"
+                        fill="#ffffff" stroke="#0d0e12" strokeWidth="2"
                         style={{ transition: 'ry 0.1s ease-in-out' }}
                       />
                       {!blinking && (
@@ -167,25 +167,25 @@ export const WorkSection: React.FC = () => {
                   <span className="text-[10px] font-mono uppercase tracking-[0.15em] text-accent-red font-bold block">
                     Featured Work
                   </span>
-                  <h3 className="font-display text-xl sm:text-2xl text-cream tracking-tight uppercase leading-tight">
+                  <h3 className="font-display text-xl sm:text-2xl text-[#0d0e12] tracking-tight uppercase leading-tight">
                     CLIENT HIGHLIGHTS
                   </h3>
                 </div>
               </div>
 
               {/* Word-level styled narrative */}
-              <p className="text-xs sm:text-sm text-cream leading-relaxed font-sans pt-2 border-t border-charcoal-border">
+              <p className="text-xs sm:text-sm text-[#0d0e12] leading-relaxed font-sans pt-2 border-t border-[#e2dfd7]">
                 {content.introParagraph.map((part, idx) => {
                   if (part.style === 'bold') {
                     return (
-                      <span key={idx} className="font-display font-bold text-cream underline decoration-accent-red decoration-2 underline-offset-4">
+                      <span key={idx} className="font-display font-bold text-[#0d0e12] underline decoration-accent-red decoration-2 underline-offset-4">
                         {part.text}
                       </span>
                     );
                   }
                   if (part.style === 'italic') {
                     return (
-                      <span key={idx} className="font-script text-base sm:text-lg italic text-cream">
+                      <span key={idx} className="font-script text-base sm:text-lg italic text-[#0d0e12]">
                         {part.text}
                       </span>
                     );
@@ -202,7 +202,7 @@ export const WorkSection: React.FC = () => {
               </p>
             </div>
 
-            <div className="pt-4 mt-4 border-t border-charcoal-border flex items-center justify-between text-xs font-mono text-cream-muted">
+            <div className="pt-4 mt-4 border-t border-[#e2dfd7] flex items-center justify-between text-xs font-mono text-[#525866]">
               <span>0{projects.length} FEATURED WORKS</span>
               <span className="text-accent-red flex items-center gap-1 font-bold">
                 SCROLL <ArrowRight className="w-3.5 h-3.5" />
@@ -214,49 +214,49 @@ export const WorkSection: React.FC = () => {
           {projects.map((proj) => (
             <div
               key={proj.id}
-              className="w-[320px] xs:w-[380px] sm:w-[480px] lg:w-[540px] shrink-0 bg-[#181c26] border border-charcoal-border rounded-xl p-5 sm:p-6 shadow-2xl flex flex-col justify-between group hover:border-accent-red/60 transition-colors"
+              className="w-[320px] xs:w-[380px] sm:w-[480px] lg:w-[540px] shrink-0 bg-white border border-[#e2dfd7] rounded-xl p-5 sm:p-6 shadow-xl flex flex-col justify-between group hover:border-accent-red/60 hover:shadow-2xl transition-all"
             >
               {/* Thumbnail 16:10 */}
-              <div className="relative aspect-[16/10] w-full rounded-lg overflow-hidden bg-charcoal-surface mb-4">
+              <div className="relative aspect-[16/10] w-full rounded-lg overflow-hidden bg-[#f2f1ed] mb-4">
                 <img
                   src={proj.image}
                   alt={proj.title}
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                   loading="lazy"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#181c26]/80 via-transparent to-transparent pointer-events-none" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent pointer-events-none" />
 
-                <div className="absolute top-3 left-3 bg-[#1f2430]/90 backdrop-blur-md px-2.5 py-1 rounded text-[10px] font-mono uppercase tracking-wider text-cream border border-charcoal-border">
+                <div className="absolute top-3 left-3 bg-white/95 backdrop-blur-md px-2.5 py-1 rounded text-[10px] font-mono uppercase tracking-wider text-[#0d0e12] border border-[#e2dfd7] shadow-xs">
                   {proj.category}
                 </div>
 
-                <div className="absolute top-3 right-3 bg-accent-red text-cream font-mono text-[10px] font-bold px-2 py-0.5 rounded shadow">
+                <div className="absolute top-3 right-3 bg-accent-red text-white font-mono text-[10px] font-bold px-2 py-0.5 rounded shadow">
                   {proj.index} / 0{projects.length}
                 </div>
               </div>
 
               {/* Client & Title */}
               <div className="space-y-2 mb-3">
-                <div className="font-mono text-xs uppercase tracking-widest text-cream-muted">
+                <div className="font-mono text-xs uppercase tracking-widest text-[#525866]">
                   {proj.client}
                 </div>
                 <div>
-                  <div className="inline-block bg-accent-red text-cream font-display text-lg sm:text-xl px-3 py-1 rounded tracking-tight uppercase shadow-sm">
+                  <div className="inline-block bg-accent-red text-white font-display text-lg sm:text-xl px-3 py-1 rounded tracking-tight uppercase shadow-xs">
                     {proj.title}
                   </div>
                 </div>
-                <p className="text-xs sm:text-sm text-cream-muted leading-relaxed line-clamp-2">
+                <p className="text-xs sm:text-sm text-[#525866] leading-relaxed line-clamp-2">
                   {proj.tagline}
                 </p>
               </div>
 
               {/* Deliverables tags & Action */}
-              <div className="pt-3 border-t border-charcoal-border flex items-center justify-between">
+              <div className="pt-3 border-t border-[#e2dfd7] flex items-center justify-between">
                 <div className="flex flex-wrap gap-1.5 max-w-[70%]">
                   {proj.deliverables.slice(0, 2).map((item, idx) => (
                     <span
                       key={idx}
-                      className="px-2 py-0.5 rounded bg-charcoal text-[10px] font-mono text-cream-muted border border-charcoal-border truncate"
+                      className="px-2 py-0.5 rounded bg-[#f1f0ec] text-[10px] font-mono text-[#525866] border border-[#e2dfd7] truncate"
                     >
                       {item}
                     </span>
@@ -265,7 +265,7 @@ export const WorkSection: React.FC = () => {
 
                 <a
                   href="#contact"
-                  className="text-xs font-mono font-bold uppercase tracking-wider text-cream hover:text-accent-red flex items-center gap-1 transition-colors"
+                  className="text-xs font-mono font-bold uppercase tracking-wider text-[#0d0e12] hover:text-accent-red flex items-center gap-1 transition-colors"
                 >
                   <span>Discuss</span>
                   <ArrowUpRight className="w-3.5 h-3.5 text-accent-red" />
@@ -278,11 +278,11 @@ export const WorkSection: React.FC = () => {
 
         {/* Bottom Horizontal Scroll Progress Bar */}
         <div className="max-w-site mx-auto w-full px-6 sm:px-10 shrink-0">
-          <div className="flex items-center justify-between text-[11px] font-mono text-cream-muted mb-2">
+          <div className="flex items-center justify-between text-[11px] font-mono text-[#525866] mb-2">
             <span>TRACK PROGRESS</span>
             <span>01 — 0{projects.length} FINISH → VERTICAL RESUME</span>
           </div>
-          <div className="h-1 bg-charcoal-border rounded-full overflow-hidden w-full">
+          <div className="h-1 bg-[#e2dfd7] rounded-full overflow-hidden w-full">
             <div
               ref={progressBarRef}
               className="h-full bg-accent-red w-0 origin-left transition-all duration-75"

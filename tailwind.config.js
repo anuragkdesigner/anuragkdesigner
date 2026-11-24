@@ -8,16 +8,16 @@ export default {
     extend: {
       colors: {
         charcoal: {
-          DEFAULT: '#1f2430',
-          dark: '#161922',
-          surface: '#272d3d',
-          border: '#353c50',
-          muted: '#8e96a8',
+          DEFAULT: '#f9f9f8',
+          dark: '#f2f1ed',
+          surface: '#ffffff',
+          border: '#e2dfd7',
+          muted: '#525866',
         },
         cream: {
-          DEFAULT: '#f3efe4',
-          muted: '#b8b4a9',
-          faint: '#737068',
+          DEFAULT: '#0d0e12',
+          muted: '#525866',
+          faint: '#858c9b',
         },
         accent: {
           red: '#e0373a',

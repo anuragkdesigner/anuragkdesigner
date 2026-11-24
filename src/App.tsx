@@ -14,7 +14,7 @@ import { Footer } from './components/redesign/Footer';
 
 export const App: React.FC = () => {
   return (
-    <div className="relative min-h-screen bg-[#1f2430] text-[#f3efe4] font-sans selection:bg-[#e0373a] selection:text-[#f3efe4] overflow-x-hidden">
+    <div className="relative min-h-screen bg-[#f9f9f8] text-[#0d0e12] font-sans selection:bg-[#e0373a] selection:text-white overflow-x-hidden">
       {/* 1. Subtle 1px Grain / Noise Overlay (4% opacity) */}
       <NoiseOverlay />
 

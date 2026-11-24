@@ -114,7 +114,7 @@ export const HeroSection: React.FC = () => {
           <div className="pt-2 flex flex-wrap items-center gap-4">
             <a
               href="#work"
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded bg-accent-red text-cream font-mono text-xs font-bold uppercase tracking-wider hover:bg-accent-red-hover transition-colors shadow-lg"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded bg-accent-red text-white font-mono text-xs font-bold uppercase tracking-wider hover:bg-accent-red-hover transition-colors shadow-md"
             >
               <span>Explore Selected Work</span>
               <ArrowUpRight className="w-3.5 h-3.5" />
@@ -122,7 +122,7 @@ export const HeroSection: React.FC = () => {
 
             <a
               href="#about"
-              className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded bg-charcoal border border-charcoal-border hover:border-accent-red text-cream font-mono text-xs uppercase tracking-wider transition-colors"
+              className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded bg-white border border-[#e2dfd7] hover:border-accent-red text-[#0d0e12] font-mono text-xs uppercase tracking-wider transition-colors shadow-xs"
             >
               <span>About & Credentials</span>
             </a>
@@ -139,13 +139,13 @@ export const HeroSection: React.FC = () => {
             
             {/* Ambient Radial Backlight behind silhouette */}
             <div 
-              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 sm:w-80 h-64 sm:h-80 rounded-full bg-accent-red/25 blur-3xl pointer-events-none -z-10"
+              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 sm:w-80 h-64 sm:h-80 rounded-full bg-accent-red/15 blur-3xl pointer-events-none -z-10"
               aria-hidden="true"
             />
 
             {/* Giant Background Typography Watermark behind portrait (Photoshop Layered Depth) */}
             <div 
-              className="absolute -top-10 sm:-top-16 -left-6 sm:-left-12 font-display text-8xl sm:text-[130px] lg:text-[150px] uppercase tracking-tighter text-cream/[0.05] select-none pointer-events-none leading-none z-0"
+              className="absolute -top-10 sm:-top-16 -left-6 sm:-left-12 font-display text-8xl sm:text-[130px] lg:text-[150px] uppercase tracking-tighter text-[#0d0e12]/[0.05] select-none pointer-events-none leading-none z-0"
               aria-hidden="true"
             >
               ANURAG
@@ -161,31 +161,31 @@ export const HeroSection: React.FC = () => {
               <img
                 src="./anurag-portrait.png"
                 alt="Anurag K — Graphic Designer & Video Editor"
-                className="w-full h-auto object-cover relative z-10 drop-shadow-[0_25px_40px_rgba(0,0,0,0.75)]"
+                className="w-full h-auto object-cover relative z-10 drop-shadow-[0_20px_35px_rgba(0,0,0,0.18)]"
               />
 
-              {/* Bottom Gradient Fade to seamlessly melt into dark page background */}
+              {/* Bottom Gradient Fade to seamlessly melt into light page background */}
               <div 
-                className="absolute inset-x-0 bottom-0 h-36 bg-gradient-to-t from-[#1f2430] via-[#1f2430]/80 to-transparent z-20 pointer-events-none"
+                className="absolute inset-x-0 bottom-0 h-36 bg-gradient-to-t from-[#f9f9f8] via-[#f9f9f8]/85 to-transparent z-20 pointer-events-none"
               />
             </div>
 
             {/* Floating Editorial Badge (Photoshop Composited HUD) */}
-            <div className="absolute bottom-2 -left-2 sm:left-2 z-30 bg-[#161922]/95 backdrop-blur-md p-3 sm:p-3.5 rounded-lg border border-charcoal-border shadow-2xl space-y-1 max-w-[260px]">
+            <div className="absolute bottom-2 -left-2 sm:left-2 z-30 bg-white/95 backdrop-blur-md p-3 sm:p-3.5 rounded-lg border border-[#e2dfd7] shadow-xl space-y-1 max-w-[260px]">
               <div className="flex items-center gap-1.5 text-[10px] font-mono uppercase tracking-wider text-accent-red font-bold">
                 <Sparkles className="w-3 h-3 shrink-0" />
                 <span className="truncate">Visual & Motion Lead</span>
               </div>
-              <div className="font-display text-sm sm:text-base text-cream uppercase tracking-tight">
+              <div className="font-display text-sm sm:text-base text-[#0d0e12] uppercase tracking-tight">
                 ANURAG K
               </div>
-              <div className="text-[11px] font-mono text-cream-muted truncate">
+              <div className="text-[11px] font-mono text-[#525866] truncate">
                 BufferBytes Tech • Haris&Co.
               </div>
             </div>
 
             {/* Top-Right Badge: Open for Work / Location */}
-            <div className="absolute top-2 right-2 sm:right-4 z-30 bg-accent-red text-cream font-mono text-[10px] font-bold uppercase tracking-widest px-2.5 py-1 rounded shadow-md whitespace-nowrap">
+            <div className="absolute top-2 right-2 sm:right-4 z-30 bg-accent-red text-white font-mono text-[10px] font-bold uppercase tracking-widest px-2.5 py-1 rounded shadow-md whitespace-nowrap">
               Kozhikode, India
             </div>
 

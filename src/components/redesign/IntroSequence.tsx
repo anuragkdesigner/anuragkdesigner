@@ -70,12 +70,12 @@ export const IntroSequence: React.FC<IntroSequenceProps> = ({ onComplete }) => {
   return (
     <div
       ref={overlayRef}
-      className="fixed inset-0 z-50 bg-[#161922] flex flex-col items-center justify-center select-none"
+      className="fixed inset-0 z-50 bg-[#f9f9f8] flex flex-col items-center justify-center select-none"
     >
       {/* Skip Button */}
       <button
         onClick={handleSkip}
-        className="absolute top-6 right-8 text-xs font-mono tracking-widest uppercase text-cream-muted hover:text-cream px-3 py-1.5 rounded border border-charcoal-border hover:border-accent-red transition-colors"
+        className="absolute top-6 right-8 text-xs font-mono tracking-widest uppercase text-[#525866] hover:text-[#0d0e12] px-3 py-1.5 rounded border border-[#e2dfd7] hover:border-accent-red transition-colors"
       >
         Skip Intro ✕
       </button>
@@ -84,7 +84,7 @@ export const IntroSequence: React.FC<IntroSequenceProps> = ({ onComplete }) => {
       <div className="flex flex-col items-center gap-3 sm:gap-4 px-6 text-center">
         <div
           ref={nameTextRef}
-          className="flex items-baseline justify-center gap-2 font-display text-7xl sm:text-9xl md:text-[130px] lg:text-[150px] text-cream tracking-tight leading-none uppercase opacity-0"
+          className="flex items-baseline justify-center gap-2 font-display text-7xl sm:text-9xl md:text-[130px] lg:text-[150px] text-[#0d0e12] tracking-tight leading-none uppercase opacity-0"
         >
           <span>ANURAG</span>
           <span className="w-3.5 h-3.5 sm:w-5 sm:h-5 md:w-6 md:h-6 rounded-full bg-accent-red inline-block mb-1 sm:mb-2" />
