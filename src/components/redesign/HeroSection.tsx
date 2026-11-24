@@ -9,7 +9,6 @@ export const HeroSection: React.FC = () => {
   const imageColumnRef = useRef<HTMLDivElement>(null);
   const line1Ref = useRef<HTMLDivElement>(null);
   const line2Ref = useRef<HTMLDivElement>(null);
-  const line3Ref = useRef<HTMLDivElement>(null);
   const nameRowRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -17,7 +16,7 @@ export const HeroSection: React.FC = () => {
       const tl = gsap.timeline({ delay: 0.15 });
 
       tl.fromTo(
-        [line1Ref.current, line2Ref.current, line3Ref.current, nameRowRef.current],
+        [line1Ref.current, line2Ref.current, nameRowRef.current],
         { y: '100%', opacity: 0 },
         {
           y: '0%',
@@ -54,44 +53,26 @@ export const HeroSection: React.FC = () => {
         {/* LEFT COLUMN: Typography & Headlines (7 Cols) */}
         <div ref={textColumnRef} className="lg:col-span-7 space-y-6 z-10">
           
-          {/* Eyebrow Status */}
-          <div className="overflow-hidden">
-            <div className="flex items-center gap-2.5 text-xs font-mono uppercase tracking-[0.1em] text-cream-muted">
-              <span className="w-2.5 h-2.5 rounded-full bg-[#0d0e12] animate-pulse" />
-              <span>BufferBytes Tech • Haris&Co. Alum • Kozhikode</span>
-            </div>
-          </div>
-
-          {/* 3-Line Headline Stack */}
+          {/* 2-Line Headline Stack */}
           <div className="space-y-1 sm:space-y-2">
             
-            {/* Line 1: Poppins Display */}
+            {/* Line 1: GRAPHIC DESIGNER & */}
             <div className="mask-line">
               <div
                 ref={line1Ref}
-                className="font-display font-bold text-xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-5xl tracking-tight text-[#0d0e12] uppercase leading-none whitespace-nowrap"
+                className="font-display font-extrabold text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl tracking-tight text-[#0d0e12] uppercase leading-none select-none whitespace-nowrap"
               >
                 {content.tagline[0]}
               </div>
             </div>
 
-            {/* Line 2: Black Large Display - Strictly single line */}
+            {/* Line 2: VIDEO EDITOR - Exact same font size as Line 1 */}
             <div className="mask-line">
               <div
                 ref={line2Ref}
                 className="font-display font-extrabold text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl tracking-tight text-[#0d0e12] uppercase leading-none select-none whitespace-nowrap"
               >
                 {content.tagline[1]}
-              </div>
-            </div>
-
-            {/* Line 3: Small Display */}
-            <div className="mask-line">
-              <div
-                ref={line3Ref}
-                className="font-sans font-medium text-[11px] sm:text-sm md:text-base text-[#525866] tracking-wide uppercase pt-1"
-              >
-                {content.tagline[2]}
               </div>
             </div>
 
