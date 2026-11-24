@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { SKILLS } from '../../data/skills';
 import { SkillCategory, SkillItem } from '../../types/portfolio';
-import { Badge } from '../common/Badge';
 import { ThumbsUp, Check } from 'lucide-react';
 
 export const SkillsSection: React.FC = () => {
@@ -244,30 +243,30 @@ export const SkillsSection: React.FC = () => {
   };
 
   return (
-    <section id="skills" className="py-20 border-b border-stroke relative z-10">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="skills" className="py-24 sm:py-32 bg-[#1f2430] border-t border-charcoal-border relative z-10">
+      <div className="max-w-site mx-auto px-6 sm:px-10">
         
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
           <div>
             <div className="flex items-center gap-2 mb-2">
-              <span className="w-2 h-2 rounded-full bg-studio-rust" />
-              <span className="text-xs font-mono uppercase tracking-wider text-studio-rust font-semibold">
+              <span className="w-2.5 h-2.5 rounded-full bg-accent-red animate-pulse" />
+              <span className="text-xs font-mono uppercase tracking-[0.15em] text-accent-red font-bold">
                 Skills & Endorsements
               </span>
             </div>
-            <h2 className="text-3xl sm:text-4xl font-semibold tracking-tight text-ink">
-              Industry Knowledge, Tools & Technologies
+            <h2 className="font-display text-4xl sm:text-5xl text-cream tracking-tight uppercase">
+              TOOLS & INDUSTRY CRAFT
             </h2>
           </div>
 
-          <p className="text-sm text-ink-secondary max-w-md">
-            Verified technical proficiencies across agency production at Haris&Co. and tech product visual systems at BufferBytes Technologies.
+          <p className="text-sm font-mono text-cream-muted max-w-md">
+            Click to endorse verified proficiencies across agency production at Haris&Co. and tech visual systems at BufferBytes.
           </p>
         </div>
 
         {/* Category Tabs: All, Industry Knowledge, Tools & Technologies */}
-        <div className="flex flex-wrap items-center gap-2 mb-10 pb-4 border-b border-stroke">
+        <div className="flex flex-wrap items-center gap-2 mb-10 pb-4 border-b border-charcoal-border">
           {categories.map((cat) => {
             const count = cat === 'All' 
               ? SKILLS.length 
@@ -280,13 +279,13 @@ export const SkillsSection: React.FC = () => {
                 onClick={() => setSelectedCategory(cat)}
                 className={`py-2 px-4 rounded text-xs font-mono transition-all flex items-center gap-2 ${
                   isSelected
-                    ? 'bg-ink text-canvas font-semibold shadow-sm'
-                    : 'bg-canvas-subtle text-ink-secondary hover:text-ink hover:bg-stroke-subtle border border-stroke'
+                    ? 'bg-accent-red text-cream font-bold shadow-md'
+                    : 'bg-[#181c26] text-cream-muted hover:text-cream border border-charcoal-border'
                 }`}
               >
                 <span>{cat}</span>
                 <span className={`text-[10px] px-1.5 py-0.2 rounded-full ${
-                  isSelected ? 'bg-canvas/20 text-canvas' : 'bg-stroke text-ink-tertiary'
+                  isSelected ? 'bg-black/20 text-cream' : 'bg-charcoal text-cream-muted'
                 }`}>
                   {count}
                 </span>
@@ -303,7 +302,7 @@ export const SkillsSection: React.FC = () => {
             return (
               <div
                 key={skill.id}
-                className="group bg-canvas-card border border-stroke rounded-xl overflow-hidden hover:border-stroke-strong transition-all flex flex-col justify-between shadow-xs"
+                className="group bg-[#181c26] border border-charcoal-border rounded-lg overflow-hidden hover:border-accent-red transition-all flex flex-col justify-between shadow-xl"
               >
                 <div>
                   {/* Animated Visual Canvas */}
@@ -313,38 +312,38 @@ export const SkillsSection: React.FC = () => {
                     {/* Header Row */}
                     <div className="flex items-start justify-between gap-2">
                       <div>
-                        <span className="text-[10px] font-mono uppercase tracking-wider text-ink-tertiary block mb-1">
+                        <span className="text-[10px] font-mono uppercase tracking-wider text-cream-faint block mb-1">
                           {skill.category}
                         </span>
-                        <h3 className="text-lg font-semibold tracking-tight text-ink group-hover:text-studio-rust transition-colors">
+                        <h3 className="font-display text-xl text-cream group-hover:text-accent-red transition-colors uppercase tracking-tight">
                           {skill.name}
                         </h3>
                       </div>
 
-                      <Badge variant="subtle" className="text-[10px]">
+                      <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-charcoal border border-charcoal-border text-cream-muted">
                         {skill.proficiencyLevel}
-                      </Badge>
+                      </span>
                     </div>
 
                     {/* Associated Role Tag */}
                     {skill.associatedRole && (
-                      <div className="p-2.5 rounded bg-canvas-subtle border border-stroke text-xs text-ink-secondary flex items-center gap-2">
-                        <span className="w-1.5 h-1.5 rounded-full bg-studio-rust flex-shrink-0" />
+                      <div className="p-2.5 rounded bg-[#1f2430] border border-charcoal-border text-xs text-cream-muted flex items-center gap-2">
+                        <span className="w-1.5 h-1.5 rounded-full bg-accent-red flex-shrink-0" />
                         <span className="truncate font-mono text-[11px]">{skill.associatedRole}</span>
                       </div>
                     )}
 
                     {/* Description */}
-                    <p className="text-xs text-ink-secondary leading-relaxed">
+                    <p className="text-xs text-cream-muted leading-relaxed font-sans">
                       {skill.description}
                     </p>
                   </div>
                 </div>
 
                 {/* Card Action Footer: Interactive Endorsement */}
-                <div className="p-5 pt-0 border-t border-stroke mt-3 pt-4 flex items-center justify-between">
-                  <div className="flex items-center gap-1.5 text-xs font-mono text-ink-tertiary">
-                    <span className="font-bold text-ink text-sm">{currentEndorsement.count}</span>
+                <div className="p-5 pt-0 border-t border-charcoal-border mt-3 pt-4 flex items-center justify-between">
+                  <div className="flex items-center gap-1.5 text-xs font-mono text-cream-muted">
+                    <span className="font-bold text-cream text-sm">{currentEndorsement.count}</span>
                     <span>endorsements</span>
                   </div>
 
@@ -352,8 +351,8 @@ export const SkillsSection: React.FC = () => {
                     onClick={() => handleEndorse(skill.id)}
                     className={`flex items-center gap-1.5 px-3 py-1.5 rounded text-xs font-mono uppercase tracking-wider transition-all ${
                       currentEndorsement.endorsed
-                        ? 'bg-studio-sage text-white font-semibold'
-                        : 'border border-stroke hover:border-ink bg-canvas text-ink hover:bg-canvas-subtle'
+                        ? 'bg-emerald-600 text-white font-semibold'
+                        : 'border border-charcoal-border hover:border-accent-red bg-[#1f2430] text-cream hover:bg-accent-red hover:text-cream'
                     }`}
                     aria-label={`Endorse ${skill.name}`}
                   >

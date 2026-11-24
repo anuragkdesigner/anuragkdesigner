@@ -3,111 +3,136 @@
 @tailwind utilities;
 
 :root {
-  color-scheme: light;
+  --bg-color: #1f2430;
+  --text-color: #f3efe4;
+  --accent-red: #e0373a;
+  --font-display: "Bowlby One", "Anton", sans-serif;
+  --font-sans: "Inter", sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-sans);
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  overflow-x: hidden;
 }
 
 /* Custom scrollbar */
 ::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+  width: 8px;
 }
-
 ::-webkit-scrollbar-track {
-  background: #F3F2ED;
+  background: #161922;
 }
-
 ::-webkit-scrollbar-thumb {
-  background: #C2BFB4;
-  border-radius: 3px;
+  background: #353c50;
+  border-radius: 4px;
 }
-
 ::-webkit-scrollbar-thumb:hover {
-  background: #A2A9B2;
+  background: #e0373a;
 }
 
-/* Focus styles for keyboard accessibility */
-:focus-visible {
-  outline: 2px solid #C0532E;
-  outline-offset: 2px;
+/* Custom cursor */
+.custom-cursor-dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 10px;
+  height: 10px;
+  background-color: #f3efe4;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: width 0.25s cubic-bezier(0.16, 1, 0.3, 1), 
+              height 0.25s cubic-bezier(0.16, 1, 0.3, 1), 
+              background-color 0.2s, 
+              border 0.2s,
+              opacity 0.2s;
+  mix-blend-mode: difference;
 }
 
-/* Floating Vector Background Animations */
-@keyframes vectorFloatSlow {
+.custom-cursor-dot.hovered {
+  width: 64px;
+  height: 64px;
+  background-color: #f3efe4;
+  border: 1px solid #f3efe4;
+}
+
+@media (hover: none) and (pointer: coarse) {
+  .custom-cursor-dot {
+    display: none !important;
+  }
+}
+
+/* Link underline slide-in effect */
+.nav-link-hover {
+  position: relative;
+  display: inline-block;
+}
+.nav-link-hover::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #e0373a;
+  transition: width 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.nav-link-hover:hover::after {
+  width: 100%;
+}
+
+/* Text mask rise effect */
+.mask-line {
+  overflow: hidden;
+  display: block;
+}
+
+/* Rotating badge */
+@keyframes rotateClockwise {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-badge {
+  animation: rotateClockwise 14s linear infinite;
+}
+
+/* Mascot bounce animation */
+@keyframes mascotBounce {
   0%, 100% {
-    transform: translate(0px, 0px) rotate(0deg);
-  }
-  33% {
-    transform: translate(18px, -24px) rotate(6deg);
-  }
-  66% {
-    transform: translate(-14px, 16px) rotate(-4deg);
-  }
-}
-
-@keyframes vectorFloatReverse {
-  0%, 100% {
-    transform: translate(0px, 0px) rotate(0deg);
-  }
-  33% {
-    transform: translate(-20px, 22px) rotate(-8deg);
-  }
-  66% {
-    transform: translate(16px, -18px) rotate(5deg);
-  }
-}
-
-@keyframes vectorDriftRotate {
-  0% {
-    transform: rotate(0deg) scale(1);
+    transform: translateY(0);
   }
   50% {
-    transform: rotate(180deg) scale(1.08);
-  }
-  100% {
-    transform: rotate(360deg) scale(1);
+    transform: translateY(-14px);
   }
 }
 
-@keyframes vectorPulseDrift {
-  0%, 100% {
-    transform: scale(1) translateY(0);
-    opacity: 0.15;
-  }
-  50% {
-    transform: scale(1.12) translateY(-15px);
-    opacity: 0.28;
-  }
+.animate-mascot-bounce {
+  animation: mascotBounce 2.4s ease-in-out infinite;
 }
 
-.animate-vector-slow {
-  animation: vectorFloatSlow 18s ease-in-out infinite;
-}
-
-.animate-vector-reverse {
-  animation: vectorFloatReverse 22s ease-in-out infinite;
-}
-
-.animate-vector-drift {
-  animation: vectorDriftRotate 35s linear infinite;
-}
-
-.animate-vector-pulse {
-  animation: vectorPulseDrift 14s ease-in-out infinite;
-}
-
-/* Respect user's motion preferences */
+/* Reduced motion preference */
 @media (prefers-reduced-motion: reduce) {
-  .animate-vector-slow,
-  .animate-vector-reverse,
-  .animate-vector-drift,
-  .animate-vector-pulse {
+  .animate-spin-badge,
+  .animate-mascot-bounce {
     animation: none !important;
   }
-}
-
-/* Print styles */
-@media print {
-  .no-print {
-    display: none !important;
+  html {
+    scroll-behavior: auto;
   }
 }
