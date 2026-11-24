@@ -1,378 +1,281 @@
 import React, { useState } from 'react';
-import { SKILLS } from '../../data/skills';
-import { SkillCategory, SkillItem } from '../../types/portfolio';
 import { ThumbsUp, Check } from 'lucide-react';
 
+interface LookbookTool {
+  id: string;
+  prefix: string;
+  title: string;
+  category: 'Industry Knowledge' | 'Tools & Technologies';
+  level: string;
+  desc: string;
+  role: string;
+  image: string;
+  endorsements: number;
+}
+
+const LOOKBOOK_TOOLS: LookbookTool[] = [
+  {
+    id: 'graphic-design',
+    prefix: 'craft',
+    title: 'GRAPHIC DESIGN',
+    category: 'Industry Knowledge',
+    level: 'Core Discipline',
+    desc: 'Spatial grid discipline, compositional balance, and print collateral.',
+    role: 'BufferBytes & Haris&Co.',
+    image: 'https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=600&q=80',
+    endorsements: 14
+  },
+  {
+    id: 'motion-graphics',
+    prefix: 'motion',
+    title: 'MOTION GRAPHICS',
+    category: 'Industry Knowledge',
+    level: 'Specialist',
+    desc: 'Kinetic choreography, rhythm-driven pacing, and 60 FPS retention.',
+    role: 'Haris&Co.',
+    image: 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=600&q=80',
+    endorsements: 12
+  },
+  {
+    id: 'videography',
+    prefix: 'visual',
+    title: 'VIDEOGRAPHY',
+    category: 'Industry Knowledge',
+    level: 'Production',
+    desc: 'Cinematic lighting, camera choreography, and visual direction.',
+    role: 'Visual Strategy',
+    image: 'https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&w=600&q=80',
+    endorsements: 9
+  },
+  {
+    id: 'video-editing',
+    prefix: 'timeline',
+    title: 'VIDEO EDITING',
+    category: 'Industry Knowledge',
+    level: 'Agency Tested',
+    desc: 'Dynamic pacing, multi-track audio sync, and narrative cuts.',
+    role: 'Haris&Co.',
+    image: 'https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=600&q=80',
+    endorsements: 11
+  },
+  {
+    id: 'after-effects',
+    prefix: 'kinetic',
+    title: 'AFTER EFFECTS',
+    category: 'Tools & Technologies',
+    level: 'Power User',
+    desc: 'Nonlinear velocity curves, expressions, and shape morphing.',
+    role: 'Haris&Co.',
+    image: 'https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&w=600&q=80',
+    endorsements: 16
+  },
+  {
+    id: 'photoshop',
+    prefix: 'raster',
+    title: 'PHOTOSHOP',
+    category: 'Tools & Technologies',
+    level: 'Expert',
+    desc: 'Pixel-level compositing, non-destructive masks, and color grades.',
+    role: 'Haris&Co.',
+    image: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80',
+    endorsements: 18
+  },
+  {
+    id: 'illustrator',
+    prefix: 'vector',
+    title: 'ILLUSTRATOR',
+    category: 'Tools & Technologies',
+    level: 'Expert',
+    desc: 'Bezier pen precision, geometric vector marks, and SVG assets.',
+    role: 'Haris&Co.',
+    image: 'https://images.unsplash.com/photo-1600132806370-bf17e65e942f?auto=format&fit=crop&w=600&q=80',
+    endorsements: 15
+  },
+  {
+    id: 'premiere-pro',
+    prefix: 'sequence',
+    title: 'PREMIERE PRO',
+    category: 'Tools & Technologies',
+    level: 'Expert',
+    desc: 'Multi-camera cutting, Lumetri grading, and social reel exports.',
+    role: 'Graphic & Video Lead',
+    image: 'https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=600&q=80',
+    endorsements: 14
+  }
+];
+
 export const SkillsSection: React.FC = () => {
-  const [selectedCategory, setSelectedCategory] = useState<'All' | SkillCategory>('All');
-  
-  // Track dynamic endorsement counts and endorsed status per skill
-  const [endorsements, setEndorsements] = useState<Record<string, { count: number; endorsed: boolean }>>(() => {
-    const initial: Record<string, { count: number; endorsed: boolean }> = {};
-    SKILLS.forEach((s) => {
-      initial[s.id] = { count: s.initialEndorsements, endorsed: false };
+  const [selectedFilter, setSelectedFilter] = useState<'All' | 'Industry Knowledge' | 'Tools & Technologies'>('All');
+  const [endorsedMap, setEndorsedMap] = useState<Record<string, { count: number; endorsed: boolean }>>(() => {
+    const init: Record<string, { count: number; endorsed: boolean }> = {};
+    LOOKBOOK_TOOLS.forEach(t => {
+      init[t.id] = { count: t.endorsements, endorsed: false };
     });
-    return initial;
+    return init;
   });
 
-  const handleEndorse = (id: string) => {
-    setEndorsements((prev) => {
-      const current = prev[id];
-      const isEndorsed = current.endorsed;
+  const handleEndorse = (id: string, e: React.MouseEvent) => {
+    e.stopPropagation();
+    setEndorsedMap(prev => {
+      const cur = prev[id] || { count: 0, endorsed: false };
       return {
         ...prev,
         [id]: {
-          count: isEndorsed ? current.count - 1 : current.count + 1,
-          endorsed: !isEndorsed,
-        },
+          count: cur.endorsed ? cur.count - 1 : cur.count + 1,
+          endorsed: !cur.endorsed
+        }
       };
     });
   };
 
-  const filteredSkills = selectedCategory === 'All'
-    ? SKILLS
-    : SKILLS.filter((s) => s.category === selectedCategory);
-
-  const categories: ('All' | SkillCategory)[] = [
-    'All',
-    'Industry Knowledge',
-    'Tools & Technologies'
-  ];
-
-  // Animated Visual Renderers for each skill
-  const renderSkillVisual = (type: SkillItem['visualType']) => {
-    switch (type) {
-      case 'graphic':
-        return (
-          <div className="relative w-full h-32 bg-canvas-subtle border-b border-stroke flex items-center justify-center overflow-hidden">
-            <svg viewBox="0 0 240 120" className="w-full h-full">
-              {/* Layout grid lines */}
-              <line x1="20" y1="20" x2="220" y2="20" stroke="#DDDBD2" strokeWidth="1" strokeDasharray="2 2" />
-              <line x1="20" y1="60" x2="220" y2="60" stroke="#DDDBD2" strokeWidth="1" strokeDasharray="2 2" />
-              <line x1="20" y1="100" x2="220" y2="100" stroke="#DDDBD2" strokeWidth="1" strokeDasharray="2 2" />
-              
-              {/* Typographic bounding boxes with animation */}
-              <rect x="35" y="30" width="70" height="60" rx="3" fill="#FFFFFF" stroke="#17191C" strokeWidth="1.5" className="animate-pulse" />
-              <text x="45" y="55" fontFamily="sans-serif" fontSize="16" fontWeight="bold" fill="#17191C">Aa</text>
-              <line x1="45" y1="68" x2="90" y2="68" stroke="#0d0e12" strokeWidth="2" />
-              <line x1="45" y1="76" x2="80" y2="76" stroke="#DDDBD2" strokeWidth="1.5" />
-
-              {/* Composition block */}
-              <rect x="120" y="30" width="85" height="28" rx="2" fill="#17191C" />
-              <text x="130" y="48" fontFamily="monospace" fontSize="8" fill="#FBFBF9">HERO HEADING</text>
-              <rect x="120" y="66" width="85" height="24" rx="2" fill="#FFFFFF" stroke="#0d0e12" strokeWidth="1" />
-              <text x="130" y="81" fontFamily="monospace" fontSize="7" fill="#0d0e12">GOLDEN RATIO</text>
-            </svg>
-          </div>
-        );
-
-      case 'motion':
-        return (
-          <div className="relative w-full h-32 bg-[#17191C] border-b border-stroke flex items-center justify-center overflow-hidden">
-            <svg viewBox="0 0 240 120" className="w-full h-full">
-              {/* Dynamic kinetic motion path */}
-              <path d="M 20 80 Q 70 10, 120 70 T 220 30" fill="none" stroke="#0d0e12" strokeWidth="2.5" />
-              <circle cx="120" cy="70" r="5" fill="#FFDB58" className="animate-ping" style={{ animationDuration: '2s' }} />
-              <circle cx="120" cy="70" r="4" fill="#FFDB58" />
-              
-              {/* Kinetic typography bounce markers */}
-              <rect x="30" y="25" width="45" height="18" rx="2" fill="#1F2328" stroke="#383F47" />
-              <text x="36" y="37" fontFamily="monospace" fontSize="7" fill="#FFFFFF">KINETIC</text>
-
-              <rect x="145" y="75" width="55" height="18" rx="2" fill="#1F2328" stroke="#0d0e12" />
-              <text x="152" y="87" fontFamily="monospace" fontSize="7" fill="#FFDB58">60 FPS</text>
-            </svg>
-          </div>
-        );
-
-      case 'video':
-        return (
-          <div className="relative w-full h-32 bg-canvas-subtle border-b border-stroke flex items-center justify-center overflow-hidden">
-            <svg viewBox="0 0 240 120" className="w-full h-full">
-              {/* Camera viewfinder frame */}
-              <rect x="25" y="15" width="190" height="90" rx="4" fill="#FFFFFF" stroke="#17191C" strokeWidth="1.5" />
-              
-              {/* Viewfinder corner brackets */}
-              <path d="M 35 25 L 45 25 M 35 25 L 35 35" fill="none" stroke="#0d0e12" strokeWidth="1.5" />
-              <path d="M 205 25 L 195 25 M 205 25 L 205 35" fill="none" stroke="#0d0e12" strokeWidth="1.5" />
-              <path d="M 35 95 L 45 95 M 35 95 L 35 85" fill="none" stroke="#0d0e12" strokeWidth="1.5" />
-              <path d="M 205 95 L 195 95 M 205 95 L 205 85" fill="none" stroke="#0d0e12" strokeWidth="1.5" />
-
-              {/* Center focus reticle */}
-              <circle cx="120" cy="60" r="16" fill="none" stroke="#B46C1E" strokeWidth="1" strokeDasharray="3 3" />
-              <circle cx="120" cy="60" r="3" fill="#B46C1E" />
-
-              {/* Rec indicator */}
-              <circle cx="48" cy="35" r="3" fill="#0d0e12" className="animate-pulse" />
-              <text x="56" y="38" fontFamily="monospace" fontSize="8" fontWeight="bold" fill="#0d0e12">REC [4K 24P]</text>
-              <text x="155" y="38" fontFamily="monospace" fontSize="8" fill="#767E87">ISO 400</text>
-            </svg>
-          </div>
-        );
-
-      case 'video-editing':
-        return (
-          <div className="relative w-full h-32 bg-[#17191C] border-b border-stroke flex items-center justify-center overflow-hidden">
-            <svg viewBox="0 0 240 120" className="w-full h-full">
-              {/* NLE Timeline Tracks */}
-              <rect x="20" y="20" width="200" height="80" rx="3" fill="#1F2328" stroke="#383F47" />
-              
-              {/* Video Track 1 */}
-              <rect x="28" y="30" width="70" height="22" rx="2" fill="#3B6B55" />
-              <text x="34" y="44" fontFamily="monospace" fontSize="7" fill="#FFFFFF">A-ROLL_SCENE</text>
-
-              <rect x="104" y="30" width="105" height="22" rx="2" fill="#1E4750" />
-              <text x="110" y="44" fontFamily="monospace" fontSize="7" fill="#48E592">B-ROLL_CUT_02</text>
-
-              {/* Audio Wave Track */}
-              <rect x="28" y="60" width="181" height="20" rx="2" fill="#17191C" />
-              <path d="M 32 70 Q 40 64 48 70 T 64 70 T 80 70 T 96 70 T 112 70 T 128 70 T 144 70 T 160 70 T 176 70 T 192 70 T 205 70" fill="none" stroke="#0d0e12" strokeWidth="1.5" />
-
-              {/* Playhead cut line */}
-              <line x1="101" y1="20" x2="101" y2="100" stroke="#FFDB58" strokeWidth="1.5" />
-              <polygon points="98,20 104,20 101,26" fill="#FFDB58" />
-            </svg>
-          </div>
-        );
-
-      case 'after-effects':
-        return (
-          <div className="relative w-full h-32 bg-[#141526] border-b border-stroke flex items-center justify-center overflow-hidden">
-            <svg viewBox="0 0 240 120" className="w-full h-full">
-              {/* AE Badge */}
-              <rect x="25" y="20" width="36" height="36" rx="6" fill="#00005B" stroke="#9999FF" strokeWidth="1" />
-              <text x="32" y="44" fontFamily="sans-serif" fontSize="18" fontWeight="bold" fill="#9999FF">Ae</text>
-
-              {/* Keyframe Graph Editor */}
-              <path d="M 75 80 C 105 80, 115 25, 175 25" fill="none" stroke="#9999FF" strokeWidth="2" />
-              
-              {/* Keyframe Diamonds */}
-              <polygon points="72,80 75,76 78,80 75,84" fill="#FFDB58" />
-              <polygon points="172,25 175,21 178,25 175,29" fill="#FFDB58" />
-
-              {/* Velocity Handles */}
-              <line x1="75" y1="80" x2="105" y2="80" stroke="#9999FF" strokeWidth="1" strokeDasharray="2 2" />
-              <circle cx="105" cy="80" r="3" fill="#FFFFFF" />
-
-              <text x="80" y="105" fontFamily="monospace" fontSize="8" fill="#9999FF">Cubic-Bezier Easing</text>
-            </svg>
-          </div>
-        );
-
-      case 'photoshop':
-        return (
-          <div className="relative w-full h-32 bg-[#001D26] border-b border-stroke flex items-center justify-center overflow-hidden">
-            <svg viewBox="0 0 240 120" className="w-full h-full">
-              {/* Ps Badge */}
-              <rect x="25" y="20" width="36" height="36" rx="6" fill="#001E36" stroke="#31A8FF" strokeWidth="1" />
-              <text x="32" y="44" fontFamily="sans-serif" fontSize="18" fontWeight="bold" fill="#31A8FF">Ps</text>
-
-              {/* Layer Stack Visual */}
-              <rect x="80" y="25" width="130" height="20" rx="3" fill="#003152" stroke="#31A8FF" strokeWidth="1" />
-              <text x="90" y="38" fontFamily="monospace" fontSize="8" fill="#FFFFFF">Adjustment: Curves</text>
-
-              <rect x="80" y="52" width="130" height="20" rx="3" fill="#00223A" stroke="#383F47" strokeWidth="1" />
-              <text x="90" y="65" fontFamily="monospace" fontSize="8" fill="#9EA7B4">Layer: Retouch & Masks</text>
-
-              <rect x="80" y="79" width="130" height="20" rx="3" fill="#001829" stroke="#383F47" strokeWidth="1" />
-              <text x="90" y="92" fontFamily="monospace" fontSize="8" fill="#767E87">Background (16-bit)</text>
-            </svg>
-          </div>
-        );
-
-      case 'illustrator':
-        return (
-          <div className="relative w-full h-32 bg-[#261300] border-b border-stroke flex items-center justify-center overflow-hidden">
-            <svg viewBox="0 0 240 120" className="w-full h-full">
-              {/* Ai Badge */}
-              <rect x="25" y="20" width="36" height="36" rx="6" fill="#330000" stroke="#FF9A00" strokeWidth="1" />
-              <text x="34" y="44" fontFamily="sans-serif" fontSize="18" fontWeight="bold" fill="#FF9A00">Ai</text>
-
-              {/* Bezier Pen Vector Curve with Tangents */}
-              <path d="M 80 85 C 110 20, 160 20, 195 85" fill="none" stroke="#FF9A00" strokeWidth="2" />
-              
-              {/* Anchor points */}
-              <rect x="77" y="82" width="6" height="6" fill="#FFFFFF" stroke="#17191C" />
-              <rect x="192" y="82" width="6" height="6" fill="#FFFFFF" stroke="#17191C" />
-
-              {/* Tangent control handles */}
-              <circle cx="110" cy="20" r="3" fill="#FFDB58" />
-              <line x1="80" y1="85" x2="110" y2="20" stroke="#FF9A00" strokeWidth="1" strokeDasharray="2 2" />
-
-              <circle cx="160" cy="20" r="3" fill="#FFDB58" />
-              <line x1="195" y1="85" x2="160" y2="20" stroke="#FF9A00" strokeWidth="1" strokeDasharray="2 2" />
-
-              <text x="100" y="105" fontFamily="monospace" fontSize="8" fill="#FF9A00">Vector Bezier Precision</text>
-            </svg>
-          </div>
-        );
-
-      case 'premiere-pro':
-        return (
-          <div className="relative w-full h-32 bg-[#1A0022] border-b border-stroke flex items-center justify-center overflow-hidden">
-            <svg viewBox="0 0 240 120" className="w-full h-full">
-              {/* Pr Badge */}
-              <rect x="25" y="20" width="36" height="36" rx="6" fill="#330033" stroke="#EA77FF" strokeWidth="1" />
-              <text x="33" y="44" fontFamily="sans-serif" fontSize="18" fontWeight="bold" fill="#EA77FF">Pr</text>
-
-              {/* Multi-Track NLE Video Timeline */}
-              <rect x="75" y="22" width="140" height="20" rx="3" fill="#5C2D91" />
-              <text x="85" y="35" fontFamily="monospace" fontSize="7" fill="#FFFFFF">V1: MAIN_SEQUENCE_4K</text>
-
-              <rect x="75" y="46" width="60" height="18" rx="2" fill="#8944AB" />
-              <text x="82" y="58" fontFamily="monospace" fontSize="7" fill="#FFFFFF">V2: B-ROLL</text>
-
-              <rect x="140" y="46" width="75" height="18" rx="2" fill="#D9534F" />
-              <text x="146" y="58" fontFamily="monospace" fontSize="7" fill="#FFFFFF">TITLES_OVERLAY</text>
-
-              <rect x="75" y="68" width="140" height="16" rx="2" fill="#17191C" />
-              <path d="M 80 76 Q 90 70 100 76 T 120 76 T 140 76 T 160 76 T 180 76 T 200 76" fill="none" stroke="#EA77FF" strokeWidth="1.5" />
-
-              {/* Playhead */}
-              <line x1="135" y1="18" x2="135" y2="92" stroke="#FFDB58" strokeWidth="1.5" />
-              <polygon points="132,18 138,18 135,24" fill="#FFDB58" />
-
-              <text x="75" y="105" fontFamily="monospace" fontSize="8" fill="#EA77FF">Lumetri Color & Multi-Track</text>
-            </svg>
-          </div>
-        );
-
-      default:
-        return null;
-    }
-  };
+  const filteredTools = selectedFilter === 'All'
+    ? LOOKBOOK_TOOLS
+    : LOOKBOOK_TOOLS.filter(t => t.category === selectedFilter);
 
   return (
-    <section id="skills" className="py-24 sm:py-32 bg-[#f9f9f8] border-t border-[#e2dfd7] relative z-10">
-      <div className="max-w-site mx-auto px-6 sm:px-10">
+    <section 
+      id="skills" 
+      className="relative bg-[#f9f9f8] border-t border-[#e2dfd7] select-none min-h-screen lg:h-screen lg:max-h-screen flex flex-col justify-between overflow-hidden"
+    >
+      <div className="max-w-site w-full mx-auto px-6 sm:px-10 h-full flex flex-col justify-between py-6 sm:py-8 lg:py-6">
         
-        {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
+        {/* Top Lookbook Header (Strict Minimal Height) */}
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 pb-4 border-b border-[#e2dfd7] shrink-0">
           <div>
-            <div className="flex items-center gap-2 mb-2">
-              <span className="w-2.5 h-2.5 rounded-full bg-[#0d0e12] animate-pulse" />
-              <span className="text-xs font-mono uppercase tracking-[0.15em] text-[#0d0e12] font-bold">
-                Skills & Endorsements
+            <div className="flex items-center gap-2 mb-1">
+              <span className="w-2 h-2 rounded-full bg-[#0d0e12] animate-pulse" />
+              <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-[#0d0e12] font-bold">
+                LOOKBOOK ARCHIVE · 08 CORE DISCIPLINES
               </span>
             </div>
-            <h2 className="font-display text-4xl sm:text-5xl text-[#0d0e12] tracking-tight uppercase">
-              TOOLS & INDUSTRY CRAFT
-            </h2>
+            
+            {/* Stacked Asymmetric Editorial Headline */}
+            <div className="leading-none">
+              <span className="font-sans font-light text-sm sm:text-base text-[#525866] lowercase tracking-widest block mb-0.5">
+                tools &
+              </span>
+              <h2 className="font-display text-2xl sm:text-3xl lg:text-4xl text-[#0d0e12] uppercase tracking-tight">
+                INDUSTRY CRAFT.
+              </h2>
+            </div>
           </div>
 
-          <p className="text-sm font-mono text-[#525866] max-w-md">
-            Click to endorse verified proficiencies across agency production at Haris&Co. and tech visual systems at BufferBytes.
-          </p>
+          {/* Filter Pills */}
+          <div className="flex items-center gap-1.5 font-mono text-[11px] self-start sm:self-end">
+            <button
+              onClick={() => setSelectedFilter('All')}
+              className={`px-3 py-1.5 rounded uppercase tracking-wider transition-all ${
+                selectedFilter === 'All'
+                  ? 'bg-[#0d0e12] text-white font-bold shadow-xs'
+                  : 'bg-white text-[#525866] hover:text-[#0d0e12] border border-[#e2dfd7]'
+              }`}
+            >
+              All (08)
+            </button>
+            <button
+              onClick={() => setSelectedFilter('Industry Knowledge')}
+              className={`px-3 py-1.5 rounded uppercase tracking-wider transition-all ${
+                selectedFilter === 'Industry Knowledge'
+                  ? 'bg-[#0d0e12] text-white font-bold shadow-xs'
+                  : 'bg-white text-[#525866] hover:text-[#0d0e12] border border-[#e2dfd7]'
+              }`}
+            >
+              Industry (04)
+            </button>
+            <button
+              onClick={() => setSelectedFilter('Tools & Technologies')}
+              className={`px-3 py-1.5 rounded uppercase tracking-wider transition-all ${
+                selectedFilter === 'Tools & Technologies'
+                  ? 'bg-[#0d0e12] text-white font-bold shadow-xs'
+                  : 'bg-white text-[#525866] hover:text-[#0d0e12] border border-[#e2dfd7]'
+              }`}
+            >
+              Tools (04)
+            </button>
+          </div>
         </div>
 
-        {/* Category Tabs: All, Industry Knowledge, Tools & Technologies */}
-        <div className="flex flex-wrap items-center gap-2 mb-10 pb-4 border-b border-[#e2dfd7]">
-          {categories.map((cat) => {
-            const count = cat === 'All' 
-              ? SKILLS.length 
-              : SKILLS.filter((s) => s.category === cat).length;
-            const isSelected = selectedCategory === cat;
-
-            return (
-              <button
-                key={cat}
-                onClick={() => setSelectedCategory(cat)}
-                className={`py-2 px-4 rounded text-xs font-mono transition-all flex items-center gap-2 ${
-                  isSelected
-                    ? 'bg-[#0d0e12] text-white font-bold shadow-md'
-                    : 'bg-white text-[#525866] hover:text-[#0d0e12] border border-[#e2dfd7] shadow-xs'
-                }`}
-              >
-                <span>{cat}</span>
-                <span className={`text-[10px] px-1.5 py-0.2 rounded-full ${
-                  isSelected ? 'bg-white/20 text-white' : 'bg-[#f1f0ec] text-[#525866]'
-                }`}>
-                  {count}
-                </span>
-              </button>
-            );
-          })}
-        </div>
-
-        {/* Skills Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredSkills.map((skill) => {
-            const currentEndorsement = endorsements[skill.id] || { count: skill.initialEndorsements, endorsed: false };
+        {/* 4x2 Editorial Slide Grid (Fits strictly inside 100vh on Desktop) */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-3.5 my-auto py-3 max-h-[calc(100vh-175px)] overflow-y-auto lg:overflow-visible">
+          {filteredTools.map((tool, idx) => {
+            const current = endorsedMap[tool.id] || { count: tool.endorsements, endorsed: false };
 
             return (
               <div
-                key={skill.id}
-                className="group bg-white border border-[#e2dfd7] rounded-lg overflow-hidden hover:border-[#0d0e12] transition-all flex flex-col justify-between shadow-md hover:shadow-xl"
+                key={tool.id}
+                className="group relative bg-white border border-[#e2dfd7] rounded-md p-3.5 sm:p-4 shadow-sm hover:shadow-xl hover:border-[#0d0e12] transition-all duration-300 flex flex-col justify-between hover:-translate-y-1"
               >
-                <div>
-                  {/* Animated Visual Canvas */}
-                  {renderSkillVisual(skill.visualType)}
+                {/* Slide Top Bar: Asymmetric Typography + Index */}
+                <div className="flex items-start justify-between gap-2 border-b border-[#e2dfd7] pb-2 mb-2.5">
+                  <div className="leading-tight">
+                    <span className="font-sans font-light text-[10px] text-[#525866] lowercase tracking-widest block">
+                      {tool.prefix}
+                    </span>
+                    <h3 className="font-display text-sm sm:text-base text-[#0d0e12] uppercase tracking-tight truncate">
+                      {tool.title}
+                    </h3>
+                  </div>
+                  <span className="font-mono text-[10px] text-[#858c9b] font-bold">
+                    0{idx + 1}
+                  </span>
+                </div>
 
-                  <div className="p-5 space-y-4">
-                    {/* Header Row */}
-                    <div className="flex items-start justify-between gap-2">
-                      <div>
-                        <span className="text-[10px] font-mono uppercase tracking-wider text-[#858c9b] block mb-1">
-                          {skill.category}
-                        </span>
-                        <h3 className="font-display text-xl text-[#0d0e12] group-hover:text-[#525866] transition-colors uppercase tracking-tight">
-                          {skill.name}
-                        </h3>
-                      </div>
+                {/* Card Middle: Split Photo & Editorial Paragraph */}
+                <div className="grid grid-cols-12 gap-2.5 items-center mb-3">
+                  {/* Aspect Crop Photo */}
+                  <div className="col-span-5 relative aspect-[4/3] rounded overflow-hidden bg-[#f2f1ed] border border-[#e2dfd7]">
+                    <img
+                      src={tool.image}
+                      alt={tool.title}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                      loading="lazy"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none" />
+                  </div>
 
-                      <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-[#f1f0ec] border border-[#e2dfd7] text-[#525866]">
-                        {skill.proficiencyLevel}
-                      </span>
-                    </div>
-
-                    {/* Associated Role Tag */}
-                    {skill.associatedRole && (
-                      <div className="p-2.5 rounded bg-[#f9f9f8] border border-[#e2dfd7] text-xs text-[#525866] flex items-center gap-2">
-                        <span className="w-1.5 h-1.5 rounded-full bg-[#0d0e12] flex-shrink-0" />
-                        <span className="truncate font-mono text-[11px]">{skill.associatedRole}</span>
-                      </div>
-                    )}
-
-                    {/* Description */}
-                    <p className="text-xs text-[#525866] leading-relaxed font-sans">
-                      {skill.description}
+                  {/* Narrative details */}
+                  <div className="col-span-7 space-y-1">
+                    <p className="text-[11px] font-sans text-[#525866] leading-tight line-clamp-2">
+                      {tool.desc}
                     </p>
+                    <span className="block text-[9px] font-mono text-[#858c9b] truncate">
+                      {tool.role}
+                    </span>
                   </div>
                 </div>
 
-                {/* Card Action Footer: Interactive Endorsement */}
-                <div className="p-5 pt-0 border-t border-[#e2dfd7] mt-3 pt-4 flex items-center justify-between">
-                  <div className="flex items-center gap-1.5 text-xs font-mono text-[#525866]">
-                    <span className="font-bold text-[#0d0e12] text-sm">{currentEndorsement.count}</span>
-                    <span>endorsements</span>
-                  </div>
+                {/* Card Bottom: Proficiency Tag & Live Endorsement Action */}
+                <div className="pt-2 border-t border-[#e2dfd7] flex items-center justify-between mt-auto">
+                  <span className="px-1.5 py-0.5 rounded bg-[#f1f0ec] text-[9px] font-mono uppercase tracking-wider text-[#0d0e12] border border-[#e2dfd7]">
+                    {tool.level}
+                  </span>
 
                   <button
-                    onClick={() => handleEndorse(skill.id)}
-                    className={`flex items-center gap-1.5 px-3 py-1.5 rounded text-xs font-mono uppercase tracking-wider transition-all ${
-                      currentEndorsement.endorsed
-                        ? 'bg-emerald-600 text-white font-semibold'
-                        : 'border border-[#e2dfd7] hover:border-[#0d0e12] bg-[#f9f9f8] text-[#0d0e12] hover:bg-[#0d0e12] hover:text-white'
+                    onClick={(e) => handleEndorse(tool.id, e)}
+                    className={`flex items-center gap-1 px-2 py-1 rounded text-[10px] font-mono uppercase transition-all ${
+                      current.endorsed
+                        ? 'bg-[#0d0e12] text-white font-bold shadow-xs scale-105'
+                        : 'bg-[#f9f9f8] hover:bg-[#0d0e12] text-[#525866] hover:text-white border border-[#e2dfd7]'
                     }`}
-                    aria-label={`Endorse ${skill.name}`}
+                    title="Click to endorse verified craft"
                   >
-                    {currentEndorsement.endorsed ? (
-                      <>
-                        <Check className="w-3.5 h-3.5" />
-                        <span>Endorsed</span>
-                      </>
+                    {current.endorsed ? (
+                      <Check className="w-3 h-3 text-white" />
                     ) : (
-                      <>
-                        <ThumbsUp className="w-3.5 h-3.5" />
-                        <span>Endorse</span>
-                      </>
+                      <ThumbsUp className="w-3 h-3" />
                     )}
+                    <span>{current.count}</span>
                   </button>
                 </div>
-
               </div>
             );
           })}
+        </div>
+
+        {/* Bottom Editorial Strip (Compact Folio) */}
+        <div className="flex items-center justify-between text-[10px] font-mono uppercase tracking-wider text-[#858c9b] pt-3 border-t border-[#e2dfd7] shrink-0">
+          <span>FIG. 01—08 · ALL 8 CORE PRODUCTION CAPABILITIES</span>
+          <span className="font-bold text-[#0d0e12]">100% STUDIO TESTED · CALICUT UNIVERSITY CS ALUM</span>
         </div>
 
       </div>
