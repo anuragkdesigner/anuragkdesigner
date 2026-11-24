@@ -31,6 +31,80 @@
   outline-offset: 2px;
 }
 
+/* Floating Vector Background Animations */
+@keyframes vectorFloatSlow {
+  0%, 100% {
+    transform: translate(0px, 0px) rotate(0deg);
+  }
+  33% {
+    transform: translate(18px, -24px) rotate(6deg);
+  }
+  66% {
+    transform: translate(-14px, 16px) rotate(-4deg);
+  }
+}
+
+@keyframes vectorFloatReverse {
+  0%, 100% {
+    transform: translate(0px, 0px) rotate(0deg);
+  }
+  33% {
+    transform: translate(-20px, 22px) rotate(-8deg);
+  }
+  66% {
+    transform: translate(16px, -18px) rotate(5deg);
+  }
+}
+
+@keyframes vectorDriftRotate {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+  50% {
+    transform: rotate(180deg) scale(1.08);
+  }
+  100% {
+    transform: rotate(360deg) scale(1);
+  }
+}
+
+@keyframes vectorPulseDrift {
+  0%, 100% {
+    transform: scale(1) translateY(0);
+    opacity: 0.15;
+  }
+  50% {
+    transform: scale(1.12) translateY(-15px);
+    opacity: 0.28;
+  }
+}
+
+.animate-vector-slow {
+  animation: vectorFloatSlow 18s ease-in-out infinite;
+}
+
+.animate-vector-reverse {
+  animation: vectorFloatReverse 22s ease-in-out infinite;
+}
+
+.animate-vector-drift {
+  animation: vectorDriftRotate 35s linear infinite;
+}
+
+.animate-vector-pulse {
+  animation: vectorPulseDrift 14s ease-in-out infinite;
+}
+
+/* Respect user's motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .animate-vector-slow,
+  .animate-vector-reverse,
+  .animate-vector-drift,
+  .animate-vector-pulse {
+    animation: none !important;
+  }
+}
+
 /* Print styles */
 @media print {
   .no-print {

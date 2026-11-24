@@ -12,7 +12,7 @@ export const ContactSection: React.FC = () => {
   };
 
   return (
-    <section id="contact" className="py-24 bg-canvas">
+    <section id="contact" className="py-24 relative z-10">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <div className="bg-canvas-card border border-stroke rounded-2xl p-8 sm:p-12 md:p-16">

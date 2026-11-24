@@ -1,5 +1,6 @@
 import React from 'react';
 import { Navbar } from './components/common/Navbar';
+import { FloatingVectorsBackground } from './components/common/FloatingVectorsBackground';
 import { HeroSection } from './components/hero/HeroSection';
 import { AboutSection } from './components/about/AboutSection';
 import { ProjectsGrid } from './components/projects/ProjectsGrid';
@@ -18,7 +19,10 @@ export const App: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-canvas text-ink flex flex-col font-sans selection:bg-stroke selection:text-ink">
+    <div className="relative min-h-screen bg-canvas text-ink flex flex-col font-sans selection:bg-stroke selection:text-ink">
+      {/* Ambient Floating Vector Graphic Backdrop */}
+      <FloatingVectorsBackground />
+
       {/* Sticky Header */}
       <Navbar onContactClick={scrollToContact} />
 

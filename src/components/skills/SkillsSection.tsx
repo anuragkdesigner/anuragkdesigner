@@ -244,7 +244,7 @@ export const SkillsSection: React.FC = () => {
   };
 
   return (
-    <section id="skills" className="py-20 border-b border-stroke bg-canvas">
+    <section id="skills" className="py-20 border-b border-stroke relative z-10">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
