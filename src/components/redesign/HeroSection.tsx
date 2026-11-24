@@ -116,7 +116,7 @@ export const HeroSection: React.FC = () => {
           ref={imageColumnRef}
           className="lg:col-span-5 relative flex items-center justify-center lg:justify-end"
         >
-          <div className="relative w-full max-w-[320px] sm:max-w-[400px] lg:max-w-[440px]">
+          <div className="relative w-full max-w-[280px] sm:max-w-[340px] lg:max-w-[380px]">
             
             {/* Ambient Radial Backlight behind silhouette */}
             <div 
@@ -132,14 +132,14 @@ export const HeroSection: React.FC = () => {
             {/* Cut-out Transparent Portrait Image */}
             <div className="relative z-10">
               <img
-                src="./anurag-portrait.png"
+                src="/anurag-portrait.png?v=2"
                 alt="Anurag K — Graphic Designer & Video Editor"
-                className="w-full h-auto object-cover relative z-10 drop-shadow-[0_20px_35px_rgba(0,0,0,0.18)]"
+                className="w-full h-auto object-cover relative z-10 drop-shadow-[0_20px_35px_rgba(0,0,0,0.16)]"
               />
 
               {/* Bottom Gradient Fade to seamlessly melt into light page background */}
               <div 
-                className="absolute inset-x-0 bottom-0 h-36 bg-gradient-to-t from-[#f9f9f8] via-[#f9f9f8]/85 to-transparent z-20 pointer-events-none"
+                className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[#f9f9f8] via-[#f9f9f8]/85 to-transparent z-20 pointer-events-none"
               />
             </div>
 
