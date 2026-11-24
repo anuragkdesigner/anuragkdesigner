@@ -78,13 +78,6 @@ export interface SkillItem {
   visualType: 'graphic' | 'motion' | 'video' | 'after-effects' | 'photoshop' | 'illustrator' | 'video-editing' | 'premiere-pro';
 }
 
-export interface DesignPrinciple {
-  number: string;
-  title: string;
-  thesis: string;
-  antiPattern: string;
-}
-
 export interface SandboxTokenState {
   density: 'compact' | 'balanced' | 'relaxed';
   radius: 'sharp' | 'subtle' | 'rounded';
