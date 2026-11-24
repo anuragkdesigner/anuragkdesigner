@@ -98,15 +98,15 @@ export const HeroSection: React.FC = () => {
           </div>
 
           {/* Main "ANURAG" Display Statement */}
-          <div className="mask-line pt-2 sm:pt-3">
+          <div className="mask-line pt-2">
             <div
               ref={nameRowRef}
-              className="flex items-baseline gap-2 sm:gap-3 font-display font-extrabold select-none leading-none"
+              className="flex items-baseline gap-2 font-display font-extrabold select-none leading-none"
             >
-              <span className="text-5xl sm:text-6xl md:text-7xl lg:text-[90px] text-[#0d0e12] tracking-tight uppercase">
+              <span className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-[#0d0e12] tracking-tight uppercase">
                 ANURAG
               </span>
-              <span className="w-2.5 h-2.5 sm:w-3.5 sm:h-3.5 md:w-4 md:h-4 rounded-full bg-[#0d0e12] inline-block mb-1" />
+              <span className="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-[#0d0e12] inline-block mb-1" />
             </div>
           </div>
 
@@ -143,9 +143,9 @@ export const HeroSection: React.FC = () => {
               aria-hidden="true"
             />
 
-            {/* Giant Background Typography Watermark behind portrait (Photoshop Layered Depth) */}
+            {/* Background Typography Watermark behind portrait (Photoshop Layered Depth) */}
             <div 
-              className="absolute -top-10 sm:-top-16 -left-6 sm:-left-12 font-display text-8xl sm:text-[130px] lg:text-[150px] uppercase tracking-tighter text-[#0d0e12]/[0.05] select-none pointer-events-none leading-none z-0"
+              className="absolute -top-6 sm:-top-10 -left-4 sm:-left-8 font-display font-extrabold text-6xl sm:text-7xl lg:text-[90px] uppercase tracking-tighter text-[#0d0e12]/[0.05] select-none pointer-events-none leading-none z-0"
               aria-hidden="true"
             >
               ANURAG
