@@ -126,10 +126,70 @@ body {
   animation: mascotBounce 2.4s ease-in-out infinite;
 }
 
+/* Floating background vectors (Camera, Resolve & Photoshop components) */
+@keyframes floatSlow {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-18px) rotate(2.5deg);
+  }
+}
+
+@keyframes floatReverse {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(16px) rotate(-3deg);
+  }
+}
+
+@keyframes floatDrift {
+  0%, 100% {
+    transform: translate(0px, 0px) rotate(0deg);
+  }
+  33% {
+    transform: translate(8px, -14px) rotate(1.5deg);
+  }
+  66% {
+    transform: translate(-10px, -6px) rotate(-1.5deg);
+  }
+}
+
+@keyframes marchingAnts {
+  0% {
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke-dashoffset: 16;
+  }
+}
+
+.animate-float-slow {
+  animation: floatSlow 7.5s ease-in-out infinite;
+}
+
+.animate-float-reverse {
+  animation: floatReverse 9s ease-in-out infinite;
+}
+
+.animate-float-drift {
+  animation: floatDrift 11s ease-in-out infinite;
+}
+
+.animate-marching-ants {
+  animation: marchingAnts 1.4s linear infinite;
+}
+
 /* Reduced motion preference */
 @media (prefers-reduced-motion: reduce) {
   .animate-spin-badge,
-  .animate-mascot-bounce {
+  .animate-mascot-bounce,
+  .animate-float-slow,
+  .animate-float-reverse,
+  .animate-float-drift,
+  .animate-marching-ants {
     animation: none !important;
   }
   html {
