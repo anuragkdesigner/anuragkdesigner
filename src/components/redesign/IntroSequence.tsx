@@ -52,19 +52,6 @@ export const IntroSequence: React.FC<IntroSequenceProps> = ({ onComplete }) => {
     return () => ctx.revert();
   }, [onComplete]);
 
-  const handleSkip = () => {
-    gsap.killTweensOf(overlayRef.current);
-    gsap.to(overlayRef.current, {
-      yPercent: -100,
-      duration: 0.35,
-      ease: "power3.inOut",
-      onComplete: () => {
-        setHidden(true);
-        onComplete();
-      }
-    });
-  };
-
   if (hidden) return null;
 
   return (
@@ -72,14 +59,6 @@ export const IntroSequence: React.FC<IntroSequenceProps> = ({ onComplete }) => {
       ref={overlayRef}
       className="fixed inset-0 z-50 bg-[#f9f9f8] flex flex-col items-center justify-center select-none"
     >
-      {/* Skip Button */}
-      <button
-        onClick={handleSkip}
-        className="absolute top-6 right-8 text-xs font-mono tracking-widest uppercase text-[#525866] hover:text-[#0d0e12] px-3 py-1.5 rounded border border-[#e2dfd7] hover:border-[#0d0e12] transition-colors"
-      >
-        Skip Intro ✕
-      </button>
-
       {/* Main Clean Brand Splash: "ANURAG" */}
       <div className="flex flex-col items-center gap-3 sm:gap-4 px-6 text-center">
         <div
