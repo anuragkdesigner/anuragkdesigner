@@ -1,5 +1,9 @@
-import React, { useState } from 'react';
-import { ArrowUpRight, Sparkles, BookOpen } from 'lucide-react';
+import React, { useEffect, useRef } from 'react';
+import { ArrowUpRight, Sparkles } from 'lucide-react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 interface EditorialSpread {
   number: string;
@@ -12,12 +16,10 @@ interface EditorialSpread {
   leftImage: {
     url: string;
     caption: string;
-    aspect: string;
   };
   rightHeroImage: {
     url: string;
     caption: string;
-    aspect: string;
   };
   rightDetailImage: {
     url: string;
@@ -40,20 +42,18 @@ const EDITORIAL_SPREADS: EditorialSpread[] = [
     rightPageNum: "05",
     leftImage: {
       url: "https://images.unsplash.com/photo-1600132806370-bf17e65e942f?auto=format&fit=crop&w=700&q=80",
-      caption: "Stationery & Tactile Print Standards",
-      aspect: "aspect-[4/3]"
+      caption: "Stationery & Tactile Print Standards"
     },
     rightHeroImage: {
       url: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=1000&q=80",
-      caption: "Architectural Visual Identity Space",
-      aspect: "aspect-[16/10]"
+      caption: "Architectural Visual Identity Space"
     },
     rightDetailImage: {
       url: "https://images.unsplash.com/photo-1541701494587-cb58502866ab?auto=format&fit=crop&w=600&q=80",
       caption: "Color Theory & Abstract Palette System"
     },
-    deliverables: ["Comprehensive Brand Guidelines", "Vector Mark Geometries", "Packaging Collateral", "Typography Standards", "Stationery Layouts"],
-    tools: ["Adobe Illustrator", "Photoshop", "Figma"],
+    deliverables: ["Brand Guidelines", "Vector Mark Geometries", "Packaging Collateral", "Typography Standards"],
+    tools: ["Illustrator", "Photoshop", "Figma"],
     scope: "Identity Architecture",
     year: "2024–2025"
   },
@@ -67,19 +67,17 @@ const EDITORIAL_SPREADS: EditorialSpread[] = [
     rightPageNum: "07",
     leftImage: {
       url: "https://images.unsplash.com/photo-1528825871115-3581a5387919?auto=format&fit=crop&w=700&q=80",
-      caption: "Pop Art Prop & Color Calibration",
-      aspect: "aspect-[4/3]"
+      caption: "Pop Art Prop & Color Calibration"
     },
     rightHeroImage: {
       url: "https://images.unsplash.com/photo-1550684848-fac1c5b4e853?auto=format&fit=crop&w=1000&q=80",
-      caption: "Pastel Studio Lighting & Product Hero",
-      aspect: "aspect-[16/10]"
+      caption: "Pastel Studio Lighting & Product Hero"
     },
     rightDetailImage: {
       url: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=600&q=80",
       caption: "Minimalist Environmental Still Life"
     },
-    deliverables: ["1080x1350 Feed Architecture", "High-CTR Promotional Adverts", "Multi-Slide Carousels", "Food Retouching & Color Grading"],
+    deliverables: ["1080x1350 Feed Architecture", "Promotional Adverts", "Multi-Slide Carousels", "Product Retouching"],
     tools: ["Photoshop", "After Effects", "Illustrator"],
     scope: "Campaign Direction",
     year: "2024–2025"
@@ -94,19 +92,17 @@ const EDITORIAL_SPREADS: EditorialSpread[] = [
     rightPageNum: "09",
     leftImage: {
       url: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=700&q=80",
-      caption: "Vogue Cover & Editorial Framing",
-      aspect: "aspect-[4/3]"
+      caption: "Vogue Cover & Editorial Framing"
     },
     rightHeroImage: {
       url: "https://images.unsplash.com/photo-1508739773434-c26b3d09e071?auto=format&fit=crop&w=1000&q=80",
-      caption: "Cinematic Atmospheric Key Art",
-      aspect: "aspect-[16/10]"
+      caption: "Cinematic Atmospheric Key Art"
     },
     rightDetailImage: {
       url: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=600&q=80",
       caption: "Macro Texture & Precision Detail"
     },
-    deliverables: ["Movie Poster Key Art", "Liquid Splash Compositing", "Fashion Editorial Spreads", "Print-Ready Prepress (CMYK)"],
+    deliverables: ["Movie Key Art", "Liquid Splash Art", "Fashion Editorial Spreads", "Prepress CMYK"],
     tools: ["Photoshop", "Lightroom", "Camera Raw"],
     scope: "Editorial & Cinema",
     year: "2024–2025"
@@ -121,19 +117,17 @@ const EDITORIAL_SPREADS: EditorialSpread[] = [
     rightPageNum: "11",
     leftImage: {
       url: "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=700&q=80",
-      caption: "Multi-Track NLE Video Suite",
-      aspect: "aspect-[4/3]"
+      caption: "Multi-Track NLE Video Suite"
     },
     rightHeroImage: {
       url: "https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&w=1000&q=80",
-      caption: "Cinematic Projection & Rhythm Pacing",
-      aspect: "aspect-[16/10]"
+      caption: "Cinematic Projection & Rhythm Pacing"
     },
     rightDetailImage: {
       url: "https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&w=600&q=80",
       caption: "Optical Bokeh & Lens Aesthetics"
     },
-    deliverables: ["Rhythm & Speed Ramps", "Multi-Track Sound Design", "Kinetic Title Graphics", "Cinematic Color LUTs"],
+    deliverables: ["Rhythm & Speed Ramps", "Multi-Track Foley Sync", "Kinetic Title Graphics", "Cinematic Color LUTs"],
     tools: ["Premiere Pro", "After Effects", "DaVinci Resolve"],
     scope: "Post-Production",
     year: "2024–2025"
@@ -141,81 +135,82 @@ const EDITORIAL_SPREADS: EditorialSpread[] = [
 ];
 
 export const ServicesSection: React.FC = () => {
-  const [activeTab, setActiveTab] = useState<string>("all");
+  const containerRef = useRef<HTMLDivElement>(null);
+  const trackRef = useRef<HTMLDivElement>(null);
+  const progressBarRef = useRef<HTMLDivElement>(null);
 
-  const filteredSpreads = activeTab === "all" 
-    ? EDITORIAL_SPREADS 
-    : EDITORIAL_SPREADS.filter(s => s.number === activeTab);
+  // Pinned GSAP Horizontal Scrolling
+  useEffect(() => {
+    const container = containerRef.current;
+    const track = trackRef.current;
+    if (!container || !track) return;
+
+    const ctx = gsap.context(() => {
+      const getScrollAmount = () => -(track.scrollWidth - window.innerWidth + 80);
+
+      const horizontalTween = gsap.to(track, {
+        x: getScrollAmount,
+        ease: 'none'
+      });
+
+      ScrollTrigger.create({
+        trigger: container,
+        start: 'top top',
+        end: () => `+=${Math.max(1400, track.scrollWidth - window.innerWidth + 300)}`,
+        pin: true,
+        animation: horizontalTween,
+        scrub: 1,
+        invalidateOnRefresh: true,
+        onUpdate: (self) => {
+          if (progressBarRef.current) {
+            progressBarRef.current.style.width = `${Math.min(100, Math.max(0, self.progress * 100))}%`;
+          }
+        }
+      });
+    }, container);
+
+    return () => ctx.revert();
+  }, []);
 
   return (
-    <section id="services" className="py-24 sm:py-32 bg-[#f4f3ef] border-t border-[#e2dfd7]">
-      <div className="max-w-site mx-auto px-6 sm:px-10">
+    <section 
+      id="services" 
+      ref={containerRef}
+      className="relative bg-[#f4f3ef] border-t border-[#e2dfd7] select-none"
+    >
+      {/* Pinned 100vh Viewport */}
+      <div className="h-screen w-full flex flex-col justify-between py-6 sm:py-8 overflow-hidden">
         
-        {/* Section Header Strip */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 sm:mb-16">
-          <div className="space-y-3">
-            <div className="flex items-center gap-2">
-              <span className="w-2.5 h-2.5 rounded-full bg-[#0d0e12] animate-pulse" />
-              <span className="text-xs font-mono uppercase tracking-[0.15em] text-[#0d0e12] font-bold">
-                Editorial Publication & Craft
-              </span>
-            </div>
-            <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl text-[#0d0e12] tracking-tight uppercase leading-none">
-              WHAT I DO
-            </h2>
+        {/* Top Header Strip */}
+        <div className="max-w-site mx-auto w-full px-6 sm:px-10 flex items-center justify-between shrink-0">
+          <div className="flex items-center gap-3">
+            <span className="w-2.5 h-2.5 rounded-full bg-[#0d0e12] animate-pulse" />
+            <span className="font-mono text-xs uppercase tracking-widest text-[#0d0e12] font-bold">
+              WHAT I DO · EDITORIAL PUBLICATION SPREADS (01—0{EDITORIAL_SPREADS.length})
+            </span>
           </div>
 
-          <div className="max-w-md space-y-2">
-            <p className="text-xs sm:text-sm font-sans text-[#525866] leading-relaxed">
-              Open editorial spreads presenting design disciplines, brand identity architectures, advertising feeds, and video post-production.
-            </p>
-            <div className="flex items-center gap-2 text-[11px] font-mono text-[#858c9b]">
-              <BookOpen className="w-3.5 h-3.5 text-[#0d0e12]" />
-              <span>4 EDITORIAL SPREADS · PRINT-GRADE AESTHETIC</span>
-            </div>
+          <div className="flex items-center gap-2 text-xs font-mono text-[#525866]">
+            <span className="hidden sm:inline">HORIZONTAL SCROLL</span>
+            <span className="text-[#0d0e12] font-bold animate-pulse">SCROLL TO EXPLORE →</span>
           </div>
         </div>
 
-        {/* Spread Navigation Tabs */}
-        <div className="flex flex-wrap items-center gap-2 mb-10 pb-4 border-b border-[#e2dfd7]">
-          <button
-            onClick={() => setActiveTab("all")}
-            className={`py-2 px-4 rounded text-xs font-mono uppercase tracking-wider transition-all ${
-              activeTab === "all"
-                ? "bg-[#0d0e12] text-white font-bold shadow-md"
-                : "bg-white text-[#525866] hover:text-[#0d0e12] border border-[#e2dfd7] shadow-xs"
-            }`}
-          >
-            All Spreads (04)
-          </button>
-          {EDITORIAL_SPREADS.map((s) => (
-            <button
-              key={s.number}
-              onClick={() => setActiveTab(s.number)}
-              className={`py-2 px-4 rounded text-xs font-mono uppercase tracking-wider transition-all flex items-center gap-2 ${
-                activeTab === s.number
-                  ? "bg-[#0d0e12] text-white font-bold shadow-md"
-                  : "bg-white text-[#525866] hover:text-[#0d0e12] border border-[#e2dfd7] shadow-xs"
-              }`}
-            >
-              <span>{s.number}</span>
-              <span className="hidden sm:inline">· {s.category}</span>
-            </button>
-          ))}
-        </div>
-
-        {/* Editorial Spreads Showcase */}
-        <div className="space-y-16 sm:space-y-24">
-          {filteredSpreads.map((spread) => (
+        {/* Horizontal Sliding Track of Open Magazine Spreads */}
+        <div
+          ref={trackRef}
+          className="flex items-center gap-8 sm:gap-12 pl-6 sm:pl-10 pr-16 sm:pr-24 will-change-transform my-auto py-2"
+        >
+          {EDITORIAL_SPREADS.map((spread) => (
             <article
               key={spread.number}
-              className="group bg-white rounded-lg border border-[#e2dfd7] shadow-[0_25px_60px_-15px_rgba(0,0,0,0.12),0_4px_16px_rgba(0,0,0,0.05)] overflow-hidden transition-all duration-300 hover:shadow-[0_30px_70px_-12px_rgba(0,0,0,0.16)]"
+              className="w-[88vw] sm:w-[85vw] lg:w-[1080px] xl:w-[1180px] shrink-0 bg-white rounded-lg border border-[#e2dfd7] shadow-[0_20px_50px_-15px_rgba(0,0,0,0.12),0_4px_16px_rgba(0,0,0,0.05)] overflow-hidden my-auto"
             >
               <div className="grid grid-cols-1 lg:grid-cols-12 relative">
                 
-                {/* Authentic Center Spine Crease / Gutter Depth (Simulating physical booklet binding) */}
+                {/* Center Spine Crease / Gutter Depth (Physical booklet binding effect) */}
                 <div 
-                  className="hidden lg:block absolute inset-y-0 left-1/2 -translate-x-1/2 w-10 pointer-events-none z-30 bg-gradient-to-r from-black/[0.06] via-black/[0.12] to-black/[0.06]"
+                  className="hidden lg:block absolute inset-y-0 left-1/2 -translate-x-1/2 w-8 pointer-events-none z-30 bg-gradient-to-r from-black/[0.06] via-black/[0.12] to-black/[0.06]"
                   aria-hidden="true"
                 />
                 <div 
@@ -224,10 +219,10 @@ export const ServicesSection: React.FC = () => {
                 />
 
                 {/* LEFT PAGE (Editorial Typography, Narrative & Specs) */}
-                <div className="lg:col-span-6 p-6 sm:p-10 lg:p-12 flex flex-col justify-between border-b lg:border-b-0 lg:border-r border-[#e2dfd7] bg-white relative">
+                <div className="lg:col-span-6 p-5 sm:p-7 lg:p-9 flex flex-col justify-between border-b lg:border-b-0 lg:border-r border-[#e2dfd7] bg-white relative">
                   
                   {/* Top Folio Header */}
-                  <div className="flex items-center justify-between text-[11px] font-mono uppercase tracking-widest text-[#525866] border-b border-[#e2dfd7] pb-3 mb-6">
+                  <div className="flex items-center justify-between text-[10px] font-mono uppercase tracking-widest text-[#525866] border-b border-[#e2dfd7] pb-2.5 mb-4">
                     <span className="flex items-center gap-1.5 font-bold text-[#0d0e12]">
                       <Sparkles className="w-3 h-3" />
                       CAPABILITY {spread.number}
@@ -236,26 +231,26 @@ export const ServicesSection: React.FC = () => {
                   </div>
 
                   {/* Main Editorial Header */}
-                  <div className="space-y-3 mb-6">
-                    <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#858c9b]">
+                  <div className="space-y-2 mb-4">
+                    <div className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#858c9b]">
                       {spread.category}
                     </div>
-                    <h3 className="font-display text-2xl sm:text-3xl lg:text-4xl text-[#0d0e12] tracking-tight uppercase leading-[1.05]">
+                    <h3 className="font-display text-xl sm:text-2xl lg:text-3xl text-[#0d0e12] tracking-tight uppercase leading-tight">
                       {spread.title}
                     </h3>
-                    <p className="font-mono text-xs text-[#0d0e12] font-semibold tracking-wide">
+                    <p className="font-mono text-[11px] text-[#0d0e12] font-semibold tracking-wide">
                       {spread.subtitle}
                     </p>
-                    <p className="text-xs sm:text-sm text-[#525866] font-sans leading-relaxed pt-2 border-t border-[#e2dfd7]">
+                    <p className="text-xs text-[#525866] font-sans leading-relaxed pt-2 border-t border-[#e2dfd7] line-clamp-3">
                       {spread.editorialIntro}
                     </p>
                   </div>
 
-                  {/* Inset Left Photo & Specs Layout (Editorial Magazine Grid) */}
-                  <div className="grid grid-cols-1 sm:grid-cols-12 gap-4 items-end mb-8 pt-4 border-t border-[#e2dfd7]">
+                  {/* Inset Left Photo & Specs Layout */}
+                  <div className="grid grid-cols-12 gap-3 items-end mb-4 pt-3 border-t border-[#e2dfd7]">
                     
                     {/* Left Inset Photography */}
-                    <div className="sm:col-span-6 space-y-1.5">
+                    <div className="col-span-5 space-y-1">
                       <div className="relative rounded overflow-hidden border border-[#e2dfd7] bg-[#f2f1ed] aspect-[4/3] group/img">
                         <img
                           src={spread.leftImage.url}
@@ -265,20 +260,20 @@ export const ServicesSection: React.FC = () => {
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent pointer-events-none" />
                       </div>
-                      <span className="text-[10px] font-mono text-[#858c9b] uppercase tracking-wider block truncate">
+                      <span className="text-[9px] font-mono text-[#858c9b] uppercase tracking-wider block truncate">
                         FIG. 01 · {spread.leftImage.caption}
                       </span>
                     </div>
 
                     {/* Deliverables & Metadata List */}
-                    <div className="sm:col-span-6 space-y-3 text-xs font-mono">
+                    <div className="col-span-7 space-y-2 text-xs font-mono">
                       <div>
-                        <span className="text-[10px] uppercase text-[#858c9b] block mb-1">KEY DELIVERABLES</span>
+                        <span className="text-[9px] uppercase text-[#858c9b] block mb-1">KEY DELIVERABLES</span>
                         <div className="flex flex-wrap gap-1">
                           {spread.deliverables.slice(0, 3).map((d, i) => (
                             <span
                               key={i}
-                              className="px-2 py-0.5 rounded bg-[#f1f0ec] text-[10px] text-[#0d0e12] border border-[#e2dfd7] truncate max-w-full"
+                              className="px-1.5 py-0.5 rounded bg-[#f1f0ec] text-[9px] text-[#0d0e12] border border-[#e2dfd7] truncate max-w-full"
                             >
                               {d}
                             </span>
@@ -286,16 +281,16 @@ export const ServicesSection: React.FC = () => {
                         </div>
                       </div>
 
-                      <div className="pt-2 border-t border-[#e2dfd7] flex items-center justify-between text-[11px] text-[#525866]">
-                        <span>PRIMARY TOOLS:</span>
-                        <span className="font-bold text-[#0d0e12]">{spread.tools.join(" · ")}</span>
+                      <div className="pt-1.5 border-t border-[#e2dfd7] flex items-center justify-between text-[10px] text-[#525866]">
+                        <span>TOOLS:</span>
+                        <span className="font-bold text-[#0d0e12] truncate ml-1">{spread.tools.join(" · ")}</span>
                       </div>
                     </div>
 
                   </div>
 
                   {/* Bottom Folio Footer */}
-                  <div className="flex items-center justify-between text-[10px] font-mono uppercase text-[#858c9b] pt-4 border-t border-[#e2dfd7] mt-auto">
+                  <div className="flex items-center justify-between text-[9px] font-mono uppercase text-[#858c9b] pt-3 border-t border-[#e2dfd7] mt-auto">
                     <span>ANURAG K · EDITORIAL PUBLICATION</span>
                     <span className="font-bold text-[#0d0e12]">PAGE {spread.leftPageNum}</span>
                   </div>
@@ -303,19 +298,19 @@ export const ServicesSection: React.FC = () => {
                 </div>
 
                 {/* RIGHT PAGE (Aesthetic Imagery, Composition Grid & Mood) */}
-                <div className="lg:col-span-6 p-6 sm:p-10 lg:p-12 flex flex-col justify-between bg-[#fcfbf9] relative">
+                <div className="lg:col-span-6 p-5 sm:p-7 lg:p-9 flex flex-col justify-between bg-[#fcfbf9] relative">
                   
                   {/* Top Folio Header */}
-                  <div className="flex items-center justify-between text-[11px] font-mono uppercase tracking-widest text-[#525866] border-b border-[#e2dfd7] pb-3 mb-6">
+                  <div className="flex items-center justify-between text-[10px] font-mono uppercase tracking-widest text-[#525866] border-b border-[#e2dfd7] pb-2.5 mb-4">
                     <span>STUDIO ARCHIVE · {spread.scope}</span>
                     <span className="font-bold text-[#0d0e12]">{spread.year}</span>
                   </div>
 
-                  {/* Main Aesthetic Photo Showcase (Multi-Image Composition) */}
-                  <div className="space-y-4 mb-6">
+                  {/* Main Aesthetic Photo Showcase */}
+                  <div className="space-y-3 mb-4">
                     
                     {/* Big Hero Visual Card */}
-                    <div className="relative rounded-lg overflow-hidden border border-[#e2dfd7] bg-[#f2f1ed] aspect-[16/10] shadow-sm group/hero">
+                    <div className="relative rounded-lg overflow-hidden border border-[#e2dfd7] bg-[#f2f1ed] aspect-[16/10] shadow-xs group/hero">
                       <img
                         src={spread.rightHeroImage.url}
                         alt={spread.rightHeroImage.caption}
@@ -324,18 +319,18 @@ export const ServicesSection: React.FC = () => {
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent pointer-events-none" />
                       
-                      <div className="absolute top-3 left-3 bg-white/95 backdrop-blur-md px-2.5 py-1 rounded text-[10px] font-mono uppercase tracking-wider text-[#0d0e12] border border-[#e2dfd7] shadow-xs">
+                      <div className="absolute top-2.5 left-2.5 bg-white/95 backdrop-blur-md px-2 py-0.5 rounded text-[9px] font-mono uppercase tracking-wider text-[#0d0e12] border border-[#e2dfd7] shadow-xs">
                         PLATE 0{spread.number}A
                       </div>
 
-                      <div className="absolute bottom-3 left-3 right-3 text-white text-xs font-mono drop-shadow truncate">
+                      <div className="absolute bottom-2.5 left-2.5 right-2.5 text-white text-[11px] font-mono drop-shadow truncate">
                         {spread.rightHeroImage.caption}
                       </div>
                     </div>
 
                     {/* Secondary Detail Row with Caption & Action Link */}
-                    <div className="grid grid-cols-1 sm:grid-cols-12 gap-3 items-center pt-2">
-                      <div className="sm:col-span-5 relative aspect-[16/9] rounded overflow-hidden border border-[#e2dfd7] bg-[#f2f1ed]">
+                    <div className="grid grid-cols-12 gap-3 items-center pt-1">
+                      <div className="col-span-5 relative aspect-[16/9] rounded overflow-hidden border border-[#e2dfd7] bg-[#f2f1ed]">
                         <img
                           src={spread.rightDetailImage.url}
                           alt={spread.rightDetailImage.caption}
@@ -344,17 +339,17 @@ export const ServicesSection: React.FC = () => {
                         />
                       </div>
                       
-                      <div className="sm:col-span-7 flex flex-col justify-between space-y-2">
-                        <p className="text-[11px] font-mono text-[#525866] leading-tight">
-                          FIG. 02 · {spread.rightDetailImage.caption}. Engineered with pixel-precise color grading and layout rhythm.
+                      <div className="col-span-7 flex flex-col justify-between space-y-1.5">
+                        <p className="text-[10px] font-mono text-[#525866] leading-tight line-clamp-2">
+                          FIG. 02 · {spread.rightDetailImage.caption}. Precision grading & rhythm.
                         </p>
                         
                         <a
                           href="#contact"
-                          className="inline-flex items-center gap-1.5 text-xs font-mono font-bold uppercase tracking-wider text-[#0d0e12] hover:text-[#525866] transition-colors pt-1"
+                          className="inline-flex items-center gap-1 text-[11px] font-mono font-bold uppercase tracking-wider text-[#0d0e12] hover:text-[#525866] transition-colors"
                         >
                           <span>Commission Capability</span>
-                          <ArrowUpRight className="w-3.5 h-3.5" />
+                          <ArrowUpRight className="w-3 h-3" />
                         </a>
                       </div>
                     </div>
@@ -362,7 +357,7 @@ export const ServicesSection: React.FC = () => {
                   </div>
 
                   {/* Bottom Folio Footer */}
-                  <div className="flex items-center justify-between text-[10px] font-mono uppercase text-[#858c9b] pt-4 border-t border-[#e2dfd7] mt-auto">
+                  <div className="flex items-center justify-between text-[9px] font-mono uppercase text-[#858c9b] pt-3 border-t border-[#e2dfd7] mt-auto">
                     <span>BUFFERBYTES TECH · HARIS&CO. ALUM</span>
                     <span className="font-bold text-[#0d0e12]">PAGE {spread.rightPageNum}</span>
                   </div>
@@ -372,6 +367,20 @@ export const ServicesSection: React.FC = () => {
               </div>
             </article>
           ))}
+        </div>
+
+        {/* Bottom Horizontal Scroll Progress Bar */}
+        <div className="max-w-site mx-auto w-full px-6 sm:px-10 shrink-0">
+          <div className="flex items-center justify-between text-[11px] font-mono text-[#525866] mb-2">
+            <span>SPREAD PROGRESS</span>
+            <span>01 — 0{EDITORIAL_SPREADS.length} FINISH → VERTICAL RESUME</span>
+          </div>
+          <div className="h-1 bg-[#e2dfd7] rounded-full overflow-hidden w-full">
+            <div
+              ref={progressBarRef}
+              className="h-full bg-[#0d0e12] w-0 origin-left transition-all duration-75"
+            />
+          </div>
         </div>
 
       </div>
