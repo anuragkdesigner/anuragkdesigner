@@ -4,7 +4,6 @@ import { HeroSection } from './components/hero/HeroSection';
 import { AboutSection } from './components/about/AboutSection';
 import { ProjectsGrid } from './components/projects/ProjectsGrid';
 import { SkillsSection } from './components/skills/SkillsSection';
-import { DesignTokenSandbox } from './components/interactive/DesignTokenSandbox';
 import { ExperienceSection } from './components/experience/ExperienceSection';
 import { ContactSection } from './components/contact/ContactSection';
 import { Footer } from './components/common/Footer';
@@ -29,7 +28,6 @@ export const App: React.FC = () => {
         <AboutSection />
         <ProjectsGrid projects={PROJECTS} />
         <SkillsSection />
-        <DesignTokenSandbox />
         <ExperienceSection />
         <ContactSection />
       </main>

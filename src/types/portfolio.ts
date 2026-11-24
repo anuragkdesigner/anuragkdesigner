@@ -77,10 +77,3 @@ export interface SkillItem {
   accentColor: string;
   visualType: 'graphic' | 'motion' | 'video' | 'after-effects' | 'photoshop' | 'illustrator' | 'video-editing' | 'premiere-pro';
 }
-
-export interface SandboxTokenState {
-  density: 'compact' | 'balanced' | 'relaxed';
-  radius: 'sharp' | 'subtle' | 'rounded';
-  contrastMode: 'aa' | 'aaa' | 'high-contrast';
-  gridVisible: boolean;
-}
