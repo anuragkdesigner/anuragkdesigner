@@ -10,7 +10,8 @@ export const Navbar: React.FC<NavbarProps> = ({ onContactClick }) => {
 
   const navLinks = [
     { label: 'Work', href: '#projects' },
-    { label: 'Systems Sandbox', href: '#sandbox' },
+    { label: 'Skills', href: '#skills' },
+    { label: 'Systems Lab', href: '#sandbox' },
     { label: 'Philosophy', href: '#philosophy' },
     { label: 'Experience', href: '#experience' },
   ];

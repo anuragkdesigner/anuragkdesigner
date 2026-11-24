@@ -2,6 +2,7 @@ import React from 'react';
 import { Navbar } from './components/common/Navbar';
 import { HeroSection } from './components/hero/HeroSection';
 import { ProjectsGrid } from './components/projects/ProjectsGrid';
+import { SkillsSection } from './components/skills/SkillsSection';
 import { DesignTokenSandbox } from './components/interactive/DesignTokenSandbox';
 import { PhilosophySection } from './components/philosophy/PhilosophySection';
 import { ExperienceSection } from './components/experience/ExperienceSection';
@@ -26,6 +27,7 @@ export const App: React.FC = () => {
       <main className="flex-1">
         <HeroSection />
         <ProjectsGrid projects={PROJECTS} />
+        <SkillsSection />
         <DesignTokenSandbox />
         <PhilosophySection />
         <ExperienceSection />

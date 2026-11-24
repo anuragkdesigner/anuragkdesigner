@@ -64,6 +64,20 @@ export interface Education {
   details: string;
 }
 
+export type SkillCategory = 'Industry Knowledge' | 'Tools & Technologies';
+
+export interface SkillItem {
+  id: string;
+  name: string;
+  category: SkillCategory;
+  associatedRole?: string;
+  proficiencyLevel: string;
+  initialEndorsements: number;
+  description: string;
+  accentColor: string;
+  visualType: 'graphic' | 'motion' | 'video' | 'after-effects' | 'photoshop' | 'illustrator' | 'video-editing';
+}
+
 export interface DesignPrinciple {
   number: string;
   title: string;
