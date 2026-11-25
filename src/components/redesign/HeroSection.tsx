@@ -59,12 +59,12 @@ export const HeroSection: React.FC = () => {
             {/* Line 1: GRAPHIC DESIGNER & */}
             <div
               ref={line1Ref}
-              className="w-full h-[44px] xs:h-[54px] sm:h-[68px] md:h-[82px] lg:h-[94px] relative"
+              className="w-full h-[36px] xs:h-[44px] sm:h-[56px] md:h-[68px] lg:h-[78px] relative"
             >
               <TechText
                 text="GRAPHIC DESIGNER &"
                 fontWeight={800}
-                fontSize={120}
+                fontSize={85}
                 reveal="letter"
                 dashLength={4}
                 dashGap={2}
@@ -94,12 +94,12 @@ export const HeroSection: React.FC = () => {
             {/* Line 2: VIDEO EDITOR */}
             <div
               ref={line2Ref}
-              className="w-full h-[44px] xs:h-[54px] sm:h-[68px] md:h-[82px] lg:h-[94px] relative"
+              className="w-full h-[36px] xs:h-[44px] sm:h-[56px] md:h-[68px] lg:h-[78px] relative"
             >
               <TechText
                 text="VIDEO EDITOR"
                 fontWeight={800}
-                fontSize={120}
+                fontSize={85}
                 reveal="letter"
                 dashLength={4}
                 dashGap={2}
