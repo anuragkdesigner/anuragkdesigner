@@ -54,12 +54,12 @@ export const HeroSection: React.FC = () => {
         <div ref={textColumnRef} className="lg:col-span-7 space-y-6 z-10">
           
           {/* 2-Line Headline Stack with TechText */}
-          <div className="space-y-1 sm:space-y-2">
+          <div className="space-y-0.5 sm:space-y-1">
             
             {/* Line 1: GRAPHIC DESIGNER & */}
             <div
               ref={line1Ref}
-              className="w-full h-[60px] xs:h-[75px] sm:h-[95px] md:h-[110px] lg:h-[125px] relative"
+              className="w-full h-[44px] xs:h-[54px] sm:h-[68px] md:h-[82px] lg:h-[94px] relative"
             >
               <TechText
                 text="GRAPHIC DESIGNER &"
@@ -94,7 +94,7 @@ export const HeroSection: React.FC = () => {
             {/* Line 2: VIDEO EDITOR */}
             <div
               ref={line2Ref}
-              className="w-full h-[60px] xs:h-[75px] sm:h-[95px] md:h-[110px] lg:h-[125px] relative"
+              className="w-full h-[44px] xs:h-[54px] sm:h-[68px] md:h-[82px] lg:h-[94px] relative"
             >
               <TechText
                 text="VIDEO EDITOR"
@@ -129,7 +129,7 @@ export const HeroSection: React.FC = () => {
           </div>
 
           {/* Main "ANURAG" Display Statement */}
-          <div className="pt-2">
+          <div className="pt-2 sm:pt-3">
             <div
               ref={nameRowRef}
               className="flex items-baseline gap-2 font-display font-extrabold select-none leading-none py-1"
