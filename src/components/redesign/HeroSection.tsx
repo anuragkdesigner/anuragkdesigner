@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { Sparkles, ArrowUpRight } from 'lucide-react';
+import TechText from './TechText';
 
 export const HeroSection: React.FC = () => {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -9,34 +10,6 @@ export const HeroSection: React.FC = () => {
   const line1Ref = useRef<HTMLDivElement>(null);
   const line2Ref = useRef<HTMLDivElement>(null);
   const nameRowRef = useRef<HTMLDivElement>(null);
-  const wordsRef = useRef<(HTMLSpanElement | null)[]>([]);
-
-  const line1Words = ['GRAPHIC', 'DESIGNER', '&'];
-  const line2Words = ['VIDEO', 'EDITOR'];
-
-  const handleWordHover = (e: React.MouseEvent<HTMLSpanElement>, idx: number) => {
-    gsap.to(e.currentTarget, {
-      y: -22,
-      scale: 1.12,
-      rotation: idx % 2 === 0 ? -3 : 3,
-      filter: 'drop-shadow(0 22px 24px rgba(13, 14, 18, 0.35))',
-      duration: 0.35,
-      ease: 'back.out(2.5)',
-      overwrite: 'auto'
-    });
-  };
-
-  const handleWordLeave = (e: React.MouseEvent<HTMLSpanElement>) => {
-    gsap.to(e.currentTarget, {
-      y: 0,
-      scale: 1,
-      rotation: 0,
-      filter: 'drop-shadow(0 0px 0px rgba(13, 14, 18, 0))',
-      duration: 0.6,
-      ease: 'elastic.out(1.2, 0.45)',
-      overwrite: 'auto'
-    });
-  };
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -44,10 +17,10 @@ export const HeroSection: React.FC = () => {
 
       tl.fromTo(
         [line1Ref.current, line2Ref.current, nameRowRef.current],
-        { y: '100%', opacity: 0 },
+        { opacity: 0, y: 24 },
         {
-          y: '0%',
           opacity: 1,
+          y: 0,
           duration: 0.85,
           stagger: 0.12,
           ease: 'power3.out'
@@ -59,19 +32,6 @@ export const HeroSection: React.FC = () => {
         { opacity: 1, scale: 1, y: 0, duration: 0.9, ease: 'power2.out' },
         "-=0.6"
       );
-
-      // Constant floating animation for each word
-      wordsRef.current.forEach((wordEl, index) => {
-        if (!wordEl) return;
-        gsap.to(wordEl, {
-          y: -7,
-          duration: 1.8 + (index % 3) * 0.35,
-          repeat: -1,
-          yoyo: true,
-          ease: 'sine.inOut',
-          delay: 0.85 + index * 0.12
-        });
-      });
     }, heroRef);
 
     return () => ctx.revert();
@@ -93,73 +53,88 @@ export const HeroSection: React.FC = () => {
         {/* LEFT COLUMN: Typography & Headlines (7 Cols) */}
         <div ref={textColumnRef} className="lg:col-span-7 space-y-6 z-10">
           
-          {/* 2-Line Headline Stack */}
+          {/* 2-Line Headline Stack with TechText */}
           <div className="space-y-1 sm:space-y-2">
             
             {/* Line 1: GRAPHIC DESIGNER & */}
-            <div className="mask-line py-2 overflow-visible">
-              <div
-                ref={line1Ref}
-                className="font-display font-extrabold text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl tracking-tight text-[#0d0e12] uppercase leading-none select-none whitespace-nowrap flex items-center gap-[0.25em]"
-              >
-                {line1Words.map((word, i) => (
-                  <span
-                    key={i}
-                    ref={(el) => (wordsRef.current[i] = el)}
-                    className="inline-block will-change-transform py-3 px-1 overflow-visible relative"
-                  >
-                    <span
-                      onMouseEnter={(e) => handleWordHover(e, i)}
-                      onMouseLeave={handleWordLeave}
-                      className="inline-block cursor-pointer select-none will-change-transform relative z-10 transition-colors hover:text-black"
-                    >
-                      {word}
-                    </span>
-                  </span>
-                ))}
-              </div>
+            <div
+              ref={line1Ref}
+              className="w-full h-[60px] xs:h-[75px] sm:h-[95px] md:h-[110px] lg:h-[125px] relative"
+            >
+              <TechText
+                text="GRAPHIC DESIGNER &"
+                fontWeight={800}
+                fontSize={120}
+                reveal="letter"
+                dashLength={4}
+                dashGap={2}
+                specks={15}
+                intro="none"
+                introDuration={2}
+                clickKick
+                guides={false}
+                fontFamily="Poppins, sans-serif"
+                letterSpacing={-0.03}
+                accentColor="#0d0e12"
+                reach={200}
+                softness={0.7}
+                lineStyle="dashed"
+                strokeWidth={1.5}
+                speed={1}
+                bounce={0.4}
+                selection
+                labels
+                color="#0d0e12"
+                align="left"
+                draggable
+                sweep
+              />
             </div>
 
-            {/* Line 2: VIDEO EDITOR - Exact same font size as Line 1 */}
-            <div className="mask-line py-2 overflow-visible">
-              <div
-                ref={line2Ref}
-                className="font-display font-extrabold text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl tracking-tight text-[#0d0e12] uppercase leading-none select-none whitespace-nowrap flex items-center gap-[0.25em]"
-              >
-                {line2Words.map((word, i) => {
-                  const globalIdx = line1Words.length + i;
-                  return (
-                    <span
-                      key={i}
-                      ref={(el) => (wordsRef.current[globalIdx] = el)}
-                      className="inline-block will-change-transform py-3 px-1 overflow-visible relative"
-                    >
-                      <span
-                        onMouseEnter={(e) => handleWordHover(e, globalIdx)}
-                        onMouseLeave={handleWordLeave}
-                        className="inline-block cursor-pointer select-none will-change-transform relative z-10 transition-colors hover:text-black"
-                      >
-                        {word}
-                      </span>
-                    </span>
-                  );
-                })}
-              </div>
+            {/* Line 2: VIDEO EDITOR */}
+            <div
+              ref={line2Ref}
+              className="w-full h-[60px] xs:h-[75px] sm:h-[95px] md:h-[110px] lg:h-[125px] relative"
+            >
+              <TechText
+                text="VIDEO EDITOR"
+                fontWeight={800}
+                fontSize={120}
+                reveal="letter"
+                dashLength={4}
+                dashGap={2}
+                specks={15}
+                intro="none"
+                introDuration={2}
+                clickKick
+                guides={false}
+                fontFamily="Poppins, sans-serif"
+                letterSpacing={-0.03}
+                accentColor="#0d0e12"
+                reach={200}
+                softness={0.7}
+                lineStyle="dashed"
+                strokeWidth={1.5}
+                speed={1}
+                bounce={0.4}
+                selection
+                labels
+                color="#0d0e12"
+                align="left"
+                draggable
+                sweep
+              />
             </div>
 
           </div>
 
           {/* Main "ANURAG" Display Statement */}
-          <div className="mask-line pt-2 overflow-visible">
+          <div className="pt-2">
             <div
               ref={nameRowRef}
-              className="flex items-baseline gap-2 font-display font-extrabold select-none leading-none overflow-visible py-2"
+              className="flex items-baseline gap-2 font-display font-extrabold select-none leading-none py-1"
             >
-              <span
-                onMouseEnter={(e) => handleWordHover(e, 99)}
-                onMouseLeave={handleWordLeave}
-                className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-[#0d0e12] tracking-tight uppercase inline-block cursor-pointer will-change-transform relative z-10"
-              >
+              <span className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-[#0d0e12] tracking-tight uppercase">
                 ANURAG
               </span>
               <span className="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-[#0d0e12] inline-block mb-1" />
