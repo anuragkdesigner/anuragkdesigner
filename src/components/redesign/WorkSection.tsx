@@ -1,8 +1,9 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { content } from '../../data/redesignContent';
 import { ArrowUpRight } from 'lucide-react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { StoryShowcaseModal } from './StoryShowcaseModal';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -10,6 +11,7 @@ export const WorkSection: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
   const progressBarRef = useRef<HTMLDivElement>(null);
+  const [isStoryModalOpen, setIsStoryModalOpen] = useState(false);
 
   const projects = content.projects;
 
@@ -76,68 +78,89 @@ export const WorkSection: React.FC = () => {
           className="flex items-center gap-6 sm:gap-10 pl-6 sm:pl-10 pr-16 sm:pr-24 will-change-transform my-auto py-2"
         >
           {/* Track Items: Individual Project Cards */}
-          {projects.map((proj) => (
-            <div
-              key={proj.id}
-              className="w-[320px] xs:w-[380px] sm:w-[480px] lg:w-[540px] shrink-0 bg-white border border-[#e2dfd7] rounded-xl p-5 sm:p-6 shadow-xl flex flex-col justify-between group hover:border-[#0d0e12]/60 hover:shadow-2xl transition-all"
-            >
-              {/* Thumbnail 16:10 */}
-              <div className="relative aspect-[16/10] w-full rounded-lg overflow-hidden bg-[#f2f1ed] mb-4">
-                <img
-                  src={proj.image}
-                  alt={proj.title}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                  loading="lazy"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent pointer-events-none" />
+          {projects.map((proj) => {
+            const isSocialMedia = proj.id === 'social-media-posts';
 
-                <div className="absolute top-3 left-3 bg-white/95 backdrop-blur-md px-2.5 py-1 rounded text-[10px] font-mono uppercase tracking-wider text-[#0d0e12] border border-[#e2dfd7] shadow-xs">
-                  {proj.category}
-                </div>
+            return (
+              <div
+                key={proj.id}
+                onClick={isSocialMedia ? () => setIsStoryModalOpen(true) : undefined}
+                className={`w-[320px] xs:w-[380px] sm:w-[480px] lg:w-[540px] shrink-0 bg-white border border-[#e2dfd7] rounded-xl p-5 sm:p-6 shadow-xl flex flex-col justify-between group hover:border-[#0d0e12]/60 hover:shadow-2xl transition-all ${
+                  isSocialMedia ? 'cursor-pointer' : ''
+                }`}
+              >
+                {/* Thumbnail 16:10 */}
+                <div className="relative aspect-[16/10] w-full rounded-lg overflow-hidden bg-[#f2f1ed] mb-4">
+                  <img
+                    src={proj.image}
+                    alt={proj.title}
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent pointer-events-none" />
 
-                <div className="absolute top-3 right-3 bg-[#0d0e12] text-white font-mono text-[10px] font-bold px-2 py-0.5 rounded shadow">
-                  {proj.index} / 0{projects.length}
-                </div>
-              </div>
+                  <div className="absolute top-3 left-3 bg-white/95 backdrop-blur-md px-2.5 py-1 rounded text-[10px] font-mono uppercase tracking-wider text-[#0d0e12] border border-[#e2dfd7] shadow-xs">
+                    {proj.category}
+                  </div>
 
-              {/* Client & Title */}
-              <div className="space-y-2 mb-3">
-                <div className="font-mono text-xs uppercase tracking-widest text-[#525866]">
-                  {proj.client}
-                </div>
-                <div>
-                  <div className="inline-block bg-[#0d0e12] text-white font-display font-bold text-base sm:text-lg px-2.5 py-1 rounded tracking-tight uppercase shadow-xs">
-                    {proj.title}
+                  <div className="absolute top-3 right-3 bg-[#0d0e12] text-white font-mono text-[10px] font-bold px-2 py-0.5 rounded shadow">
+                    {proj.index} / 0{projects.length}
                   </div>
                 </div>
-                <p className="text-xs sm:text-sm text-[#525866] leading-relaxed line-clamp-2">
-                  {proj.tagline}
-                </p>
-              </div>
 
-              {/* Deliverables tags & Action */}
-              <div className="pt-3 border-t border-[#e2dfd7] flex items-center justify-between">
-                <div className="flex flex-wrap gap-1.5 max-w-[70%]">
-                  {proj.deliverables.slice(0, 2).map((item, idx) => (
-                    <span
-                      key={idx}
-                      className="px-2 py-0.5 rounded bg-[#f1f0ec] text-[10px] font-mono text-[#525866] border border-[#e2dfd7] truncate"
-                    >
-                      {item}
-                    </span>
-                  ))}
+                {/* Client & Title */}
+                <div className="space-y-2 mb-3">
+                  <div className="font-mono text-xs uppercase tracking-widest text-[#525866]">
+                    {proj.client}
+                  </div>
+                  <div>
+                    <div className="inline-block bg-[#0d0e12] text-white font-display font-bold text-base sm:text-lg px-2.5 py-1 rounded tracking-tight uppercase shadow-xs">
+                      {proj.title}
+                    </div>
+                  </div>
+                  <p className="text-xs sm:text-sm text-[#525866] leading-relaxed line-clamp-2">
+                    {proj.tagline}
+                  </p>
                 </div>
 
-                <a
-                  href="#contact"
-                  className="text-xs font-mono font-bold uppercase tracking-wider text-[#0d0e12] hover:text-[#525866] flex items-center gap-1 transition-colors"
-                >
-                  <span>Discuss</span>
-                  <ArrowUpRight className="w-3.5 h-3.5 text-[#0d0e12]" />
-                </a>
+                {/* Deliverables tags & Action */}
+                <div className="pt-3 border-t border-[#e2dfd7] flex items-center justify-between">
+                  <div className="flex flex-wrap gap-1.5 max-w-[70%]">
+                    {proj.deliverables.slice(0, 2).map((item, idx) => (
+                      <span
+                        key={idx}
+                        className="px-2 py-0.5 rounded bg-[#f1f0ec] text-[10px] font-mono text-[#525866] border border-[#e2dfd7] truncate"
+                      >
+                        {item}
+                      </span>
+                    ))}
+                  </div>
+
+                  {isSocialMedia ? (
+                    <button
+                      type="button"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setIsStoryModalOpen(true);
+                      }}
+                      className="text-xs font-mono font-bold uppercase tracking-wider text-[#0d0e12] hover:text-[#525866] flex items-center gap-1 transition-colors cursor-pointer"
+                    >
+                      <span>Showcase</span>
+                      <ArrowUpRight className="w-3.5 h-3.5 text-[#0d0e12]" />
+                    </button>
+                  ) : (
+                    <a
+                      href="#contact"
+                      className="text-xs font-mono font-bold uppercase tracking-wider text-[#0d0e12] hover:text-[#525866] flex items-center gap-1 transition-colors"
+                    >
+                      <span>Discuss</span>
+                      <ArrowUpRight className="w-3.5 h-3.5 text-[#0d0e12]" />
+                    </a>
+                  )}
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
 
         </div>
 
@@ -156,6 +179,12 @@ export const WorkSection: React.FC = () => {
         </div>
 
       </div>
+
+      {/* 70% Sized Visual Showcase Popup */}
+      <StoryShowcaseModal
+        isOpen={isStoryModalOpen}
+        onClose={() => setIsStoryModalOpen(false)}
+      />
     </section>
   );
 };
