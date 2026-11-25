@@ -1,5 +1,4 @@
 import React, { useEffect, useRef } from 'react';
-import { content } from '../../data/redesignContent';
 import gsap from 'gsap';
 import { Sparkles, ArrowUpRight } from 'lucide-react';
 
@@ -10,6 +9,10 @@ export const HeroSection: React.FC = () => {
   const line1Ref = useRef<HTMLDivElement>(null);
   const line2Ref = useRef<HTMLDivElement>(null);
   const nameRowRef = useRef<HTMLDivElement>(null);
+  const wordsRef = useRef<(HTMLSpanElement | null)[]>([]);
+
+  const line1Words = ['GRAPHIC', 'DESIGNER', '&'];
+  const line2Words = ['VIDEO', 'EDITOR'];
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -32,6 +35,19 @@ export const HeroSection: React.FC = () => {
         { opacity: 1, scale: 1, y: 0, duration: 0.9, ease: 'power2.out' },
         "-=0.6"
       );
+
+      // Constant floating animation for each word
+      wordsRef.current.forEach((wordEl, index) => {
+        if (!wordEl) return;
+        gsap.to(wordEl, {
+          y: -7,
+          duration: 1.8 + (index % 3) * 0.35,
+          repeat: -1,
+          yoyo: true,
+          ease: 'sine.inOut',
+          delay: 0.85 + index * 0.12
+        });
+      });
     }, heroRef);
 
     return () => ctx.revert();
@@ -57,22 +73,38 @@ export const HeroSection: React.FC = () => {
           <div className="space-y-1 sm:space-y-2">
             
             {/* Line 1: GRAPHIC DESIGNER & */}
-            <div className="mask-line">
+            <div className="mask-line py-1 overflow-visible">
               <div
                 ref={line1Ref}
-                className="font-display font-extrabold text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl tracking-tight text-[#0d0e12] uppercase leading-none select-none whitespace-nowrap"
+                className="font-display font-extrabold text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl tracking-tight text-[#dc2626] uppercase leading-none select-none whitespace-nowrap flex items-center gap-[0.25em]"
               >
-                {content.tagline[0]}
+                {line1Words.map((word, i) => (
+                  <span
+                    key={i}
+                    ref={(el) => (wordsRef.current[i] = el)}
+                    className="inline-block will-change-transform"
+                  >
+                    {word}
+                  </span>
+                ))}
               </div>
             </div>
 
             {/* Line 2: VIDEO EDITOR - Exact same font size as Line 1 */}
-            <div className="mask-line">
+            <div className="mask-line py-1 overflow-visible">
               <div
                 ref={line2Ref}
-                className="font-display font-extrabold text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl tracking-tight text-[#0d0e12] uppercase leading-none select-none whitespace-nowrap"
+                className="font-display font-extrabold text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl tracking-tight text-[#dc2626] uppercase leading-none select-none whitespace-nowrap flex items-center gap-[0.25em]"
               >
-                {content.tagline[1]}
+                {line2Words.map((word, i) => (
+                  <span
+                    key={i}
+                    ref={(el) => (wordsRef.current[line1Words.length + i] = el)}
+                    className="inline-block will-change-transform"
+                  >
+                    {word}
+                  </span>
+                ))}
               </div>
             </div>
 
