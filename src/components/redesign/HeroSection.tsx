@@ -14,6 +14,30 @@ export const HeroSection: React.FC = () => {
   const line1Words = ['GRAPHIC', 'DESIGNER', '&'];
   const line2Words = ['VIDEO', 'EDITOR'];
 
+  const handleWordHover = (e: React.MouseEvent<HTMLSpanElement>, idx: number) => {
+    gsap.to(e.currentTarget, {
+      y: -22,
+      scale: 1.12,
+      rotation: idx % 2 === 0 ? -3 : 3,
+      filter: 'drop-shadow(0 22px 24px rgba(13, 14, 18, 0.35))',
+      duration: 0.35,
+      ease: 'back.out(2.5)',
+      overwrite: 'auto'
+    });
+  };
+
+  const handleWordLeave = (e: React.MouseEvent<HTMLSpanElement>) => {
+    gsap.to(e.currentTarget, {
+      y: 0,
+      scale: 1,
+      rotation: 0,
+      filter: 'drop-shadow(0 0px 0px rgba(13, 14, 18, 0))',
+      duration: 0.6,
+      ease: 'elastic.out(1.2, 0.45)',
+      overwrite: 'auto'
+    });
+  };
+
   useEffect(() => {
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({ delay: 0.15 });
@@ -73,7 +97,7 @@ export const HeroSection: React.FC = () => {
           <div className="space-y-1 sm:space-y-2">
             
             {/* Line 1: GRAPHIC DESIGNER & */}
-            <div className="mask-line py-1 overflow-visible">
+            <div className="mask-line py-2 overflow-visible">
               <div
                 ref={line1Ref}
                 className="font-display font-extrabold text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl tracking-tight text-[#0d0e12] uppercase leading-none select-none whitespace-nowrap flex items-center gap-[0.25em]"
@@ -82,43 +106,60 @@ export const HeroSection: React.FC = () => {
                   <span
                     key={i}
                     ref={(el) => (wordsRef.current[i] = el)}
-                    className="inline-block will-change-transform cursor-pointer transition-transform duration-300 hover:scale-110 hover:-translate-y-1.5 active:scale-95"
-                    style={{ transitionTimingFunction: 'cubic-bezier(0.34, 1.56, 0.64, 1)' }}
+                    className="inline-block will-change-transform py-3 px-1 overflow-visible relative"
                   >
-                    {word}
+                    <span
+                      onMouseEnter={(e) => handleWordHover(e, i)}
+                      onMouseLeave={handleWordLeave}
+                      className="inline-block cursor-pointer select-none will-change-transform relative z-10 transition-colors hover:text-black"
+                    >
+                      {word}
+                    </span>
                   </span>
                 ))}
               </div>
             </div>
 
             {/* Line 2: VIDEO EDITOR - Exact same font size as Line 1 */}
-            <div className="mask-line py-1 overflow-visible">
+            <div className="mask-line py-2 overflow-visible">
               <div
                 ref={line2Ref}
                 className="font-display font-extrabold text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl tracking-tight text-[#0d0e12] uppercase leading-none select-none whitespace-nowrap flex items-center gap-[0.25em]"
               >
-                {line2Words.map((word, i) => (
-                  <span
-                    key={i}
-                    ref={(el) => (wordsRef.current[line1Words.length + i] = el)}
-                    className="inline-block will-change-transform cursor-pointer transition-transform duration-300 hover:scale-110 hover:-translate-y-1.5 active:scale-95"
-                    style={{ transitionTimingFunction: 'cubic-bezier(0.34, 1.56, 0.64, 1)' }}
-                  >
-                    {word}
-                  </span>
-                ))}
+                {line2Words.map((word, i) => {
+                  const globalIdx = line1Words.length + i;
+                  return (
+                    <span
+                      key={i}
+                      ref={(el) => (wordsRef.current[globalIdx] = el)}
+                      className="inline-block will-change-transform py-3 px-1 overflow-visible relative"
+                    >
+                      <span
+                        onMouseEnter={(e) => handleWordHover(e, globalIdx)}
+                        onMouseLeave={handleWordLeave}
+                        className="inline-block cursor-pointer select-none will-change-transform relative z-10 transition-colors hover:text-black"
+                      >
+                        {word}
+                      </span>
+                    </span>
+                  );
+                })}
               </div>
             </div>
 
           </div>
 
           {/* Main "ANURAG" Display Statement */}
-          <div className="mask-line pt-2">
+          <div className="mask-line pt-2 overflow-visible">
             <div
               ref={nameRowRef}
-              className="flex items-baseline gap-2 font-display font-extrabold select-none leading-none"
+              className="flex items-baseline gap-2 font-display font-extrabold select-none leading-none overflow-visible py-2"
             >
-              <span className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-[#0d0e12] tracking-tight uppercase">
+              <span
+                onMouseEnter={(e) => handleWordHover(e, 99)}
+                onMouseLeave={handleWordLeave}
+                className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-[#0d0e12] tracking-tight uppercase inline-block cursor-pointer will-change-transform relative z-10"
+              >
                 ANURAG
               </span>
               <span className="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-[#0d0e12] inline-block mb-1" />
