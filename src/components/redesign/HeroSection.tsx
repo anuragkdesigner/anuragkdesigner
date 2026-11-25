@@ -76,13 +76,14 @@ export const HeroSection: React.FC = () => {
             <div className="mask-line py-1 overflow-visible">
               <div
                 ref={line1Ref}
-                className="font-display font-extrabold text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl tracking-tight text-[#dc2626] uppercase leading-none select-none whitespace-nowrap flex items-center gap-[0.25em]"
+                className="font-display font-extrabold text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl tracking-tight text-[#0d0e12] uppercase leading-none select-none whitespace-nowrap flex items-center gap-[0.25em]"
               >
                 {line1Words.map((word, i) => (
                   <span
                     key={i}
                     ref={(el) => (wordsRef.current[i] = el)}
-                    className="inline-block will-change-transform"
+                    className="inline-block will-change-transform cursor-pointer transition-transform duration-300 hover:scale-110 hover:-translate-y-1.5 active:scale-95"
+                    style={{ transitionTimingFunction: 'cubic-bezier(0.34, 1.56, 0.64, 1)' }}
                   >
                     {word}
                   </span>
@@ -94,13 +95,14 @@ export const HeroSection: React.FC = () => {
             <div className="mask-line py-1 overflow-visible">
               <div
                 ref={line2Ref}
-                className="font-display font-extrabold text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl tracking-tight text-[#dc2626] uppercase leading-none select-none whitespace-nowrap flex items-center gap-[0.25em]"
+                className="font-display font-extrabold text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl tracking-tight text-[#0d0e12] uppercase leading-none select-none whitespace-nowrap flex items-center gap-[0.25em]"
               >
                 {line2Words.map((word, i) => (
                   <span
                     key={i}
                     ref={(el) => (wordsRef.current[line1Words.length + i] = el)}
-                    className="inline-block will-change-transform"
+                    className="inline-block will-change-transform cursor-pointer transition-transform duration-300 hover:scale-110 hover:-translate-y-1.5 active:scale-95"
+                    style={{ transitionTimingFunction: 'cubic-bezier(0.34, 1.56, 0.64, 1)' }}
                   >
                     {word}
                   </span>

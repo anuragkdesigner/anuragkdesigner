@@ -16,13 +16,20 @@ export const CustomCursor: React.FC = () => {
       mouseY = e.clientY;
     };
 
-    // Smooth 0.15s lag interpolation
+    // Physics interpolation with spring squash & stretch
     const render = () => {
-      currentX += (mouseX - currentX) * 0.2;
-      currentY += (mouseY - currentY) * 0.2;
+      const vx = mouseX - currentX;
+      const vy = mouseY - currentY;
+      
+      currentX += vx * 0.18;
+      currentY += vy * 0.18;
+
+      const speed = Math.hypot(vx, vy);
+      const angle = Math.atan2(vy, vx);
+      const stretch = Math.min(speed * 0.003, 0.4);
 
       if (dotRef.current) {
-        dotRef.current.style.transform = `translate3d(${currentX}px, ${currentY}px, 0) translate(-50%, -50%)`;
+        dotRef.current.style.transform = `translate3d(${currentX}px, ${currentY}px, 0) translate(-50%, -50%) rotate(${angle}rad) scale(${1 + stretch}, ${1 - stretch * 0.5})`;
       }
       animId = requestAnimationFrame(render);
     };
