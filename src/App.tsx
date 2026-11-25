@@ -1,5 +1,6 @@
 import React from 'react';
 import { CustomCursor } from './components/redesign/CustomCursor';
+import { Crosshair } from './components/redesign/Crosshair';
 import { NoiseOverlay } from './components/redesign/NoiseOverlay';
 import { IntroSequence } from './components/redesign/IntroSequence';
 import { Navigation } from './components/redesign/Navigation';
@@ -19,6 +20,19 @@ export const App: React.FC = () => {
 
       {/* 2. Interactive Smooth Custom Cursor */}
       <CustomCursor />
+
+      {/* 2b. Interactive Button 4-Corner Crosshair Lock */}
+      <Crosshair
+        color="#0d0e12"
+        targetEffect="lock"
+        thickness={1.5}
+        opacity={0.85}
+        smoothing={0.35}
+        showCoordinates={false}
+        clickPulse={true}
+        hideCursor={false}
+        targetSelector="a, button, [role='button'], [data-crosshair-target]"
+      />
 
       {/* 3. Opening Intro Sequence */}
       <IntroSequence onComplete={() => {}} />
