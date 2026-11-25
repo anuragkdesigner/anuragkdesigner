@@ -98,65 +98,18 @@ export const WorkSection: React.FC = () => {
                     loading="lazy"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent pointer-events-none" />
-
-                  <div className="absolute top-3 left-3 bg-white/95 backdrop-blur-md px-2.5 py-1 rounded text-[10px] font-mono uppercase tracking-wider text-[#0d0e12] border border-[#e2dfd7] shadow-xs">
-                    {proj.category}
-                  </div>
-
-                  <div className="absolute top-3 right-3 bg-[#0d0e12] text-white font-mono text-[10px] font-bold px-2 py-0.5 rounded shadow">
-                    {proj.index} / 0{projects.length}
-                  </div>
                 </div>
 
-                {/* Client & Title */}
-                <div className="space-y-2 mb-3">
-                  <div className="font-mono text-xs uppercase tracking-widest text-[#525866]">
-                    {proj.client}
-                  </div>
-                  <div>
-                    <div className="inline-block bg-[#0d0e12] text-white font-display font-bold text-base sm:text-lg px-2.5 py-1 rounded tracking-tight uppercase shadow-xs">
-                      {proj.title}
-                    </div>
-                  </div>
-                  <p className="text-xs sm:text-sm text-[#525866] leading-relaxed line-clamp-2">
-                    {proj.tagline}
-                  </p>
-                </div>
-
-                {/* Deliverables tags & Action */}
-                <div className="pt-3 border-t border-[#e2dfd7] flex items-center justify-between">
-                  <div className="flex flex-wrap gap-1.5 max-w-[70%]">
-                    {proj.deliverables.slice(0, 2).map((item, idx) => (
-                      <span
-                        key={idx}
-                        className="px-2 py-0.5 rounded bg-[#f1f0ec] text-[10px] font-mono text-[#525866] border border-[#e2dfd7] truncate"
-                      >
-                        {item}
-                      </span>
-                    ))}
+                {/* Main Heading & View on the right side */}
+                <div className="flex items-center justify-between gap-3">
+                  <div className="inline-block bg-[#0d0e12] text-white font-display font-bold text-base sm:text-lg px-2.5 py-1 rounded tracking-tight uppercase shadow-xs">
+                    {proj.title}
                   </div>
 
-                  {isSocialMedia ? (
-                    <button
-                      type="button"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        setIsStoryModalOpen(true);
-                      }}
-                      className="text-xs font-mono font-bold uppercase tracking-wider text-[#0d0e12] hover:text-[#525866] flex items-center gap-1 transition-colors cursor-pointer"
-                    >
-                      <span>Showcase</span>
-                      <ArrowUpRight className="w-3.5 h-3.5 text-[#0d0e12]" />
-                    </button>
-                  ) : (
-                    <a
-                      href="#contact"
-                      className="text-xs font-mono font-bold uppercase tracking-wider text-[#0d0e12] hover:text-[#525866] flex items-center gap-1 transition-colors"
-                    >
-                      <span>Discuss</span>
-                      <ArrowUpRight className="w-3.5 h-3.5 text-[#0d0e12]" />
-                    </a>
-                  )}
+                  <div className="text-xs font-mono font-bold uppercase tracking-wider text-[#0d0e12] group-hover:text-[#525866] flex items-center gap-1 transition-colors shrink-0">
+                    <span>View</span>
+                    <ArrowUpRight className="w-3.5 h-3.5 text-[#0d0e12]" />
+                  </div>
                 </div>
               </div>
             );

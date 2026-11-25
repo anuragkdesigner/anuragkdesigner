@@ -30,13 +30,8 @@ export const Navigation: React.FC = () => {
     >
       <div className="max-w-site mx-auto px-6 sm:px-10 flex items-center justify-between">
         
-        {/* Left: Script Logo */}
-        <a href="#" className="group flex items-center gap-2">
-          <span className="font-script text-3xl sm:text-4xl text-[#0d0e12] italic hover:text-[#525866] transition-colors">
-            Anurag
-          </span>
-          <span className="w-2 h-2 rounded-full bg-[#0d0e12]" />
-        </a>
+        {/* Left: Spacer (Logo removed) */}
+        <div />
 
         {/* Right: Desktop Links */}
         <nav className="hidden md:flex items-center gap-9">
@@ -74,8 +69,7 @@ export const Navigation: React.FC = () => {
       {/* Full-Screen Mobile Menu Overlay */}
       {mobileMenuOpen && (
         <div className="fixed inset-0 z-50 bg-[#f9f9f8] flex flex-col justify-between p-8 sm:p-12 animate-in fade-in duration-200">
-          <div className="flex items-center justify-between">
-            <span className="font-script text-4xl text-[#0d0e12] italic">Anurag</span>
+          <div className="flex items-center justify-end">
             <button
               onClick={() => setMobileMenuOpen(false)}
               className="p-2 text-[#0d0e12] hover:text-[#525866]"
