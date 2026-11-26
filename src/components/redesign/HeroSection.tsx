@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { Sparkles, ArrowUpRight } from 'lucide-react';
 import TechText from './TechText';
+import Lanyard from './Lanyard';
 
 export const HeroSection: React.FC = () => {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -161,40 +162,51 @@ export const HeroSection: React.FC = () => {
 
         </div>
 
-        {/* RIGHT COLUMN: Cut-out Transparent Portrait Composite (Photoshop style) */}
+        {/* RIGHT COLUMN: Interactive 3D Physics Lanyard Card */}
         <div
           ref={imageColumnRef}
           className="lg:col-span-5 relative flex items-center justify-center lg:justify-end"
         >
-          <div className="relative w-full max-w-[280px] sm:max-w-[340px] lg:max-w-[380px]">
+          <div className="relative w-full h-[520px] sm:h-[600px] max-w-[420px]">
             
-            {/* Ambient Radial Backlight behind silhouette */}
+            {/* Ambient Radial Backlight behind lanyard */}
             <div 
-              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 sm:w-80 h-64 sm:h-80 rounded-full bg-[#0d0e12]/[0.04] blur-3xl pointer-events-none -z-10"
+              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 sm:w-88 h-72 sm:h-88 rounded-full bg-[#0d0e12]/[0.04] blur-3xl pointer-events-none -z-10"
               aria-hidden="true"
             />
 
             {/* Graphic Registration Crosshairs (Photoshop composition markers) */}
-            <span className="absolute -top-3 -left-3 text-[#0d0e12] font-mono text-xs select-none pointer-events-none">+</span>
-            <span className="absolute -top-3 -right-3 text-[#0d0e12] font-mono text-xs select-none pointer-events-none">+</span>
-            <span className="absolute -bottom-3 -right-3 text-[#0d0e12] font-mono text-xs select-none pointer-events-none">+</span>
+            <span className="absolute 4 -top-3 -left-3 text-[#0d0e12] font-mono text-xs select-none pointer-events-none">+</span>
+            <span className="absolute 4 -top-3 -right-3 text-[#0d0e12] font-mono text-xs select-none pointer-events-none">+</span>
+            <span className="absolute 4 -bottom-3 -right-3 text-[#0d0e12] font-mono text-xs select-none pointer-events-none">+</span>
 
-            {/* Cut-out Transparent Portrait Image */}
-            <div className="relative z-10">
-              <img
-                src="/anurag-portrait.png?v=2"
-                alt="Anurag K — Graphic Designer & Video Editor"
-                className="w-full h-auto object-cover relative z-10 drop-shadow-[0_20px_35px_rgba(0,0,0,0.16)]"
-              />
-
-              {/* Bottom Gradient Fade to seamlessly melt into light page background */}
-              <div 
-                className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[#f9f9f8] via-[#f9f9f8]/85 to-transparent z-20 pointer-events-none"
+            {/* 3D Physics Interactive Lanyard */}
+            <div className="w-full h-full relative z-10">
+              <Lanyard
+                frontImage="/anurag-portrait.png"
+                backImage="/anurag-portrait.png"
+                imageFit="cover"
+                cardColor="#ffffff"
+                orientation="portrait"
+                finish="glossy"
+                cornerRadius={0.3}
+                size={0.62}
+                anchor="center"
+                strapLength={0.5}
+                strapColor="#111111"
+                strapWidth={0.65}
+                metal="silver"
+                gravity={1}
+                damping={0.5}
+                elasticity={0.5}
+                breeze={0.5}
+                interactive
+                intro
               />
             </div>
 
-            {/* Floating Editorial Badge (Photoshop Composited HUD) */}
-            <div className="absolute bottom-2 -left-2 sm:left-2 z-30 bg-white/95 backdrop-blur-md p-3 sm:p-3.5 rounded-lg border border-[#e2dfd7] shadow-xl space-y-1 max-w-[260px]">
+            {/* Floating Editorial Badge */}
+            <div className="absolute bottom-2 -left-2 sm:left-2 z-30 bg-white/95 backdrop-blur-md p-3 sm:p-3.5 rounded-lg border border-[#e2dfd7] shadow-xl space-y-1 max-w-[260px] pointer-events-none">
               <div className="flex items-center gap-1.5 text-[10px] font-mono uppercase tracking-wider text-[#0d0e12] font-bold">
                 <Sparkles className="w-3 h-3 shrink-0" />
                 <span className="truncate">Visual & Motion Lead</span>
@@ -203,12 +215,12 @@ export const HeroSection: React.FC = () => {
                 ANURAG K
               </div>
               <div className="text-[11px] font-mono text-[#525866] truncate">
-                BufferBytes Tech • Haris&Co.
+                Drag or fling card • Interactive
               </div>
             </div>
 
-            {/* Top-Right Badge: Open for Work / Location */}
-            <div className="absolute top-2 right-2 sm:right-4 z-30 bg-[#0d0e12] text-white font-mono text-[10px] font-bold uppercase tracking-widest px-2.5 py-1 rounded shadow-md whitespace-nowrap">
+            {/* Top-Right Badge: Location */}
+            <div className="absolute top-2 right-2 sm:right-4 z-30 bg-[#0d0e12] text-white font-mono text-[10px] font-bold uppercase tracking-widest px-2.5 py-1 rounded shadow-md whitespace-nowrap pointer-events-none">
               Kozhikode, India
             </div>
 
