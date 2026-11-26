@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { Sparkles, ArrowUpRight } from 'lucide-react';
 import TechText from './TechText';
-import WebThreads from './WebThreads';
+import DarkVeil from './DarkVeil';
 import { useTheme } from '../../context/ThemeContext';
 
 export const HeroSection: React.FC = () => {
@@ -45,37 +45,27 @@ export const HeroSection: React.FC = () => {
       ref={heroRef}
       className="relative min-h-screen pt-28 sm:pt-36 pb-16 flex flex-col justify-between overflow-hidden"
     >
-      {/* 100% Full-Width Interactive WebThreads WebGL Canvas in Background */}
-      <div className="absolute inset-0 w-full h-full pointer-events-auto z-0 opacity-80 dark:opacity-90">
-        <WebThreads
-          colors={theme === 'dark' ? ["#ffffff", "#888888"] : ["#5227FF", "#FF9FFC"]}
-          coreColor={theme === 'dark' ? "#FFFFFF" : "#FFFFFF"}
-          threadCount={6}
-          spread={0.18}
-          lightMode={theme === 'light'}
-          speed={0.2}
-          frequency={5}
-          taper={1}
-          position={0.5}
-          pinch={0.5}
-          nodes={1}
-          angle={0}
-          glow={0.02}
-          falloff={0.6}
-          thickness={1.1}
-          brightness={0.6}
-          opacity={1}
-          depth={0}
-          pulses={0}
-          mirror
-          shimmer={false}
+      {/* 100% Full-Width Interactive DarkVeil Canvas in Background */}
+      <div className="absolute inset-0 w-full h-full pointer-events-auto z-0 opacity-75 dark:opacity-85">
+        <DarkVeil
+          color={theme === 'dark' ? "#ffffff" : "#6b12ff"}
+          speed={0.5}
+          scale={1}
+          rotation={0}
+          flow={1}
+          warp={0}
+          variation={0}
+          sheen={0}
+          glow={0.4}
+          brightness={1}
+          grain={0.03}
+          quality={0.5}
           fade={0}
-          grain={0.05}
-          intro
+          opacity={1}
           mouseInteraction
-          mouseStrength={0.5}
-          pulseOnClick
-          paused={false}
+          mouseStrength={1}
+          intro
+          lightMode={theme === 'light'}
           className="w-full h-full"
         />
       </div>
@@ -199,7 +189,7 @@ export const HeroSection: React.FC = () => {
 
         </div>
 
-        {/* RIGHT COLUMN: Normal Clean Photo Portrait (Reverted from oversized Lanyard) */}
+        {/* RIGHT COLUMN: Clean Normal Sized Photo Portrait */}
         <div
           ref={imageColumnRef}
           className="lg:col-span-5 relative flex items-center justify-center lg:justify-end pointer-events-auto"
