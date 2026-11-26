@@ -27,12 +27,12 @@ export const HeroSection: React.FC = () => {
           ease: 'power3.out'
         }
       )
-      .fromTo(
-        imageColumnRef.current,
-        { opacity: 0, scale: 0.92, y: 30 },
-        { opacity: 1, scale: 1, y: 0, duration: 0.9, ease: 'power2.out' },
-        "-=0.6"
-      );
+        .fromTo(
+          imageColumnRef.current,
+          { opacity: 0, scale: 0.92, y: 30 },
+          { opacity: 1, scale: 1, y: 0, duration: 0.9, ease: 'power2.out' },
+          "-=0.6"
+        );
     }, heroRef);
 
     return () => ctx.revert();
@@ -44,19 +44,19 @@ export const HeroSection: React.FC = () => {
       className="relative min-h-screen pt-28 sm:pt-36 pb-16 flex flex-col justify-between max-w-site mx-auto px-6 sm:px-10 overflow-hidden"
     >
       {/* Ambient Lighting Halo Behind Portrait */}
-      <div 
+      <div
         className="absolute top-1/4 right-0 lg:right-12 w-80 sm:w-96 h-80 sm:h-96 rounded-full bg-[#0d0e12]/[0.03] blur-[100px] pointer-events-none -z-10"
         aria-hidden="true"
       />
 
       <div className="my-auto grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-8 items-center">
-        
+
         {/* LEFT COLUMN: Typography & Headlines (7 Cols) */}
         <div ref={textColumnRef} className="lg:col-span-7 space-y-6 z-10">
-          
+
           {/* 2-Line Headline Stack with TechText */}
           <div className="space-y-0.5 sm:space-y-1">
-            
+
             {/* Line 1: GRAPHIC DESIGNER & */}
             <div
               ref={line1Ref}
@@ -168,9 +168,9 @@ export const HeroSection: React.FC = () => {
           className="lg:col-span-5 relative flex items-center justify-center lg:justify-end"
         >
           <div className="relative w-full h-[520px] sm:h-[600px] max-w-[420px]">
-            
+
             {/* Ambient Radial Backlight behind lanyard */}
-            <div 
+            <div
               className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 sm:w-88 h-72 sm:h-88 rounded-full bg-[#0d0e12]/[0.04] blur-3xl pointer-events-none -z-10"
               aria-hidden="true"
             />

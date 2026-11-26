@@ -35,7 +35,7 @@ export const App: React.FC = () => {
       />
 
       {/* 3. Opening Intro Sequence */}
-      <IntroSequence onComplete={() => {}} />
+      <IntroSequence onComplete={() => { }} />
 
       {/* 4. Fixed Top Navigation */}
       <Navigation />

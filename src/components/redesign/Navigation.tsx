@@ -22,14 +22,13 @@ export const Navigation: React.FC = () => {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
-        scrolled
-          ? 'bg-[#f9f9f8]/90 backdrop-blur-md border-b border-[#e2dfd7] py-4 shadow-sm'
-          : 'bg-transparent py-6'
-      }`}
+      className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${scrolled
+        ? 'bg-[#f9f9f8]/90 backdrop-blur-md border-b border-[#e2dfd7] py-4 shadow-sm'
+        : 'bg-transparent py-6'
+        }`}
     >
       <div className="max-w-site mx-auto px-6 sm:px-10 flex items-center justify-between">
-        
+
         {/* Left: Spacer (Logo removed) */}
         <div />
 
@@ -94,7 +93,7 @@ export const Navigation: React.FC = () => {
 
           <div className="pt-6 border-t border-[#e2dfd7] flex items-center justify-between text-xs font-mono text-cream-muted">
             <span>KOZHIKODE, KERALA</span>
-            <a 
+            <a
               href="mailto:anuragkthusharam123@gmail.com"
               className="text-[#0d0e12] font-bold underline underline-offset-4"
             >
