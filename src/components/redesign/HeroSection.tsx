@@ -2,8 +2,6 @@ import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { Sparkles, ArrowUpRight } from 'lucide-react';
 import TechText from './TechText';
-import DarkVeil from './DarkVeil';
-import { useTheme } from '../../context/ThemeContext';
 
 export const HeroSection: React.FC = () => {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -12,7 +10,6 @@ export const HeroSection: React.FC = () => {
   const line1Ref = useRef<HTMLDivElement>(null);
   const line2Ref = useRef<HTMLDivElement>(null);
   const nameRowRef = useRef<HTMLDivElement>(null);
-  const { theme } = useTheme();
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -45,34 +42,9 @@ export const HeroSection: React.FC = () => {
       ref={heroRef}
       className="relative min-h-screen pt-28 sm:pt-36 pb-16 flex flex-col justify-between overflow-hidden bg-white dark:bg-black"
     >
-      {/* 100% Full-Width Interactive DarkVeil Canvas in Background */}
-      <div className="absolute inset-0 w-full h-full pointer-events-auto z-0 opacity-75 dark:opacity-85">
-        <DarkVeil
-          color={theme === 'dark' ? "#ffffff" : "#6b12ff"}
-          speed={0.5}
-          scale={1}
-          rotation={0}
-          flow={1}
-          warp={0}
-          variation={0}
-          sheen={0}
-          glow={0.4}
-          brightness={1}
-          grain={0.03}
-          quality={0.5}
-          fade={0}
-          opacity={1}
-          mouseInteraction
-          mouseStrength={1}
-          intro
-          lightMode={theme === 'light'}
-          className="w-full h-full"
-        />
-      </div>
-
-      {/* Ambient Lighting Halo Behind Portrait */}
+      {/* Ambient Subtle Halo Behind Portrait */}
       <div 
-        className="absolute top-1/4 right-0 lg:right-12 w-80 sm:w-96 h-80 sm:h-96 rounded-full bg-[#0d0e12]/[0.03] dark:bg-white/[0.03] blur-[100px] pointer-events-none z-0"
+        className="absolute top-1/4 right-0 lg:right-12 w-80 sm:w-96 h-80 sm:h-96 rounded-full bg-[#0d0e12]/[0.02] dark:bg-white/[0.03] blur-[100px] pointer-events-none z-0"
         aria-hidden="true"
       />
 

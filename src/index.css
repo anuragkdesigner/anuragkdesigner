@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 :root {
-  --bg-color: #f9f9f8;
+  --bg-color: #ffffff;
   --text-color: #0d0e12;
   --accent-red: #0d0e12;
   --font-display: "Poppins", sans-serif;
