@@ -10,19 +10,17 @@ import { ServicesSection } from './components/redesign/ServicesSection';
 import { SkillsSection } from './components/skills/SkillsSection';
 import { ContactSection } from './components/redesign/ContactSection';
 import { Footer } from './components/redesign/Footer';
-import { ThemeProvider, useTheme } from './context/ThemeContext';
+import { ThemeProvider } from './context/ThemeContext';
 
 const MainLayout: React.FC = () => {
-  const { theme } = useTheme();
-
   return (
-    <div className="relative min-h-screen bg-white dark:bg-[#7F011F] text-[#7F011F] dark:text-white font-sans selection:bg-[#7F011F] selection:text-white dark:selection:bg-white dark:selection:text-[#7F011F] overflow-x-hidden transition-colors duration-300">
+    <div className="relative min-h-screen bg-white text-[#7F011F] font-sans selection:bg-[#7F011F] selection:text-white overflow-x-hidden">
       {/* 2. Interactive Smooth Custom Cursor */}
       <CustomCursor />
 
       {/* 2b. Interactive Button 4-Corner Crosshair Lock */}
       <Crosshair
-        color={theme === 'dark' ? '#ffffff' : '#7F011F'}
+        color="#7F011F"
         targetEffect="lock"
         thickness={1.5}
         opacity={0.85}

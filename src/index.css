@@ -11,9 +11,9 @@
 }
 
 html.dark {
-  --bg-color: #7F011F;
-  --text-color: #ffffff;
-  --accent-red: #ffffff;
+  --bg-color: #ffffff;
+  --text-color: #7F011F;
+  --accent-red: #7F011F;
 }
 
 html {
