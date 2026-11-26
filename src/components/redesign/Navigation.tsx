@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, ArrowUpRight } from 'lucide-react';
+import { Menu, X, ArrowUpRight, Sun, Moon } from 'lucide-react';
+import { useTheme } from '../../context/ThemeContext';
 
 export const Navigation: React.FC = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { theme, toggleTheme } = useTheme();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -22,15 +24,34 @@ export const Navigation: React.FC = () => {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${scrolled
-        ? 'bg-[#f9f9f8]/90 backdrop-blur-md border-b border-[#e2dfd7] py-4 shadow-sm'
-        : 'bg-transparent py-6'
-        }`}
+      className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
+        scrolled
+          ? 'bg-[#f9f9f8]/90 dark:bg-black/90 backdrop-blur-md border-b border-[#e2dfd7] dark:border-[#262626] py-4 shadow-sm'
+          : 'bg-transparent py-6'
+      }`}
     >
       <div className="max-w-site mx-auto px-6 sm:px-10 flex items-center justify-between">
-
-        {/* Left: Spacer (Logo removed) */}
-        <div />
+        
+        {/* Left: Pure Black and White Theme Switcher */}
+        <div className="flex items-center">
+          <button
+            onClick={toggleTheme}
+            className="flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-[#0d0e12]/20 dark:border-white/30 bg-white/80 dark:bg-black/80 backdrop-blur-sm text-[#0d0e12] dark:text-white font-mono text-[11px] font-bold tracking-widest uppercase hover:border-[#0d0e12] dark:hover:border-white transition-all shadow-xs cursor-pointer select-none"
+            aria-label="Toggle pure black and white theme"
+          >
+            {theme === 'dark' ? (
+              <>
+                <Sun className="w-3.5 h-3.5 text-white" />
+                <span>LIGHT</span>
+              </>
+            ) : (
+              <>
+                <Moon className="w-3.5 h-3.5 text-[#0d0e12]" />
+                <span>DARK</span>
+              </>
+            )}
+          </button>
+        </div>
 
         {/* Right: Desktop Links */}
         <nav className="hidden md:flex items-center gap-9">
@@ -38,25 +59,25 @@ export const Navigation: React.FC = () => {
             <a
               key={link.label}
               href={link.href}
-              className="text-xs font-mono font-medium tracking-[0.08em] uppercase text-[#0d0e12] hover:text-[#525866] nav-link-hover transition-colors"
+              className="text-xs font-mono font-medium tracking-[0.08em] uppercase text-[#0d0e12] dark:text-white hover:text-[#525866] dark:hover:text-white/70 nav-link-hover transition-colors"
             >
               {link.label}
             </a>
           ))}
           <a
             href="#contact"
-            className="inline-flex items-center gap-1.5 px-4 py-2 rounded bg-[#0d0e12] text-white font-mono text-xs font-bold uppercase tracking-wider hover:bg-[#242833] transition-colors shadow-sm"
+            className="inline-flex items-center gap-1.5 px-4 py-2 rounded bg-[#0d0e12] text-white dark:bg-white dark:text-black font-mono text-xs font-bold uppercase tracking-wider hover:bg-[#242833] dark:hover:bg-white/80 transition-colors shadow-sm"
           >
             <span>Let's Talk</span>
             <ArrowUpRight className="w-3.5 h-3.5" />
           </a>
         </nav>
 
-        {/* Mobile Hamburger Toggle */}
+        {/* Mobile Hamburger Toggle & Theme Switcher */}
         <div className="flex md:hidden items-center gap-3">
           <button
             onClick={() => setMobileMenuOpen(true)}
-            className="p-2 text-[#0d0e12] hover:text-[#525866]"
+            className="p-2 text-[#0d0e12] dark:text-white hover:text-[#525866]"
             aria-label="Open mobile menu"
           >
             <Menu className="w-6 h-6" />
@@ -67,11 +88,19 @@ export const Navigation: React.FC = () => {
 
       {/* Full-Screen Mobile Menu Overlay */}
       {mobileMenuOpen && (
-        <div className="fixed inset-0 z-50 bg-[#f9f9f8] flex flex-col justify-between p-8 sm:p-12 animate-in fade-in duration-200">
-          <div className="flex items-center justify-end">
+        <div className="fixed inset-0 z-50 bg-[#f9f9f8] dark:bg-black flex flex-col justify-between p-8 sm:p-12 animate-in fade-in duration-200">
+          <div className="flex items-center justify-between">
+            <button
+              onClick={toggleTheme}
+              className="flex items-center gap-2 px-3 py-1.5 rounded-full border border-[#0d0e12]/20 dark:border-white/30 text-[#0d0e12] dark:text-white font-mono text-[11px] font-bold tracking-widest uppercase"
+            >
+              {theme === 'dark' ? <Sun className="w-3.5 h-3.5" /> : <Moon className="w-3.5 h-3.5" />}
+              <span>{theme === 'dark' ? 'LIGHT' : 'DARK'}</span>
+            </button>
+
             <button
               onClick={() => setMobileMenuOpen(false)}
-              className="p-2 text-[#0d0e12] hover:text-[#525866]"
+              className="p-2 text-[#0d0e12] dark:text-white hover:text-[#525866]"
               aria-label="Close menu"
             >
               <X className="w-7 h-7" />
@@ -84,20 +113,20 @@ export const Navigation: React.FC = () => {
                 key={link.label}
                 href={link.href}
                 onClick={() => setMobileMenuOpen(false)}
-                className="font-display font-bold text-3xl sm:text-5xl text-[#0d0e12] hover:text-[#525866] transition-colors tracking-tight uppercase"
+                className="font-display font-bold text-3xl sm:text-5xl text-[#0d0e12] dark:text-white hover:text-[#525866] transition-colors tracking-tight uppercase"
               >
                 {link.label}
               </a>
             ))}
           </div>
 
-          <div className="pt-6 border-t border-[#e2dfd7] flex items-center justify-between text-xs font-mono text-cream-muted">
+          <div className="pt-6 border-t border-[#e2dfd7] dark:border-[#262626] flex items-center justify-between text-xs font-mono text-cream-muted dark:text-white/60">
             <span>KOZHIKODE, KERALA</span>
-            <a
+            <a 
               href="mailto:anuragkthusharam123@gmail.com"
-              className="text-[#0d0e12] font-bold underline underline-offset-4"
+              className="text-[#0d0e12] dark:text-white font-bold underline underline-offset-4"
             >
-              Email Direct
+              Get In Touch
             </a>
           </div>
         </div>

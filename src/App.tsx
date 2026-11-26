@@ -11,10 +11,13 @@ import { ServicesSection } from './components/redesign/ServicesSection';
 import { SkillsSection } from './components/skills/SkillsSection';
 import { ContactSection } from './components/redesign/ContactSection';
 import { Footer } from './components/redesign/Footer';
+import { ThemeProvider, useTheme } from './context/ThemeContext';
 
-export const App: React.FC = () => {
+const MainLayout: React.FC = () => {
+  const { theme } = useTheme();
+
   return (
-    <div className="relative min-h-screen bg-[#f9f9f8] text-[#0d0e12] font-sans selection:bg-[#0d0e12] selection:text-white overflow-x-hidden">
+    <div className="relative min-h-screen bg-[#f9f9f8] dark:bg-black text-[#0d0e12] dark:text-white font-sans selection:bg-[#0d0e12] selection:text-white dark:selection:bg-white dark:selection:text-black overflow-x-hidden transition-colors duration-300">
       {/* 1. Subtle 1px Grain / Noise Overlay (4% opacity) */}
       <NoiseOverlay />
 
@@ -23,7 +26,7 @@ export const App: React.FC = () => {
 
       {/* 2b. Interactive Button 4-Corner Crosshair Lock */}
       <Crosshair
-        color="#0d0e12"
+        color={theme === 'dark' ? '#ffffff' : '#0d0e12'}
         targetEffect="lock"
         thickness={1.5}
         opacity={0.85}
@@ -37,7 +40,7 @@ export const App: React.FC = () => {
       {/* 3. Opening Intro Sequence */}
       <IntroSequence onComplete={() => { }} />
 
-      {/* 4. Fixed Top Navigation */}
+      {/* 4. Fixed Top Navigation with Theme Toggle */}
       <Navigation />
 
       {/* 5. Main Content Assembly */}
@@ -53,6 +56,14 @@ export const App: React.FC = () => {
       {/* 6. Footer */}
       <Footer />
     </div>
+  );
+};
+
+export const App: React.FC = () => {
+  return (
+    <ThemeProvider>
+      <MainLayout />
+    </ThemeProvider>
   );
 };
 
