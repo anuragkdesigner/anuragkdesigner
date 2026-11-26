@@ -10,11 +10,18 @@
   --font-sans: "Poppins", sans-serif;
 }
 
+html.dark {
+  --bg-color: #000000;
+  --text-color: #ffffff;
+  --accent-red: #ffffff;
+}
+
 html {
   font-size: 14px; /* Makes text across all rem-based typography ~12.5% smaller and refined without shrinking layout containers */
   scroll-behavior: smooth;
   background-color: var(--bg-color);
   color: var(--text-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 body {
@@ -24,6 +31,60 @@ body {
   background-color: var(--bg-color);
   color: var(--text-color);
   overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Dark mode pure black and white overrides */
+html.dark .bg-\[\#f9f9f8\],
+html.dark .bg-\[\#f4f3ef\],
+html.dark .bg-\[\#f2f1ed\] {
+  background-color: #000000 !important;
+}
+
+html.dark .bg-white {
+  background-color: #0a0a0a !important;
+}
+
+html.dark .text-\[\#0d0e12\] {
+  color: #ffffff !important;
+}
+
+html.dark .border-\[\#e2dfd7\],
+html.dark .border-\[\#d0cdc4\] {
+  border-color: #262626 !important;
+}
+
+html.dark .bg-\[\#0d0e12\] {
+  background-color: #ffffff !important;
+  color: #000000 !important;
+}
+
+html.dark .text-white {
+  color: #ffffff !important;
+}
+
+html.dark .text-\[\#525866\],
+html.dark .text-\[\#858c9b\] {
+  color: #a3a3a3 !important;
+}
+
+html.dark header.bg-\[\#f9f9f8\]\/90 {
+  background-color: rgba(0, 0, 0, 0.85) !important;
+  border-color: #262626 !important;
+}
+
+html.dark .custom-cursor-dot {
+  background-color: #ffffff !important;
+}
+
+html.dark ::-webkit-scrollbar-track {
+  background: #000000;
+}
+html.dark ::-webkit-scrollbar-thumb {
+  background: #333333;
+}
+html.dark ::-webkit-scrollbar-thumb:hover {
+  background: #ffffff;
 }
 
 /* Custom scrollbar */
