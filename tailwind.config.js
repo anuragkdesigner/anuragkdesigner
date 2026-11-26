@@ -7,21 +7,31 @@ export default {
   theme: {
     extend: {
       colors: {
+        wine: {
+          DEFAULT: '#7F011F',
+          dark: '#630018',
+          light: '#960226',
+        },
+        sand: {
+          DEFAULT: '#F5EBD0',
+          dark: '#ebe0c2',
+          light: '#fbf5e6',
+        },
         charcoal: {
-          DEFAULT: '#f9f9f8',
-          dark: '#f2f1ed',
+          DEFAULT: '#F5EBD0',
+          dark: '#ebe0c2',
           surface: '#ffffff',
-          border: '#e2dfd7',
-          muted: '#525866',
+          border: '#e6dac0',
+          muted: '#806e60',
         },
         cream: {
-          DEFAULT: '#0d0e12',
-          muted: '#525866',
-          faint: '#858c9b',
+          DEFAULT: '#7F011F',
+          muted: '#806e60',
+          faint: '#a8988a',
         },
         accent: {
-          red: '#0d0e12',
-          'red-hover': '#242833',
+          red: '#7F011F',
+          'red-hover': '#630018',
         }
       },
       fontFamily: {
