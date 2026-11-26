@@ -17,7 +17,7 @@ const MainLayout: React.FC = () => {
   const { theme } = useTheme();
 
   return (
-    <div className="relative min-h-screen bg-[#f9f9f8] dark:bg-black text-[#0d0e12] dark:text-white font-sans selection:bg-[#0d0e12] selection:text-white dark:selection:bg-white dark:selection:text-black overflow-x-hidden transition-colors duration-300">
+    <div className="relative min-h-screen bg-white dark:bg-black text-[#0d0e12] dark:text-white font-sans selection:bg-[#0d0e12] selection:text-white dark:selection:bg-white dark:selection:text-black overflow-x-hidden transition-colors duration-300">
       {/* 1. Subtle 1px Grain / Noise Overlay (4% opacity) */}
       <NoiseOverlay />
 

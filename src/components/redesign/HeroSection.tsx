@@ -91,9 +91,9 @@ export const HeroSection: React.FC = () => {
             >
               <TechText
                 text="GRAPHIC DESIGNER &"
-                fontWeight={400}
+                fontWeight={700}
                 fontSize={95}
-                reveal="letter"
+                reveal="off"
                 dashLength={4}
                 dashGap={2}
                 specks={15}
@@ -102,17 +102,17 @@ export const HeroSection: React.FC = () => {
                 clickKick
                 guides={false}
                 fontFamily='"Bebas Neue", sans-serif'
-                letterSpacing={0.02}
-                accentColor="currentColor"
+                letterSpacing={0.03}
+                accentColor="#ef4444"
                 reach={200}
                 softness={0.7}
                 lineStyle="dashed"
-                strokeWidth={1.5}
+                strokeWidth={2}
                 speed={1}
                 bounce={0.4}
                 selection
                 labels
-                color="currentColor"
+                color="#e11d48"
                 align="left"
                 draggable
                 sweep
@@ -126,9 +126,9 @@ export const HeroSection: React.FC = () => {
             >
               <TechText
                 text="VIDEO EDITOR"
-                fontWeight={400}
+                fontWeight={700}
                 fontSize={95}
-                reveal="letter"
+                reveal="off"
                 dashLength={4}
                 dashGap={2}
                 specks={15}
@@ -137,17 +137,17 @@ export const HeroSection: React.FC = () => {
                 clickKick
                 guides={false}
                 fontFamily='"Bebas Neue", sans-serif'
-                letterSpacing={0.02}
-                accentColor="currentColor"
+                letterSpacing={0.03}
+                accentColor="#ef4444"
                 reach={200}
                 softness={0.7}
                 lineStyle="dashed"
-                strokeWidth={1.5}
+                strokeWidth={2}
                 speed={1}
                 bounce={0.4}
                 selection
                 labels
-                color="currentColor"
+                color="#e11d48"
                 align="left"
                 draggable
                 sweep
