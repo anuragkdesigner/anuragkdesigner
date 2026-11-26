@@ -11,7 +11,8 @@
 }
 
 html {
-  font-size: 14px; /* Makes text across all rem-based typography ~12.5% smaller and refined without shrinking layout containers */
+  font-size: 14px;
+  /* Makes text across all rem-based typography ~12.5% smaller and refined without shrinking layout containers */
   scroll-behavior: smooth;
   background-color: var(--bg-color);
   color: var(--text-color);
@@ -30,13 +31,16 @@ body {
 ::-webkit-scrollbar {
   width: 8px;
 }
+
 ::-webkit-scrollbar-track {
   background: #f2f1ed;
 }
+
 ::-webkit-scrollbar-thumb {
   background: #d0cdc4;
   border-radius: 4px;
 }
+
 ::-webkit-scrollbar-thumb:hover {
   background: #0d0e12;
 }
@@ -63,18 +67,25 @@ body {
 }
 
 /* Physics bouncy spring hover for interactive links, buttons, and cards */
-a, button, [role="button"], .cursor-pointer {
+a,
+button,
+[role="button"],
+.cursor-pointer {
   transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
-              box-shadow 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
-              color 0.2s ease,
-              background-color 0.2s ease;
+    box-shadow 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
+    color 0.2s ease,
+    background-color 0.2s ease;
 }
 
-a:hover, button:hover, [role="button"]:hover {
+a:hover,
+button:hover,
+[role="button"]:hover {
   transform: translateY(-2px) scale(1.02);
 }
 
-a:active, button:active, [role="button"]:active {
+a:active,
+button:active,
+[role="button"]:active {
   transform: translateY(1px) scale(0.97);
 }
 
@@ -89,6 +100,7 @@ a:active, button:active, [role="button"]:active {
   position: relative;
   display: inline-block;
 }
+
 .nav-link-hover::after {
   content: '';
   position: absolute;
@@ -99,6 +111,7 @@ a:active, button:active, [role="button"]:active {
   background-color: #0d0e12;
   transition: width 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
+
 .nav-link-hover:hover::after {
   width: 100%;
 }
@@ -114,6 +127,7 @@ a:active, button:active, [role="button"]:active {
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
@@ -125,9 +139,12 @@ a:active, button:active, [role="button"]:active {
 
 /* Mascot bounce animation */
 @keyframes mascotBounce {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateY(0);
   }
+
   50% {
     transform: translateY(-14px);
   }
@@ -139,30 +156,40 @@ a:active, button:active, [role="button"]:active {
 
 /* Floating background vectors (Camera, Resolve & Photoshop components) */
 @keyframes floatSlow {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateY(0px) rotate(0deg);
   }
+
   50% {
     transform: translateY(-18px) rotate(2.5deg);
   }
 }
 
 @keyframes floatReverse {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateY(0px) rotate(0deg);
   }
+
   50% {
     transform: translateY(16px) rotate(-3deg);
   }
 }
 
 @keyframes floatDrift {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translate(0px, 0px) rotate(0deg);
   }
+
   33% {
     transform: translate(8px, -14px) rotate(1.5deg);
   }
+
   66% {
     transform: translate(-10px, -6px) rotate(-1.5deg);
   }
@@ -172,6 +199,7 @@ a:active, button:active, [role="button"]:active {
   0% {
     stroke-dashoffset: 0;
   }
+
   100% {
     stroke-dashoffset: 16;
   }
@@ -195,6 +223,7 @@ a:active, button:active, [role="button"]:active {
 
 /* Reduced motion preference */
 @media (prefers-reduced-motion: reduce) {
+
   .animate-spin-badge,
   .animate-mascot-bounce,
   .animate-float-slow,
@@ -203,6 +232,7 @@ a:active, button:active, [role="button"]:active {
   .animate-marching-ants {
     animation: none !important;
   }
+
   html {
     scroll-behavior: auto;
   }
