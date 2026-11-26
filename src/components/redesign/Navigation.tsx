@@ -26,7 +26,7 @@ export const Navigation: React.FC = () => {
     <header
       className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
         scrolled
-          ? 'bg-white/90 dark:bg-[#7F011F]/90 backdrop-blur-md border-b border-[#7F011F]/15 dark:border-white/15 py-4 shadow-sm'
+          ? 'bg-[#F5EBD0]/90 dark:bg-[#7F011F]/90 backdrop-blur-md border-b border-[#7F011F]/15 dark:border-[#F5EBD0]/15 py-4 shadow-sm'
           : 'bg-transparent py-6'
       }`}
     >
@@ -36,12 +36,12 @@ export const Navigation: React.FC = () => {
         <div className="flex items-center">
           <button
             onClick={toggleTheme}
-            className="flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-[#7F011F]/20 dark:border-white/30 bg-white/80 dark:bg-[#7F011F]/80 backdrop-blur-sm text-[#7F011F] dark:text-white font-mono text-[11px] font-bold tracking-widest uppercase hover:border-[#7F011F] dark:hover:border-white transition-all shadow-xs cursor-pointer select-none"
+            className="flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-[#7F011F]/20 dark:border-[#F5EBD0]/30 bg-[#F5EBD0]/80 dark:bg-[#7F011F]/80 backdrop-blur-sm text-[#7F011F] dark:text-[#F5EBD0] font-mono text-[11px] font-bold tracking-widest uppercase hover:border-[#7F011F] dark:hover:border-[#F5EBD0] transition-all shadow-xs cursor-pointer select-none"
             aria-label="Toggle theme"
           >
             {theme === 'dark' ? (
               <>
-                <Sun className="w-3.5 h-3.5 text-white" />
+                <Sun className="w-3.5 h-3.5 text-[#F5EBD0]" />
                 <span>LIGHT</span>
               </>
             ) : (
@@ -59,14 +59,14 @@ export const Navigation: React.FC = () => {
             <a
               key={link.label}
               href={link.href}
-              className="text-xs font-mono font-medium tracking-[0.08em] uppercase text-[#7F011F] dark:text-white hover:opacity-75 nav-link-hover transition-colors"
+              className="text-xs font-mono font-medium tracking-[0.08em] uppercase text-[#7F011F] dark:text-[#F5EBD0] hover:opacity-75 nav-link-hover transition-colors"
             >
               {link.label}
             </a>
           ))}
           <a
             href="#contact"
-            className="inline-flex items-center gap-1.5 px-4 py-2 rounded bg-[#7F011F] text-white dark:bg-white dark:text-[#7F011F] font-mono text-xs font-bold uppercase tracking-wider hover:bg-[#630018] dark:hover:bg-white/80 transition-colors shadow-sm"
+            className="inline-flex items-center gap-1.5 px-4 py-2 rounded bg-[#7F011F] text-[#F5EBD0] dark:bg-[#F5EBD0] dark:text-[#7F011F] font-mono text-xs font-bold uppercase tracking-wider hover:bg-[#630018] dark:hover:bg-[#e8dcb9] transition-colors shadow-sm"
           >
             <span>Let's Talk</span>
             <ArrowUpRight className="w-3.5 h-3.5" />
@@ -77,7 +77,7 @@ export const Navigation: React.FC = () => {
         <div className="flex md:hidden items-center gap-3">
           <button
             onClick={() => setMobileMenuOpen(true)}
-            className="p-2 text-[#7F011F] dark:text-white"
+            className="p-2 text-[#7F011F] dark:text-[#F5EBD0]"
             aria-label="Open mobile menu"
           >
             <Menu className="w-6 h-6" />
@@ -88,19 +88,19 @@ export const Navigation: React.FC = () => {
 
       {/* Full-Screen Mobile Menu Overlay */}
       {mobileMenuOpen && (
-        <div className="fixed inset-0 z-50 bg-white dark:bg-[#7F011F] flex flex-col justify-between p-8 sm:p-12 animate-in fade-in duration-200">
+        <div className="fixed inset-0 z-50 bg-[#F5EBD0] dark:bg-[#7F011F] flex flex-col justify-between p-8 sm:p-12 animate-in fade-in duration-200">
           <div className="flex items-center justify-between">
             <button
               onClick={toggleTheme}
-              className="flex items-center gap-2 px-3 py-1.5 rounded-full border border-[#7F011F]/20 dark:border-white/30 text-[#7F011F] dark:text-white font-mono text-[11px] font-bold tracking-widest uppercase"
+              className="flex items-center gap-2 px-3 py-1.5 rounded-full border border-[#7F011F]/20 dark:border-[#F5EBD0]/30 text-[#7F011F] dark:text-[#F5EBD0] font-mono text-[11px] font-bold tracking-widest uppercase"
             >
-              {theme === 'dark' ? <Sun className="w-3.5 h-3.5" /> : <Moon className="w-3.5 h-3.5" />}
+              {theme === 'dark' ? <Sun className="w-3.5 h-3.5 text-[#F5EBD0]" /> : <Moon className="w-3.5 h-3.5 text-[#7F011F]" />}
               <span>{theme === 'dark' ? 'LIGHT' : 'WINE RED'}</span>
             </button>
 
             <button
               onClick={() => setMobileMenuOpen(false)}
-              className="p-2 text-[#7F011F] dark:text-white"
+              className="p-2 text-[#7F011F] dark:text-[#F5EBD0]"
               aria-label="Close menu"
             >
               <X className="w-7 h-7" />
@@ -113,18 +113,18 @@ export const Navigation: React.FC = () => {
                 key={link.label}
                 href={link.href}
                 onClick={() => setMobileMenuOpen(false)}
-                className="font-display font-bold text-3xl sm:text-5xl text-[#7F011F] dark:text-white hover:opacity-75 transition-colors tracking-tight uppercase"
+                className="font-display font-bold text-3xl sm:text-5xl text-[#7F011F] dark:text-[#F5EBD0] hover:opacity-75 transition-colors tracking-tight uppercase"
               >
                 {link.label}
               </a>
             ))}
           </div>
 
-          <div className="pt-6 border-t border-[#7F011F]/20 dark:border-white/20 flex items-center justify-between text-xs font-mono text-[#7F011F]/70 dark:text-white/70">
+          <div className="pt-6 border-t border-[#7F011F]/20 dark:border-[#F5EBD0]/20 flex items-center justify-between text-xs font-mono text-[#7F011F]/70 dark:text-[#F5EBD0]/70">
             <span>KOZHIKODE, KERALA</span>
             <a 
               href="mailto:anuragkthusharam123@gmail.com"
-              className="text-[#7F011F] dark:text-white font-bold underline underline-offset-4"
+              className="text-[#7F011F] dark:text-[#F5EBD0] font-bold underline underline-offset-4"
             >
               Get In Touch
             </a>
