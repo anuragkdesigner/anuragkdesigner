@@ -1,9 +1,11 @@
-import React, { useEffect, useState, useRef, useCallback } from 'react';
-import { X, ChevronLeft, ChevronRight, Grid, Layers, ArrowLeft } from 'lucide-react';
+import React, { useEffect, useRef, useState, useLayoutEffect } from 'react';
+import { X, ArrowLeft } from 'lucide-react';
+import gsap from 'gsap';
 
 interface StoryShowcaseModalProps {
   isOpen: boolean;
   onClose: () => void;
+  triggerRect?: DOMRect | null;
 }
 
 const STORY_IMAGES = [
@@ -23,41 +25,66 @@ const STORY_IMAGES = [
   '/project_work/story_type/task2.jpg.jpeg',
 ];
 
-export const StoryShowcaseModal: React.FC<StoryShowcaseModalProps> = ({ isOpen, onClose }) => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [viewMode, setViewMode] = useState<'coverflow' | 'grid'>('coverflow');
-  const [zoomedImage, setZoomedImage] = useState<string | null>(null);
+export const StoryShowcaseModal: React.FC<StoryShowcaseModalProps> = ({
+  isOpen,
+  onClose,
+  triggerRect,
+}) => {
+  const modalRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const gridRef = useRef<HTMLDivElement>(null);
+  const [activeImage, setActiveImage] = useState<string | null>(null);
 
-  const dragStartX = useRef<number | null>(null);
-  const isDragging = useRef(false);
-  const total = STORY_IMAGES.length;
+  // Mouse hover preview tracking (Clement Grellier style: clientX / 3, clientY)
+  const previewRef = useRef<HTMLDivElement>(null);
+  const [hoveredImage, setHoveredImage] = useState<string | null>(null);
+  const mousePos = useRef({ x: 0, y: 0 });
+  const previewPos = useRef({ x: 0, y: 0 });
+  const animFrameId = useRef<number | null>(null);
 
-  const nextSlide = useCallback(() => {
-    setCurrentIndex((prev) => (prev + 1) % total);
-  }, [total]);
+  // Smooth mouse follow loop
+  useEffect(() => {
+    if (!isOpen) return;
 
-  const prevSlide = useCallback(() => {
-    setCurrentIndex((prev) => (prev - 1 + total) % total);
-  }, [total]);
+    const onMouseMove = (e: MouseEvent) => {
+      mousePos.current = { x: e.clientX, y: e.clientY };
+    };
 
-  // Keyboard navigation & body scroll lock
+    const updatePreview = () => {
+      // Damped horizontal translation: clientX / 3 + vertical clientY
+      previewPos.current.x += (mousePos.current.x / 3 - previewPos.current.x) * 0.15;
+      previewPos.current.y += (mousePos.current.y - previewPos.current.y) * 0.15;
+
+      if (previewRef.current) {
+        previewRef.current.style.transform = `translate3d(${previewPos.current.x}px, ${previewPos.current.y}px, 0)`;
+      }
+
+      animFrameId.current = requestAnimationFrame(updatePreview);
+    };
+
+    window.addEventListener('mousemove', onMouseMove);
+    animFrameId.current = requestAnimationFrame(updatePreview);
+
+    return () => {
+      window.removeEventListener('mousemove', onMouseMove);
+      if (animFrameId.current) cancelAnimationFrame(animFrameId.current);
+    };
+  }, [isOpen]);
+
+  // Handle escape & lock scroll
   useEffect(() => {
     if (!isOpen) {
-      setZoomedImage(null);
+      setActiveImage(null);
       return;
     }
 
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
-        if (zoomedImage) {
-          setZoomedImage(null);
+        if (activeImage) {
+          setActiveImage(null);
         } else {
-          onClose();
+          handleClose();
         }
-      } else if (e.key === 'ArrowRight') {
-        nextSlide();
-      } else if (e.key === 'ArrowLeft') {
-        prevSlide();
       }
     };
 
@@ -68,98 +95,156 @@ export const StoryShowcaseModal: React.FC<StoryShowcaseModalProps> = ({ isOpen, 
       document.body.style.overflow = '';
       window.removeEventListener('keydown', handleKeyDown);
     };
-  }, [isOpen, zoomedImage, nextSlide, prevSlide, onClose]);
+  }, [isOpen, activeImage]);
 
-  // Wheel navigation with debounce
-  const lastWheelTime = useRef(0);
-  const handleWheel = (e: React.WheelEvent) => {
-    if (viewMode !== 'coverflow' || zoomedImage) return;
-    const now = performance.now();
-    if (now - lastWheelTime.current < 260) return;
+  // Entrance shared-element zoom animation from trigger card
+  useLayoutEffect(() => {
+    if (!isOpen || !containerRef.current) return;
 
-    if (Math.abs(e.deltaX) > 20 || Math.abs(e.deltaY) > 20) {
-      if (e.deltaX > 20 || e.deltaY > 20) {
-        nextSlide();
-      } else {
-        prevSlide();
-      }
-      lastWheelTime.current = now;
+    const container = containerRef.current;
+    const cards = gridRef.current?.querySelectorAll('.clement-card');
+
+    if (triggerRect) {
+      const startX = triggerRect.left - (window.innerWidth - container.offsetWidth) / 2;
+      const startY = triggerRect.top - (window.innerHeight - container.offsetHeight) / 2;
+      const scaleX = triggerRect.width / container.offsetWidth;
+      const scaleY = triggerRect.height / container.offsetHeight;
+
+      gsap.fromTo(
+        container,
+        {
+          x: startX,
+          y: startY,
+          scaleX,
+          scaleY,
+          opacity: 0.6,
+          borderRadius: '16px',
+        },
+        {
+          x: 0,
+          y: 0,
+          scaleX: 1,
+          scaleY: 1,
+          opacity: 1,
+          borderRadius: '24px',
+          duration: 0.65,
+          ease: 'power3.inOut',
+        }
+      );
+    } else {
+      gsap.fromTo(
+        container,
+        { scale: 0.88, opacity: 0, y: 30 },
+        { scale: 1, opacity: 1, y: 0, duration: 0.5, ease: 'power3.out' }
+      );
     }
+
+    // Scrub/Stagger in the poster cards with Clement Grellier blur-up
+    if (cards && cards.length > 0) {
+      gsap.fromTo(
+        cards,
+        { opacity: 0, y: 40, filter: 'blur(12px)', scale: 0.95 },
+        {
+          opacity: 1,
+          y: 0,
+          filter: 'blur(0px)',
+          scale: 1,
+          stagger: 0.04,
+          duration: 0.6,
+          delay: 0.2,
+          ease: 'power3.out',
+        }
+      );
+    }
+  }, [isOpen, triggerRect]);
+
+  const handleClose = () => {
+    if (!containerRef.current || !modalRef.current) {
+      onClose();
+      return;
+    }
+
+    const container = containerRef.current;
+    const modal = modalRef.current;
+
+    gsap.to(container, {
+      scale: 0.85,
+      opacity: 0,
+      y: 20,
+      filter: 'blur(10px)',
+      duration: 0.35,
+      ease: 'power2.in',
+    });
+
+    gsap.to(modal, {
+      opacity: 0,
+      duration: 0.35,
+      ease: 'power2.in',
+      onComplete: onClose,
+    });
   };
 
-  // Drag / Swipe handling
-  const handlePointerDown = (e: React.PointerEvent) => {
-    if (viewMode !== 'coverflow' || zoomedImage) return;
-    dragStartX.current = e.clientX;
-    isDragging.current = true;
-  };
-
-  const handlePointerUp = (e: React.PointerEvent) => {
-    if (!isDragging.current || dragStartX.current === null) return;
-    const deltaX = e.clientX - dragStartX.current;
-    if (Math.abs(deltaX) > 40) {
-      if (deltaX < 0) {
-        nextSlide();
-      } else {
-        prevSlide();
-      }
-    }
-    dragStartX.current = null;
-    isDragging.current = false;
+  const handleCardClick = (src: string) => {
+    setActiveImage(src);
   };
 
   if (!isOpen) return null;
 
   return (
     <div
-      className="fixed inset-0 z-[100] flex items-center justify-center bg-black/85 backdrop-blur-xl p-3 sm:p-6 select-none animate-in fade-in duration-300"
-      onClick={onClose}
+      ref={modalRef}
+      className="fixed inset-0 z-[100] flex items-center justify-center bg-black/85 backdrop-blur-xl p-3 sm:p-6 select-none"
+      onClick={handleClose}
     >
-      {/* 70% Sized Popup Window */}
+      {/* Clement Grellier Floating Cursor Preview (desktop) */}
+      {hoveredImage && !activeImage && (
+        <div
+          ref={previewRef}
+          className="hidden lg:block fixed top-0 left-0 pointer-events-none z-[120] w-64 h-80 rounded-xl overflow-hidden shadow-2xl border border-white/20 will-change-transform transition-opacity duration-300"
+          style={{ opacity: hoveredImage ? 0.9 : 0 }}
+        >
+          <img
+            src={hoveredImage}
+            alt=""
+            className="w-full h-full object-cover scale-105"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+        </div>
+      )}
+
+      {/* 70% Clement Grellier Work Showcase Canvas */}
       <div
-        className="relative w-[96vw] md:w-[70vw] h-[88vh] md:h-[72vh] bg-[#0c0d10]/95 border border-white/10 rounded-2xl shadow-2xl overflow-hidden flex flex-col justify-between"
+        ref={containerRef}
+        className="relative w-[95vw] md:w-[72vw] h-[88vh] md:h-[72vh] bg-[#0b0c10] border border-white/10 rounded-2xl sm:rounded-3xl shadow-[0_25px_60px_-15px_rgba(0,0,0,0.9)] overflow-hidden flex flex-col will-change-transform"
         onClick={(e) => e.stopPropagation()}
-        onWheel={handleWheel}
-        onPointerDown={handlePointerDown}
-        onPointerUp={handlePointerUp}
       >
-        {/* Top Control Bar with Clement Grellier blur pills */}
-        <div className="absolute top-4 left-4 right-4 z-30 flex items-center justify-between pointer-events-auto">
-          {/* Left: View Mode Toggle */}
-          <div className="flex items-center gap-2">
-            <button
-              onClick={() => {
-                if (zoomedImage) setZoomedImage(null);
-                setViewMode((prev) => (prev === 'coverflow' ? 'grid' : 'coverflow'));
-              }}
-              className="p-2.5 rounded-full bg-white/10 hover:bg-white/20 text-white backdrop-blur-md transition-all cursor-pointer hover:scale-105 active:scale-95 border border-white/10"
-              title={viewMode === 'coverflow' ? 'Switch to Grid' : 'Switch to 3D Coverflow'}
-            >
-              {viewMode === 'coverflow' ? (
-                <Grid className="w-4 h-4 text-white" />
-              ) : (
-                <Layers className="w-4 h-4 text-white" />
-              )}
-            </button>
-            <span className="font-mono text-[11px] uppercase tracking-widest text-white/60 hidden sm:inline">
-              {viewMode === 'coverflow' ? '3D COVERFLOW' : 'POSTER GRID'}
-            </span>
+        {/* Floating Top Bar with Grellier Nested Letter Roll Header + Icons */}
+        <div className="relative z-30 flex items-center justify-between px-6 py-4 border-b border-white/10 bg-[#0b0c10]/80 backdrop-blur-md">
+          {/* Rolling Multiple Text Header */}
+          <div className="flex items-center gap-3">
+            <span className="w-2.5 h-2.5 rounded-full bg-white animate-pulse" />
+            <div className="title-multiple flex items-center overflow-hidden h-6 font-mono text-xs uppercase tracking-widest text-white/90 font-bold">
+              <span className="inline-block transform transition-transform duration-500 hover:-translate-y-full cursor-default">
+                <span className="block text-white">WORKS GALLERY</span>
+                <span className="block text-white/50">ARCHIVE 01—14</span>
+              </span>
+            </div>
           </div>
 
-          {/* Right: Close & Back Buttons */}
+          {/* Action Buttons */}
           <div className="flex items-center gap-2">
-            {zoomedImage && (
+            {activeImage && (
               <button
-                onClick={() => setZoomedImage(null)}
-                className="p-2.5 rounded-full bg-white/10 hover:bg-white/20 text-white backdrop-blur-md transition-all cursor-pointer hover:scale-105 active:scale-95 border border-white/10"
-                aria-label="Back"
+                onClick={() => setActiveImage(null)}
+                className="p-2 rounded-full bg-white/10 hover:bg-white/20 text-white backdrop-blur-md transition-all cursor-pointer hover:scale-110 active:scale-95"
+                aria-label="Back to grid"
               >
                 <ArrowLeft className="w-4 h-4" />
               </button>
             )}
             <button
-              onClick={onClose}
-              className="p-2.5 rounded-full bg-white/10 hover:bg-white/20 text-white backdrop-blur-md transition-all cursor-pointer hover:scale-105 active:scale-95 border border-white/10"
+              onClick={handleClose}
+              className="p-2 rounded-full bg-white/10 hover:bg-white/20 text-white backdrop-blur-md transition-all cursor-pointer hover:scale-110 active:scale-95"
               aria-label="Close"
             >
               <X className="w-4 h-4" />
@@ -167,167 +252,62 @@ export const StoryShowcaseModal: React.FC<StoryShowcaseModalProps> = ({ isOpen, 
           </div>
         </div>
 
-        {/* Modal Center Content */}
-        {zoomedImage ? (
-          /* Maximized Zoom View */
+        {/* Modal Body: Clement Grellier Work Showcase */}
+        {activeImage ? (
+          /* Single Expanded Case View */
           <div
-            className="w-full h-full flex items-center justify-center p-6 sm:p-12 cursor-zoom-out"
-            onClick={() => setZoomedImage(null)}
+            className="w-full h-full flex items-center justify-center p-4 sm:p-8 cursor-zoom-out select-none bg-black/40"
+            onClick={() => setActiveImage(null)}
           >
-            <img
-              src={zoomedImage}
-              alt=""
-              className="max-w-full max-h-full object-contain rounded-xl shadow-2xl transition-transform duration-500 ease-out hover:scale-[1.02]"
-            />
+            <div className="relative max-w-full max-h-full rounded-2xl overflow-hidden shadow-2xl border border-white/15 animate-in fade-in zoom-in-95 duration-300">
+              <img
+                src={activeImage}
+                alt=""
+                className="max-w-[85vw] md:max-w-[65vw] max-h-[75vh] md:max-h-[60vh] object-contain rounded-xl"
+              />
+            </div>
           </div>
-        ) : viewMode === 'coverflow' ? (
-          /* 3D Coverflow / Cylinder Carousel (Clément Grellier Style) */
-          <div className="relative w-full h-full flex items-center justify-center overflow-hidden [perspective:1200px]">
-            <div className="relative w-full h-[75%] max-h-[520px] flex items-center justify-center [transform-style:preserve-3d]">
-              {STORY_IMAGES.map((src, idx) => {
-                // Calculate circular offset
-                let offset = idx - currentIndex;
-                if (offset > total / 2) offset -= total;
-                if (offset < -total / 2) offset += total;
-
-                const isCenter = offset === 0;
-                const isImmediateSide = Math.abs(offset) === 1;
-                const isVisible = Math.abs(offset) <= 2;
-
-                if (!isVisible) return null;
-
-                // 3D parameters matching clementgrellier.fr perspective transforms
-                const rotateY = offset * -36;
-                const translateX = offset * 210;
-                const translateZ = -Math.abs(offset) * 160;
-                const scale = isCenter ? 1 : isImmediateSide ? 0.86 : 0.72;
-                const opacity = isCenter ? 1 : isImmediateSide ? 0.75 : 0.4;
-                const blur = isCenter ? 0 : isImmediateSide ? 2 : 5;
-                const zIndex = 30 - Math.abs(offset) * 10;
-
+        ) : (
+          /* Posters Grid with Clement Grellier Card Interaction */
+          <div
+            ref={gridRef}
+            className="w-full h-full overflow-y-auto p-4 sm:p-6 scrollbar-thin scrollbar-thumb-white/20 scrollbar-track-transparent"
+          >
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 sm:gap-5">
+              {STORY_IMAGES.map((src, index) => {
+                const itemNum = index < 9 ? `0${index + 1}` : `${index + 1}`;
                 return (
                   <div
-                    key={idx}
-                    onClick={() => {
-                      if (isCenter) {
-                        setZoomedImage(src);
-                      } else {
-                        setCurrentIndex(idx);
-                      }
-                    }}
-                    className={`absolute top-0 bottom-0 aspect-[9/16] rounded-xl overflow-hidden cursor-pointer will-change-transform group transition-all duration-700 ease-[cubic-bezier(0.76,0,0.24,1)] ${
-                      isCenter
-                        ? 'shadow-[0_30px_70px_rgba(0,0,0,0.8)] ring-1 ring-white/20'
-                        : 'shadow-xl'
-                    }`}
-                    style={{
-                      transform: `translateX(${translateX}px) translateZ(${translateZ}px) rotateY(${rotateY}deg) scale(${scale})`,
-                      opacity,
-                      filter: `blur(${blur}px)`,
-                      zIndex,
-                    }}
+                    key={index}
+                    onClick={() => handleCardClick(src)}
+                    onMouseEnter={() => setHoveredImage(src)}
+                    onMouseLeave={() => setHoveredImage(null)}
+                    className="clement-card group relative aspect-[9/16] sm:aspect-[4/5] rounded-xl overflow-hidden bg-white/5 border border-white/10 shadow-lg cursor-pointer transition-all duration-500 ease-out hover:border-white/40 hover:shadow-2xl hover:scale-[1.02]"
                   >
-                    {/* Image with Clement Grellier scale & smooth bezier */}
+                    {/* Background poster image with Clement scale effect */}
                     <img
                       src={src}
                       alt=""
                       loading="lazy"
-                      className="w-full h-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.15,0.9,0.34,0.95)] group-hover:scale-108"
+                      className="w-full h-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.15,0.9,0.34,0.95)] group-hover:scale-110"
                     />
 
-                    {/* Darkening vignette overlay */}
-                    <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-out pointer-events-none" />
+                    {/* Dark gradient overlay (fades in on hover) */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-40 group-hover:opacity-70 transition-opacity duration-500 pointer-events-none" />
 
-                    {/* Subtle click indicator on center card */}
-                    {isCenter && (
-                      <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 pointer-events-none">
-                        <span className="px-3 py-1 rounded-full bg-white/20 backdrop-blur-md border border-white/30 text-white font-mono text-[10px] uppercase tracking-wider scale-90 group-hover:scale-100 transition-transform">
-                          Expand View
-                        </span>
-                      </div>
-                    )}
+                    {/* Card Label revealing with blur-to-sharp like Clement Grellier */}
+                    <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-white font-mono text-[10px] tracking-wider uppercase opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 filter blur-[4px] group-hover:blur-none pointer-events-none">
+                      <span className="font-bold bg-white/20 backdrop-blur-md px-2 py-0.5 rounded">
+                        ITEM // {itemNum}
+                      </span>
+                      <span className="text-white/70">VIEW ↗</span>
+                    </div>
                   </div>
                 );
               })}
             </div>
-
-            {/* Left / Right Arrow Navigation Buttons */}
-            <div className="absolute inset-y-0 left-4 right-4 flex items-center justify-between pointer-events-none z-30">
-              <button
-                onClick={(e) => {
-                  e.stopPropagation();
-                  prevSlide();
-                }}
-                className="w-11 h-11 rounded-full bg-black/60 hover:bg-white text-white hover:text-black border border-white/20 backdrop-blur-md flex items-center justify-center pointer-events-auto transition-all duration-300 hover:scale-110 active:scale-90 cursor-pointer shadow-xl"
-                aria-label="Previous"
-              >
-                <ChevronLeft className="w-5 h-5" />
-              </button>
-
-              <button
-                onClick={(e) => {
-                  e.stopPropagation();
-                  nextSlide();
-                }}
-                className="w-11 h-11 rounded-full bg-black/60 hover:bg-white text-white hover:text-black border border-white/20 backdrop-blur-md flex items-center justify-center pointer-events-auto transition-all duration-300 hover:scale-110 active:scale-90 cursor-pointer shadow-xl"
-                aria-label="Next"
-              >
-                <ChevronRight className="w-5 h-5" />
-              </button>
-            </div>
-          </div>
-        ) : (
-          /* Grid View Mode */
-          <div className="w-full h-full overflow-y-auto p-4 sm:p-8 pt-16 scrollbar-thin scrollbar-thumb-white/20">
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 sm:gap-6">
-              {STORY_IMAGES.map((src, index) => (
-                <div
-                  key={index}
-                  onClick={() => setZoomedImage(src)}
-                  className="group relative aspect-[9/16] rounded-xl overflow-hidden bg-white/5 border border-white/10 shadow-lg cursor-pointer transform transition-all duration-500 ease-[cubic-bezier(0.15,0.9,0.34,0.95)] hover:scale-105 hover:shadow-2xl hover:border-white/30 hover:z-10"
-                >
-                  <img
-                    src={src}
-                    alt=""
-                    loading="lazy"
-                    className="w-full h-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.15,0.9,0.34,0.95)] group-hover:scale-110"
-                  />
-                  <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-400 ease-out pointer-events-none" />
-                </div>
-              ))}
-            </div>
           </div>
         )}
-
-        {/* Bottom Pagination & Index Indicator */}
-        <div className="p-4 sm:p-5 flex items-center justify-between border-t border-white/10 z-20 bg-black/40 backdrop-blur-md">
-          <div className="font-mono text-xs text-white/50 tracking-widest">
-            <span className="text-white font-bold">
-              {String(currentIndex + 1).padStart(2, '0')}
-            </span>
-            <span> / {String(total).padStart(2, '0')}</span>
-          </div>
-
-          {/* Dots Indicator */}
-          <div className="flex items-center gap-1.5 max-w-[60%] overflow-x-auto no-scrollbar py-1">
-            {STORY_IMAGES.map((_, i) => (
-              <button
-                key={i}
-                onClick={() => setCurrentIndex(i)}
-                className={`h-1.5 rounded-full transition-all duration-400 cursor-pointer ${
-                  i === currentIndex
-                    ? 'w-6 bg-white'
-                    : 'w-1.5 bg-white/20 hover:bg-white/40'
-                }`}
-                aria-label={`Slide ${i + 1}`}
-              />
-            ))}
-          </div>
-
-          <div className="font-mono text-[10px] text-white/40 uppercase tracking-widest hidden sm:block">
-            DRAG · WHEEL · ARROWS
-          </div>
-        </div>
       </div>
     </div>
   );
