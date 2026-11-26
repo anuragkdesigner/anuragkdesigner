@@ -1,7 +1,6 @@
 import React from 'react';
 import { CustomCursor } from './components/redesign/CustomCursor';
 import { Crosshair } from './components/redesign/Crosshair';
-import { NoiseOverlay } from './components/redesign/NoiseOverlay';
 import { IntroSequence } from './components/redesign/IntroSequence';
 import { Navigation } from './components/redesign/Navigation';
 import { HeroSection } from './components/redesign/HeroSection';
@@ -18,9 +17,6 @@ const MainLayout: React.FC = () => {
 
   return (
     <div className="relative min-h-screen bg-white dark:bg-black text-[#0d0e12] dark:text-white font-sans selection:bg-[#0d0e12] selection:text-white dark:selection:bg-white dark:selection:text-black overflow-x-hidden transition-colors duration-300">
-      {/* 1. Subtle 1px Grain / Noise Overlay (4% opacity) */}
-      <NoiseOverlay />
-
       {/* 2. Interactive Smooth Custom Cursor */}
       <CustomCursor />
 

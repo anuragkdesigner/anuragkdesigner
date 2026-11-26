@@ -42,12 +42,6 @@ export const HeroSection: React.FC = () => {
       ref={heroRef}
       className="relative min-h-screen pt-28 sm:pt-36 pb-16 flex flex-col justify-between overflow-hidden bg-white dark:bg-black"
     >
-      {/* Ambient Subtle Halo Behind Portrait */}
-      <div 
-        className="absolute top-1/4 right-0 lg:right-12 w-80 sm:w-96 h-80 sm:h-96 rounded-full bg-[#0d0e12]/[0.02] dark:bg-white/[0.03] blur-[100px] pointer-events-none z-0"
-        aria-hidden="true"
-      />
-
       <div className="my-auto max-w-site mx-auto px-6 sm:px-10 w-full grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-8 items-center relative z-10 pointer-events-none">
         
         {/* LEFT COLUMN: Typography & Headlines (7 Cols) */}
