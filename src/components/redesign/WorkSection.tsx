@@ -63,7 +63,7 @@ export const WorkSection: React.FC = () => {
     >
       {/* Pinned 100vh Viewport */}
       <div className="h-screen w-full flex flex-col justify-between py-6 sm:py-8 overflow-hidden">
-        
+
         {/* Top Section Header Strip */}
         <div className="max-w-site mx-auto w-full px-6 sm:px-10 flex items-center justify-between shrink-0">
           <div className="flex items-center gap-3">
@@ -92,9 +92,8 @@ export const WorkSection: React.FC = () => {
               <div
                 key={proj.id}
                 onClick={isSocialMedia ? handleOpenShowcase : undefined}
-                className={`w-[320px] xs:w-[380px] sm:w-[480px] lg:w-[540px] shrink-0 bg-white border border-[#e2dfd7] rounded-xl p-5 sm:p-6 shadow-xl flex flex-col justify-between group hover:border-[#0d0e12]/60 hover:shadow-2xl transition-all ${
-                  isSocialMedia ? 'cursor-pointer' : ''
-                }`}
+                className={`w-[320px] xs:w-[380px] sm:w-[480px] lg:w-[540px] shrink-0 bg-white border border-[#e2dfd7] rounded-xl p-5 sm:p-6 shadow-xl flex flex-col justify-between group hover:border-[#0d0e12]/60 hover:shadow-2xl transition-all ${isSocialMedia ? 'cursor-pointer' : ''
+                  }`}
               >
                 {/* Thumbnail 16:10 */}
                 <div className="relative aspect-[16/10] w-full rounded-lg overflow-hidden bg-[#f2f1ed] mb-4">
