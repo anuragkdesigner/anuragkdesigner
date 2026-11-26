@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 :root {
-  --bg-color: #F5EBD0;
+  --bg-color: #ffffff;
   --text-color: #7F011F;
   --accent-red: #7F011F;
   --font-display: "Poppins", sans-serif;
@@ -12,8 +12,8 @@
 
 html.dark {
   --bg-color: #7F011F;
-  --text-color: #F5EBD0;
-  --accent-red: #F5EBD0;
+  --text-color: #ffffff;
+  --accent-red: #ffffff;
 }
 
 html {
