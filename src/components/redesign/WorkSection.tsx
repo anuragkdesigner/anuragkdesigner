@@ -89,15 +89,15 @@ export const WorkSection: React.FC = () => {
                   isSocialMedia ? 'cursor-pointer' : ''
                 }`}
               >
-                {/* Thumbnail 16:10 */}
+                {/* Thumbnail 16:10 with Clement Grellier hover effect */}
                 <div className="relative aspect-[16/10] w-full rounded-lg overflow-hidden bg-[#f2f1ed] mb-4">
                   <img
                     src={proj.image}
                     alt={proj.title}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    className="w-full h-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.15,0.9,0.34,0.95)] group-hover:scale-108"
                     loading="lazy"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent pointer-events-none" />
+                  <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-[cubic-bezier(0.15,0.9,0.34,0.95)] pointer-events-none" />
                 </div>
 
                 {/* Main Heading & View on the right side */}
