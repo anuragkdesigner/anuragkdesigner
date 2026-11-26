@@ -16,13 +16,13 @@ const MainLayout: React.FC = () => {
   const { theme } = useTheme();
 
   return (
-    <div className="relative min-h-screen bg-white dark:bg-[#7F011F] text-[#7F011F] dark:text-white font-sans selection:bg-[#7F011F] selection:text-white dark:selection:bg-white dark:selection:text-[#7F011F] overflow-x-hidden transition-colors duration-300">
+    <div className="relative min-h-screen bg-[#F5EBD0] dark:bg-[#7F011F] text-[#7F011F] dark:text-[#F5EBD0] font-sans selection:bg-[#7F011F] selection:text-[#F5EBD0] dark:selection:bg-[#F5EBD0] dark:selection:text-[#7F011F] overflow-x-hidden transition-colors duration-300">
       {/* 2. Interactive Smooth Custom Cursor */}
       <CustomCursor />
 
       {/* 2b. Interactive Button 4-Corner Crosshair Lock */}
       <Crosshair
-        color={theme === 'dark' ? '#ffffff' : '#7F011F'}
+        color={theme === 'dark' ? '#F5EBD0' : '#7F011F'}
         targetEffect="lock"
         thickness={1.5}
         opacity={0.85}

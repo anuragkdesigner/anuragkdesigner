@@ -40,7 +40,7 @@ export const HeroSection: React.FC = () => {
   return (
     <section
       ref={heroRef}
-      className="relative min-h-screen pt-28 sm:pt-36 pb-16 flex flex-col justify-between overflow-hidden bg-white dark:bg-[#7F011F] transition-colors duration-300"
+      className="relative min-h-screen pt-28 sm:pt-36 pb-16 flex flex-col justify-between overflow-hidden bg-[#F5EBD0] dark:bg-[#7F011F] transition-colors duration-300"
     >
       <div className="my-auto max-w-site mx-auto px-6 sm:px-10 w-full grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-8 items-center relative z-10 pointer-events-none">
         
@@ -175,9 +175,9 @@ export const HeroSection: React.FC = () => {
                 className="w-full h-auto object-cover relative z-10 drop-shadow-[0_20px_35px_rgba(127,1,31,0.25)]"
               />
 
-              {/* Bottom Gradient Fade to seamlessly melt into white background */}
+              {/* Bottom Gradient Fade to seamlessly melt into background */}
               <div 
-                className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-white dark:from-[#7F011F] via-white/85 dark:via-[#7F011F]/85 to-transparent z-20 pointer-events-none"
+                className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[#F5EBD0] dark:from-[#7F011F] via-[#F5EBD0]/85 dark:via-[#7F011F]/85 to-transparent z-20 pointer-events-none"
               />
             </div>
 
