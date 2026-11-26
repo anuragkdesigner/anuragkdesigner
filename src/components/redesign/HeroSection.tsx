@@ -43,7 +43,7 @@ export const HeroSection: React.FC = () => {
   return (
     <section
       ref={heroRef}
-      className="relative min-h-screen pt-28 sm:pt-36 pb-16 flex flex-col justify-between overflow-hidden"
+      className="relative min-h-screen pt-28 sm:pt-36 pb-16 flex flex-col justify-between overflow-hidden bg-white dark:bg-black"
     >
       {/* 100% Full-Width Interactive DarkVeil Canvas in Background */}
       <div className="absolute inset-0 w-full h-full pointer-events-auto z-0 opacity-75 dark:opacity-85">
@@ -87,12 +87,12 @@ export const HeroSection: React.FC = () => {
             {/* Line 1: GRAPHIC DESIGNER & */}
             <div
               ref={line1Ref}
-              className="w-full h-[36px] xs:h-[44px] sm:h-[56px] md:h-[68px] lg:h-[78px] relative"
+              className="w-full h-[40px] xs:h-[50px] sm:h-[64px] md:h-[78px] lg:h-[90px] relative"
             >
               <TechText
                 text="GRAPHIC DESIGNER &"
-                fontWeight={800}
-                fontSize={85}
+                fontWeight={400}
+                fontSize={95}
                 reveal="letter"
                 dashLength={4}
                 dashGap={2}
@@ -101,8 +101,8 @@ export const HeroSection: React.FC = () => {
                 introDuration={2}
                 clickKick
                 guides={false}
-                fontFamily="Poppins, sans-serif"
-                letterSpacing={-0.03}
+                fontFamily='"Bebas Neue", sans-serif'
+                letterSpacing={0.02}
                 accentColor="currentColor"
                 reach={200}
                 softness={0.7}
@@ -122,12 +122,12 @@ export const HeroSection: React.FC = () => {
             {/* Line 2: VIDEO EDITOR */}
             <div
               ref={line2Ref}
-              className="w-full h-[36px] xs:h-[44px] sm:h-[56px] md:h-[68px] lg:h-[78px] relative"
+              className="w-full h-[40px] xs:h-[50px] sm:h-[64px] md:h-[78px] lg:h-[90px] relative"
             >
               <TechText
                 text="VIDEO EDITOR"
-                fontWeight={800}
-                fontSize={85}
+                fontWeight={400}
+                fontSize={95}
                 reveal="letter"
                 dashLength={4}
                 dashGap={2}
@@ -136,8 +136,8 @@ export const HeroSection: React.FC = () => {
                 introDuration={2}
                 clickKick
                 guides={false}
-                fontFamily="Poppins, sans-serif"
-                letterSpacing={-0.03}
+                fontFamily='"Bebas Neue", sans-serif'
+                letterSpacing={0.02}
                 accentColor="currentColor"
                 reach={200}
                 softness={0.7}
@@ -209,9 +209,9 @@ export const HeroSection: React.FC = () => {
                 className="w-full h-auto object-cover relative z-10 drop-shadow-[0_20px_35px_rgba(0,0,0,0.16)]"
               />
 
-              {/* Bottom Gradient Fade to seamlessly melt into page background */}
+              {/* Bottom Gradient Fade to seamlessly melt into white page background */}
               <div 
-                className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[#f9f9f8] dark:from-black via-[#f9f9f8]/85 dark:via-black/85 to-transparent z-20 pointer-events-none"
+                className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-white dark:from-black via-white/85 dark:via-black/85 to-transparent z-20 pointer-events-none"
               />
             </div>
 

@@ -25,6 +25,7 @@ export default {
         }
       },
       fontFamily: {
+        bebas: ['"Bebas Neue"', 'sans-serif'],
         display: ['Poppins', 'sans-serif'],
         headline: ['Poppins', 'sans-serif'],
         sans: ['Poppins', 'sans-serif'],
