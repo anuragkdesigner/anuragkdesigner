@@ -12,7 +12,6 @@ export const WorkSection: React.FC = () => {
   const trackRef = useRef<HTMLDivElement>(null);
   const progressBarRef = useRef<HTMLDivElement>(null);
   const [isStoryModalOpen, setIsStoryModalOpen] = useState(false);
-  const [triggerRect, setTriggerRect] = useState<DOMRect | null>(null);
 
   const projects = content.projects;
 
@@ -48,12 +47,6 @@ export const WorkSection: React.FC = () => {
 
     return () => ctx.revert();
   }, [projects]);
-
-  const handleOpenShowcase = (e: React.MouseEvent<HTMLDivElement>) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    setTriggerRect(rect);
-    setIsStoryModalOpen(true);
-  };
 
   return (
     <section
@@ -91,7 +84,7 @@ export const WorkSection: React.FC = () => {
             return (
               <div
                 key={proj.id}
-                onClick={isSocialMedia ? handleOpenShowcase : undefined}
+                onClick={isSocialMedia ? () => setIsStoryModalOpen(true) : undefined}
                 className={`w-[320px] xs:w-[380px] sm:w-[480px] lg:w-[540px] shrink-0 bg-white border border-[#e2dfd7] rounded-xl p-5 sm:p-6 shadow-xl flex flex-col justify-between group hover:border-[#0d0e12]/60 hover:shadow-2xl transition-all ${isSocialMedia ? 'cursor-pointer' : ''
                   }`}
               >
@@ -100,7 +93,7 @@ export const WorkSection: React.FC = () => {
                   <img
                     src={proj.image}
                     alt={proj.title}
-                    className="w-full h-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.15,0.9,0.34,0.95)] group-hover:scale-105"
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                     loading="lazy"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent pointer-events-none" />
@@ -139,12 +132,12 @@ export const WorkSection: React.FC = () => {
 
       </div>
 
-      {/* Clement Grellier Visual Showcase Popup */}
+      {/* 70% Sized Visual Showcase Popup */}
       <StoryShowcaseModal
         isOpen={isStoryModalOpen}
         onClose={() => setIsStoryModalOpen(false)}
-        triggerRect={triggerRect}
       />
     </section>
   );
 };
+
